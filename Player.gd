@@ -34,19 +34,30 @@ var id
 var velocity:Vector2 = Vector2.ZERO
 var snap_vector:Vector2 = SNAP_DIRECTION * SNAP_LENGHT
 
+export (PackedScene) var projectile_scene:PackedScene
+var proj_instance
+
 func initialize(projectile_container , id):
 	self.projectile_container = projectile_container
 	self.id = id
 	#arm.projectile_container = projectile_container
 
+	
+func fire():
+	if projectile_scene != null:
+		var proj_instance = projectile_scene.instance()
+		proj_instance.initialize(projectile_container, arm.get_node("ArmTip").global_position, Vector2.RIGHT)
+	else:
+		print("AAAAAAAAAAAAAA")#fire_timer.start()
+	
 func get_input(delta):
 	# Cannon fire
-#	if Input.is_action_just_pressed("fire_cannon"):
+	if Input.is_action_just_pressed("fire_cannon" + str(id)):
 #		if projectile_container == null:
 #			projectile_container = get_parent()
 #			arm.projectile_container = projectile_container
-#		arm.fire()
-#
+		fire()
+		
 	# Jump Action
 	var jump: bool = Input.is_action_just_pressed('jump' + str(id))
 	var on_floor: bool = is_on_floor()
