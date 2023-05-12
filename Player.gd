@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 onready var arm = $Arm
+onready var target
 
 const FLOOR_NORMAL := Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION := Vector2.UP
@@ -40,15 +41,17 @@ var proj_instance
 func initialize(projectile_container , id):
 	self.projectile_container = projectile_container
 	self.id = id
+	if (id == 1):
+		target = get_parent().get_node("Player2")
+	else:
+		target = get_parent().get_node("Player1")
 	#arm.projectile_container = projectile_container
 
 	
 func fire():
 	if projectile_scene != null:
 		var proj_instance = projectile_scene.instance()
-		proj_instance.initialize(projectile_container, arm.get_node("ArmTip").global_position, Vector2.RIGHT)
-	else:
-		print("AAAAAAAAAAAAAA")#fire_timer.start()
+		proj_instance.initialize(projectile_container, arm.get_node("ArmTip").global_position, target)
 	
 func get_input(delta):
 	# Cannon fire

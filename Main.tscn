@@ -33,5 +33,5 @@ scale = Vector2( 19.36, 1 )
 shape = SubResource( 1 )
 
 [node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2( 1077, 757 )
+position = Vector2( 1021, 1021 )
 current = true
