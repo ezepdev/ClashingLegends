@@ -3,4 +3,6 @@
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 
 [node name="Player2" instance=ExtResource( 1 )]
+collision_layer = 260
+collision_mask = 256
 projectile_scene = null

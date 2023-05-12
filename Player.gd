@@ -1,7 +1,14 @@
 extends KinematicBody2D
 
+class_name Player
 onready var arm = $Arm
 onready var target
+
+signal health_changed(current_health,id)
+
+# health player
+export (float) var max_health = 500.0
+var health_player:float = max_health
 
 const FLOOR_NORMAL := Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION := Vector2.UP
@@ -38,6 +45,9 @@ var snap_vector:Vector2 = SNAP_DIRECTION * SNAP_LENGHT
 export (PackedScene) var projectile_scene:PackedScene
 var proj_instance
 
+func _ready():
+	health_player = max_health
+
 func initialize(projectile_container , id):
 	self.projectile_container = projectile_container
 	self.id = id
@@ -46,6 +56,10 @@ func initialize(projectile_container , id):
 	else:
 		target = get_parent().get_node("Player1")
 	#arm.projectile_container = projectile_container
+
+
+func get_health():
+	return (health_player / max_health) * 100
 
 	
 func fire():
@@ -94,8 +108,6 @@ func get_input(delta):
 					jump_force_charged = JUMP_CHARGE_FORCE
 				velocity.y -= jump_speed + jump_force_charged
 				jump_count -= 1
-	
-
 
 	#horizontal speed
 	var h_movement_direction:int = int(Input.is_action_pressed("move_right" + str(id) )) - int(Input.is_action_pressed("move_left" + str(id)))
@@ -148,3 +160,11 @@ func _physics_process(delta):
 #	velocity.y = move_and_slide(velocity, FLOOR_NORMAL, true).y # Con stop on slope y cancelando corrección de momentum horizontal
 #	velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true) # Usando move_and_slide_with_snap y sin threshold de slope
 	velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, SLOPE_THRESHOLD) # Usando move_and_slide_with_snap y con threshold de slope
+
+func notify_hit() -> void:
+	health_player = health_player - 100
+	emit_signal("health_changed",(health_player / max_health) * 100,id)
+	print("I'm player, and i receive damage")
+	if (health_player == 0):
+		get_tree().paused = true
+		queue_free()
