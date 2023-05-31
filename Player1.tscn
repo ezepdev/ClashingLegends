@@ -14,6 +14,7 @@ scale = Vector2( 1.88235, 3.55556 )
 texture = ExtResource( 3 )
 
 [node name="Arm" parent="." index="2"]
+visible = false
 position = Vector2( 25, -1.25 )
 scale = Vector2( 0.5, 0.210938 )
 texture = ExtResource( 2 )

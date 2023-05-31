@@ -135,9 +135,6 @@ func get_input(delta):
 				dashL_timer = 0
 	else:
 		velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
-		
-	var mouse_position:Vector2 = get_global_mouse_position()
-	arm.look_at(mouse_position)
 
 func dash(valor):
 	global_position.x += valor
