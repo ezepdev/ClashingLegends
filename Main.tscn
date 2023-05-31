@@ -27,35 +27,42 @@ drag_margin_bottom = 0.0
 script = ExtResource( 6 )
 
 [node name="UI" type="CanvasLayer" parent="."]
-follow_viewport_enable = true
 
 [node name="GUI" type="Control" parent="UI"]
-margin_right = 40.0
-margin_bottom = 40.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
 script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="LifeBarPlayer1" type="TextureProgress" parent="UI/GUI"]
-anchor_left = 0.775
-anchor_top = 0.975
-anchor_right = 0.775
-anchor_bottom = 0.975
-margin_right = 396.0
-margin_bottom = 53.0
+anchor_right = 0.386719
+anchor_bottom = 0.095
+margin_bottom = -27.0
+rect_min_size = Vector2( 396, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
 __meta__ = {
 "_edit_use_anchors_": true
 }
 
 [node name="LifeBarPlayer2" type="TextureProgress" parent="UI/GUI"]
-anchor_left = 1.0
+anchor_left = 0.613281
 anchor_right = 1.0
-margin_left = 538.0
-margin_top = 38.0
-margin_right = 934.0
-margin_bottom = 91.0
+anchor_bottom = 0.0883333
+margin_bottom = -23.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Tween" type="Tween" parent="UI/GUI"]
 
@@ -73,7 +80,7 @@ projectile_scene = ExtResource( 5 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 position = Vector2( 456, 568 )
-scale = Vector2( 9.08, 1 )
+scale = Vector2( 90000, 1 )
 collision_mask = 0
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D"]

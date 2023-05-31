@@ -12,7 +12,7 @@ func initialize(container, spawn_position:Vector2, target):
 		collision_mask = 2
 	else:
 		collision_mask = 4
-	global_position = spawn_position	
+	global_position = spawn_position
 	self.target = target
 	self.direction = global_position.direction_to(target.global_position)
 	

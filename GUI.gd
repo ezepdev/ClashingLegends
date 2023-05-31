@@ -14,12 +14,10 @@ func _ready():
 	player2 = get_parent().get_parent().get_node("Player2")
 	
 	animated_health_player1 = player1.get_health()
-	print(animated_health_player1)
 	animated_health_player2 = player2.get_health()
 	
 	player1.connect("health_changed",self,"_on_Player_health_changed")
 	player2.connect("health_changed",self,"_on_Player_health_changed")
-
 
 func _process(delta):
 	lifebar_player1.value = animated_health_player1
@@ -27,7 +25,7 @@ func _process(delta):
 
 func _on_Player_health_changed(current_health:float,id:int):
 	print("GUI receive player damage signal from player: " + str(id) )
-	update_health(current_health,id)
+	update_health(current_health, id)
 
 func update_health(new_value,id):
 	if (id == 1):
