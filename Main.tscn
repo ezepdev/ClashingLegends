@@ -1,0 +1,96 @@
+[gd_scene load_steps=11 format=2]
+
+[ext_resource path="res://Main.gd" type="Script" id=1]
+[ext_resource path="res://Player2.tscn" type="PackedScene" id=2]
+[ext_resource path="res://assets/floor.png" type="Texture" id=3]
+[ext_resource path="res://Player1.tscn" type="PackedScene" id=4]
+[ext_resource path="res://Camera2D.gd" type="Script" id=6]
+[ext_resource path="res://assets/GUI/lifebar_bg.png" type="Texture" id=7]
+[ext_resource path="res://assets/GUI/lifebar_fill.png" type="Texture" id=8]
+[ext_resource path="res://GUI.gd" type="Script" id=9]
+[ext_resource path="res://assets/bg.png" type="Texture" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 50.7748, 30 )
+
+[node name="Main" type="Node"]
+script = ExtResource( 1 )
+
+[node name="TextureRect" type="TextureRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_top = -736.0
+margin_bottom = -736.0
+rect_scale = Vector2( 3.56, 5.96 )
+texture = ExtResource( 10 )
+expand = true
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+drag_margin_h_enabled = true
+drag_margin_v_enabled = true
+drag_margin_left = 0.0
+drag_margin_top = 0.0
+drag_margin_right = 0.0
+drag_margin_bottom = 0.0
+script = ExtResource( 6 )
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="GUI" type="Control" parent="UI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LifeBarPlayer1" type="TextureProgress" parent="UI/GUI"]
+anchor_right = 0.386719
+anchor_bottom = 0.095
+margin_bottom = -27.0
+rect_min_size = Vector2( 396, 0 )
+size_flags_horizontal = 2
+size_flags_vertical = 2
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="LifeBarPlayer2" type="TextureProgress" parent="UI/GUI"]
+anchor_left = 0.613281
+anchor_right = 1.0
+anchor_bottom = 0.0883333
+margin_bottom = -23.0
+texture_under = ExtResource( 7 )
+texture_progress = ExtResource( 8 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Tween" type="Tween" parent="UI/GUI"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+position = Vector2( 456, 568 )
+scale = Vector2( 90000, 1 )
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D"]
+scale = Vector2( 29.84, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2( 1.14441e-05, 0 )
+scale = Vector2( 19.36, 1 )
+shape = SubResource( 1 )
+
+[node name="Player1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 140, -441 )
+
+[node name="Player2" parent="." instance=ExtResource( 2 )]
+position = Vector2( 2837, -441 )
