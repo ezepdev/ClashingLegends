@@ -1,11 +1,17 @@
-[gd_scene load_steps=2 format=2]
+[gd_scene load_steps=3 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/chararacters/buddy_orange.png" type="Texture" id=2]
 
 [node name="Player2" instance=ExtResource( 1 )]
 collision_layer = 260
 collision_mask = 256
 projectile_scene = null
+
+[node name="Body" parent="." index="0"]
+position = Vector2( 0.500004, 0.5 )
+scale = Vector2( 0.467626, 0.467626 )
+texture = ExtResource( 2 )
 
 [node name="Arm" parent="." index="2"]
 visible = false
