@@ -1,6 +1,6 @@
 extends Node
-onready var start_button = $Container/Buttons/Button
-onready var exit_button = $Container/Buttons/Button
+onready var start_button = $Container/Buttons/StartBtn
+onready var exit_button = $Container/Buttons/ExitBtn
 
 
 ## HINT: Mouse input won't work by default for any button added because some other

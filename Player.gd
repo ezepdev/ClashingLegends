@@ -209,8 +209,6 @@ func _physics_process(delta):
 
 func hit():
 	var col = get_node("Arm/RayCast2D").get_collider()
-	print(col)
-	print(get_node("Arm/RayCast2D").is_colliding())
 	if get_node("Arm/RayCast2D").is_colliding():
 		if global_position < col.global_position:
 			col.notify_hit("right")
@@ -220,9 +218,9 @@ func hit():
 func notify_hit(empuje) -> void:
 	health_player = health_player - 100
 	emit_signal("health_changed",(health_player / max_health) * 100,id)
-	print("I'm player, and i receive damage")
 	if (health_player == 0):
-		get_tree().paused = true
+		var main_scene = load("res://screens/MainMenu.tscn")
+		get_tree().change_scene_to(main_scene) 
 		queue_free()
 	if(empuje == "left"):
 		isKnockback = true

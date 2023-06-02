@@ -6,13 +6,14 @@ var direction:Vector2
 var target:KinematicBody2D
 	
 func initialize(container, spawn_position:Vector2, target):
+	global_position = spawn_position
 	container.add_child(self)
-	print(direction)
 	if(target.id == 1):
-		collision_mask = 4
+		collision_mask |= 4
+		collision_mask |= 8
 	else:
 		collision_mask = 2
-	global_position = spawn_position
+		collision_mask |= 8
 	self.target = target
 	self.direction = global_position.direction_to(target.global_position)
 	
