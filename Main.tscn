@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=2]
+[gd_scene load_steps=18 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player2.tscn" type="PackedScene" id=2]
@@ -12,12 +12,21 @@
 [ext_resource path="res://pause_scene.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/City-Background-in-the-Afternoon-Graphics-3175113-1.jpg" type="Texture" id=11]
 [ext_resource path="res://Player.gd" type="Script" id=12]
+[ext_resource path="res://assets/font/Urban Heroes.ttf" type="DynamicFontData" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 50.7748, 31.5175 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 9.83874, 32.3791 )
+
+[sub_resource type="DynamicFont" id=3]
+size = 69
+font_data = ExtResource( 13 )
+
+[sub_resource type="DynamicFont" id=4]
+size = 66
+font_data = ExtResource( 13 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -62,9 +71,9 @@ __meta__ = {
 }
 
 [node name="LifeBarPlayer1" type="TextureProgress" parent="UI/GUI"]
-anchor_left = 0.0195313
+anchor_left = 0.59375
 anchor_top = 0.035
-anchor_right = 0.40625
+anchor_right = 0.980469
 anchor_bottom = 0.103667
 rect_min_size = Vector2( 396, 0 )
 size_flags_horizontal = 2
@@ -79,11 +88,10 @@ __meta__ = {
 }
 
 [node name="LifeBarPlayer2" type="TextureProgress" parent="UI/GUI"]
-anchor_left = 0.59375
+anchor_left = 0.0195313
 anchor_top = 0.035
-anchor_right = 0.947875
+anchor_right = 0.40625
 anchor_bottom = 0.103667
-margin_right = 33.376
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
 fill_mode = 1
@@ -102,13 +110,13 @@ anchor_bottom = 1.0
 [node name="pause_scene" parent="UI/Menu" instance=ExtResource( 10 )]
 
 [node name="Player1" parent="." instance=ExtResource( 4 )]
-position = Vector2( -2267, -1960 )
+position = Vector2( 2130, -1963 )
 collision_layer = 4
 script = ExtResource( 12 )
 projectile_scene = ExtResource( 5 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 2016, -1951 )
+position = Vector2( -2329, -1909 )
 collision_layer = 2
 collision_mask = 1
 script = ExtResource( 12 )
@@ -311,6 +319,23 @@ position = Vector2( 0.00134277, 0.548456 )
 scale = Vector2( 99.0475, 1 )
 shape = SubResource( 2 )
 
+[node name="ws3" type="StaticBody2D" parent="."]
+position = Vector2( -761, -121 )
+scale = Vector2( -0.260146, -1.043 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="ws3"]
+modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+scale = Vector2( 29.84, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ws3"]
+position = Vector2( 0.00134277, 0.548456 )
+scale = Vector2( 99.0475, 1 )
+shape = SubResource( 2 )
+
 [node name="ws4" type="StaticBody2D" parent="."]
 position = Vector2( -1431, -914 )
 scale = Vector2( -0.483053, -1.043 )
@@ -402,11 +427,6 @@ position = Vector2( 5155, -2451 )
 scale = Vector2( 0.5, 100 )
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D10"]
-position = Vector2( 0, 0.137983 )
-scale = Vector2( 19.36, 1 )
-shape = SubResource( 1 )
-
 [node name="Sprite" type="Sprite" parent="StaticBody2D10"]
 modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
 self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
@@ -414,6 +434,11 @@ position = Vector2( -984, 14.06 )
 scale = Vector2( 29.84, 1 )
 texture = ExtResource( 3 )
 offset = Vector2( 32.9759, -14.06 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D10"]
+position = Vector2( 0, 0.137983 )
+scale = Vector2( 19.36, 1 )
+shape = SubResource( 1 )
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="."]
 position = Vector2( 566, 2615 )
@@ -430,3 +455,69 @@ texture = ExtResource( 3 )
 position = Vector2( 0.00137329, -1.46856 )
 scale = Vector2( 19.3568, 1 )
 shape = SubResource( 1 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = 2032.0
+margin_top = -755.0
+margin_right = 2673.0
+margin_bottom = -530.0
+rect_scale = Vector2( 0.996331, 1.78794 )
+rect_pivot_offset = Vector2( -4157, 511 )
+custom_colors/font_color = Color( 0.831373, 0.0470588, 0.25098, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "GOLPEA
+      CON LA 
+   TECLA PUNTO"
+
+[node name="Label3" type="Label" parent="."]
+margin_left = 2732.0
+margin_top = -1733.0
+margin_right = 3373.0
+margin_bottom = -1432.0
+rect_scale = Vector2( 1.05128, 1.73489 )
+custom_colors/font_color = Color( 0.807843, 0.109804, 0.192157, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "     LANZA 
+       UN PODER
+         CON LA 
+	       TECLA COMA"
+
+[node name="Label4" type="Label" parent="."]
+margin_left = -3460.0
+margin_top = -2095.0
+margin_right = -2819.0
+margin_bottom = -1794.0
+rect_scale = Vector2( 1.04827, 1.84883 )
+custom_colors/font_color = Color( 1, 0.886275, 0.152941, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "     LANZA 
+       UN PODER
+         CON LA 
+	       TECLA E"
+
+[node name="Label2" type="Label" parent="."]
+margin_left = -2796.0
+margin_top = -1256.0
+margin_right = -2225.0
+margin_bottom = -955.0
+rect_scale = Vector2( 1.16, 1.8 )
+custom_colors/font_color = Color( 0.941176, 0.886275, 0.0862745, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "GOLPEA 
+   CON LA TECLA
+               R"
+
+[node name="Label5" type="Label" parent="."]
+margin_left = -195.0
+margin_top = -480.0
+margin_right = 1289.0
+margin_bottom = -406.0
+rect_scale = Vector2( 1.10216, 2.06375 )
+custom_colors/font_color = Color( 1, 1, 1, 0.666667 )
+custom_fonts/font = SubResource( 4 )
+text = "DESCUBRE NUEVAS 
+   EXPERIENCIAS DE SALTO"
