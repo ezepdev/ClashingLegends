@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player2.tscn" type="PackedScene" id=2]
@@ -11,12 +11,13 @@
 [ext_resource path="res://GUI.gd" type="Script" id=9]
 [ext_resource path="res://pause_scene.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/City-Background-in-the-Afternoon-Graphics-3175113-1.jpg" type="Texture" id=11]
+[ext_resource path="res://Player.gd" type="Script" id=12]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 50.7748, 33.0686 )
+extents = Vector2( 50.7748, 31.5175 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 9.99999, 32.8292 )
+extents = Vector2( 9.83874, 32.3791 )
 
 [node name="Main" type="Node"]
 script = ExtResource( 1 )
@@ -101,14 +102,16 @@ anchor_bottom = 1.0
 [node name="pause_scene" parent="UI/Menu" instance=ExtResource( 10 )]
 
 [node name="Player1" parent="." instance=ExtResource( 4 )]
-position = Vector2( -1163, -2105 )
+position = Vector2( -2267, -1960 )
 collision_layer = 4
+script = ExtResource( 12 )
 projectile_scene = ExtResource( 5 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( 3783, -2062 )
+position = Vector2( 2016, -1951 )
 collision_layer = 2
 collision_mask = 1
+script = ExtResource( 12 )
 projectile_scene = ExtResource( 5 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
@@ -159,6 +162,23 @@ self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
 scale = Vector2( 29.84, 1 )
 texture = ExtResource( 3 )
 
+[node name="StaticBody2D11" type="StaticBody2D" parent="."]
+position = Vector2( 247, 511 )
+scale = Vector2( -1.14015, -2.56637 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D11"]
+position = Vector2( -9.15527e-05, -0.779297 )
+scale = Vector2( 19.36, 1 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D11"]
+modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+scale = Vector2( 29.84, 1 )
+texture = ExtResource( 3 )
+
 [node name="StaticBody2D5" type="StaticBody2D" parent="."]
 position = Vector2( 229, 315 )
 scale = Vector2( -0.940146, -3.48302 )
@@ -190,6 +210,120 @@ texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ws"]
 position = Vector2( 0.00134277, 0.548456 )
+scale = Vector2( 99.0475, 1 )
+shape = SubResource( 2 )
+
+[node name="ws6" type="StaticBody2D" parent="."]
+position = Vector2( -2508, -363 )
+rotation = -1.57096
+scale = Vector2( -1.00645, -9.80224 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="ws6"]
+modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+scale = Vector2( 29.84, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ws6"]
+position = Vector2( 0.000427246, -0.395065 )
+scale = Vector2( 99.0475, 1 )
+shape = SubResource( 2 )
+
+[node name="ws9" type="StaticBody2D" parent="."]
+position = Vector2( 2267, -357 )
+rotation = -1.5801
+scale = Vector2( -0.966081, -9.80224 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="ws9"]
+modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+scale = Vector2( 29.84, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ws9"]
+position = Vector2( 0.000488281, -2.69556 )
+scale = Vector2( 99.0475, 1 )
+shape = SubResource( 2 )
+
+[node name="ws10" type="StaticBody2D" parent="."]
+position = Vector2( 3059, -350 )
+rotation = -1.5801
+scale = Vector2( -1.6412, -10.8367 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="ws10"]
+modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+scale = Vector2( 29.84, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ws10"]
+position = Vector2( 0.000488281, -2.69556 )
+scale = Vector2( 99.0475, 1 )
+shape = SubResource( 2 )
+
+[node name="ws8" type="StaticBody2D" parent="."]
+position = Vector2( 2205, -381 )
+rotation = -1.5801
+scale = Vector2( -0.965, -1.686 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="ws7" type="StaticBody2D" parent="."]
+position = Vector2( -3159, -701 )
+rotation = -1.57697
+scale = Vector2( -1.61644, 9.32439 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="ws7"]
+modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+scale = Vector2( 29.84, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ws7"]
+position = Vector2( 16.4055, -0.526337 )
+rotation = -0.00101644
+scale = Vector2( 101.762, 1.02927 )
+shape = SubResource( 2 )
+
+[node name="ws2" type="StaticBody2D" parent="."]
+position = Vector2( 1277, -222 )
+scale = Vector2( -0.260146, -1.043 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="ws2"]
+modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+scale = Vector2( 29.84, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ws2"]
+position = Vector2( 0.00134277, 0.548456 )
+scale = Vector2( 99.0475, 1 )
+shape = SubResource( 2 )
+
+[node name="ws4" type="StaticBody2D" parent="."]
+position = Vector2( -1431, -914 )
+scale = Vector2( -0.483053, -1.043 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="ws4"]
+modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+scale = Vector2( 29.84, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ws4"]
+position = Vector2( 0.0012207, 0.548462 )
 scale = Vector2( 99.0475, 1 )
 shape = SubResource( 2 )
 
@@ -257,5 +391,41 @@ shape = SubResource( 1 )
 [node name="Sprite" type="Sprite" parent="StaticBody2D3"]
 modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
 self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+position = Vector2( -984, 14.06 )
 scale = Vector2( 29.84, 1 )
 texture = ExtResource( 3 )
+offset = Vector2( 32.9759, -14.06 )
+
+[node name="StaticBody2D10" type="StaticBody2D" parent="."]
+position = Vector2( 5155, -2451 )
+scale = Vector2( 0.5, 100 )
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D10"]
+position = Vector2( 0, 0.137983 )
+scale = Vector2( 19.36, 1 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D10"]
+modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+position = Vector2( -984, 14.06 )
+scale = Vector2( 29.84, 1 )
+texture = ExtResource( 3 )
+offset = Vector2( 32.9759, -14.06 )
+
+[node name="StaticBody2D6" type="StaticBody2D" parent="."]
+position = Vector2( 566, 2615 )
+scale = Vector2( -20, 61.329 )
+collision_mask = 0
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D6"]
+modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
+scale = Vector2( 29.84, 1 )
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6"]
+position = Vector2( 0.00137329, -1.46856 )
+scale = Vector2( 19.3568, 1 )
+shape = SubResource( 1 )

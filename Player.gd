@@ -71,6 +71,7 @@ func _ready():
 
 func initialize(projectile_container , id):
 	self.projectile_container = projectile_container
+	$Arm.hide();
 	self.id = id
 	if (id == 1):
 		target = get_parent().get_node("Player2")
@@ -100,7 +101,11 @@ func get_input(delta):
 #		if projectile_container == null:
 #			projectile_container = get_parent()
 #			arm.projectile_container = projectile_container
+		arm.visible = true;
 		hit()
+	if Input.is_action_just_released("hit_enemy" + str(id)):
+		arm.visible = false;	
+		
 	# Jump Action
 	var jump: bool = Input.is_action_just_pressed('jump' + str(id))
 	var on_floor: bool = is_on_floor()
