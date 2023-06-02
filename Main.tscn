@@ -113,6 +113,9 @@ anchor_bottom = 1.0
 position = Vector2( 2130, -1963 )
 collision_layer = 4
 script = ExtResource( 12 )
+ACCELERATION = 150.0
+jump_speed = 500
+gravity = 15
 projectile_scene = ExtResource( 5 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
@@ -120,6 +123,9 @@ position = Vector2( -2329, -1909 )
 collision_layer = 2
 collision_mask = 1
 script = ExtResource( 12 )
+ACCELERATION = 150.0
+jump_speed = 500
+gravity = 15
 projectile_scene = ExtResource( 5 )
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
