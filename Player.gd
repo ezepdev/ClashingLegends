@@ -4,6 +4,8 @@ class_name Player
 onready var arm = $Arm
 onready var target
 onready var body : Sprite = $Body
+onready var body_eye : TextureRect = $Body.get_child(0)
+
 
 signal health_changed(current_health,id)
 
@@ -153,6 +155,7 @@ func get_input(delta):
 		if Input.is_action_just_pressed("move_right" + str(id)):
 			arm.position.x = 0
 			arm.scale.x = 1
+			body_eye.rect_scale.x = 0.05
 			dash_count += 1
 			if dash_count < MAX_DASH_COUNT:
 				dash_timer = 0
@@ -165,6 +168,8 @@ func get_input(delta):
 		if Input.is_action_just_pressed("move_left" + str(id)):
 			arm.position.x = 0
 			arm.scale.x = -1
+			body_eye.rect_scale.x = -0.05
+			
 			dashL_count += 1
 			if dashL_count < MAX_DASH_COUNT:
 				dashL_timer = 0

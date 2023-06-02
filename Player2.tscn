@@ -14,6 +14,13 @@ position = Vector2( 0.500004, 0.5 )
 scale = Vector2( 0.467626, 0.467626 )
 texture = ExtResource( 2 )
 
+[node name="Eye" parent="Body" index="0"]
+margin_left = -1.06924
+margin_top = -26.7308
+margin_right = 798.931
+margin_bottom = 573.269
+rect_scale = Vector2( 0.04, -0.044 )
+
 [node name="Arm" parent="." index="2"]
 position = Vector2( 0, 0 )
 script = null
