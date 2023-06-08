@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player2.tscn" type="PackedScene" id=2]
@@ -11,11 +11,8 @@
 [ext_resource path="res://GUI.gd" type="Script" id=9]
 [ext_resource path="res://pause_scene.tscn" type="PackedScene" id=10]
 [ext_resource path="res://assets/City-Background-in-the-Afternoon-Graphics-3175113-1.jpg" type="Texture" id=11]
-[ext_resource path="res://Player.gd" type="Script" id=12]
+[ext_resource path="res://Destructible.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/font/Urban Heroes.ttf" type="DynamicFontData" id=13]
-
-[sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 50.7748, 31.5175 )
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 9.83874, 32.3791 )
@@ -110,189 +107,44 @@ anchor_bottom = 1.0
 [node name="pause_scene" parent="UI/Menu" instance=ExtResource( 10 )]
 
 [node name="Player1" parent="." instance=ExtResource( 4 )]
-position = Vector2( 2130, -1963 )
+position = Vector2( 2740, -1981 )
 collision_layer = 4
-script = ExtResource( 12 )
 ACCELERATION = 150.0
 jump_speed = 500
 gravity = 15
 projectile_scene = ExtResource( 5 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -2329, -1909 )
+position = Vector2( -3073, -3194 )
 collision_layer = 2
 collision_mask = 1
-script = ExtResource( 12 )
 ACCELERATION = 150.0
 jump_speed = 500
 gravity = 15
 projectile_scene = ExtResource( 5 )
 
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-position = Vector2( 566, 2615 )
-scale = Vector2( -20, 61.329 )
-collision_mask = 0
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2( 0.00137474, 0.0489154 )
-scale = Vector2( 19.3568, 1 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D2" type="StaticBody2D" parent="."]
-position = Vector2( -3997, -2451 )
-scale = Vector2( 0.5, 100 )
-collision_mask = 0
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D2"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D2"]
-scale = Vector2( 19.36, 1 )
-shape = SubResource( 1 )
-
-[node name="StaticBody2D4" type="StaticBody2D" parent="."]
-position = Vector2( 247, 511 )
-scale = Vector2( -1.14015, -2.56637 )
+[node name="ws5" type="StaticBody2D" parent="."]
+position = Vector2( -4499, -1921 )
+rotation = -1.57079
+scale = Vector2( 8.23695, -1.043 )
 collision_layer = 9
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D4"]
-position = Vector2( -9.15527e-05, -0.779297 )
-scale = Vector2( 19.36, 1 )
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D4"]
+[node name="Sprite" type="Sprite" parent="ws5"]
 modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
 self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
 scale = Vector2( 29.84, 1 )
 texture = ExtResource( 3 )
 
-[node name="StaticBody2D11" type="StaticBody2D" parent="."]
-position = Vector2( 247, 511 )
-scale = Vector2( -1.14015, -2.56637 )
-collision_layer = 9
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D11"]
-position = Vector2( -9.15527e-05, -0.779297 )
-scale = Vector2( 19.36, 1 )
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D11"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-
-[node name="StaticBody2D5" type="StaticBody2D" parent="."]
-position = Vector2( 229, 315 )
-scale = Vector2( -0.940146, -3.48302 )
-collision_layer = 9
-collision_mask = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D5"]
-position = Vector2( -0.000488281, 0.0513382 )
-scale = Vector2( 19.36, 1 )
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D5"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-
-[node name="ws" type="StaticBody2D" parent="."]
-position = Vector2( 224, -208 )
-scale = Vector2( -0.540146, -12.763 )
-collision_layer = 9
-collision_mask = 0
-
-[node name="Sprite" type="Sprite" parent="ws"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ws"]
-visible = false
-position = Vector2( 0.00134277, 0.548456 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ws5"]
+position = Vector2( 0.0012207, 0.548462 )
 scale = Vector2( 99.0475, 1 )
 shape = SubResource( 2 )
-
-[node name="ws6" type="StaticBody2D" parent="."]
-position = Vector2( -2508, -363 )
-rotation = -1.57096
-scale = Vector2( -1.00645, -9.80224 )
-collision_layer = 9
-collision_mask = 0
-
-[node name="Sprite" type="Sprite" parent="ws6"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ws6"]
-position = Vector2( 0.000427246, -0.395065 )
-scale = Vector2( 99.0475, 1 )
-shape = SubResource( 2 )
-
-[node name="ws9" type="StaticBody2D" parent="."]
-position = Vector2( 2267, -357 )
-rotation = -1.5801
-scale = Vector2( -0.966081, -9.80224 )
-collision_layer = 9
-collision_mask = 0
-
-[node name="Sprite" type="Sprite" parent="ws9"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ws9"]
-position = Vector2( 0.000488281, -2.69556 )
-scale = Vector2( 99.0475, 1 )
-shape = SubResource( 2 )
-
-[node name="ws10" type="StaticBody2D" parent="."]
-position = Vector2( 3059, -350 )
-rotation = -1.5801
-scale = Vector2( -1.6412, -10.8367 )
-collision_layer = 9
-collision_mask = 0
-
-[node name="Sprite" type="Sprite" parent="ws10"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ws10"]
-position = Vector2( 0.000488281, -2.69556 )
-scale = Vector2( 99.0475, 1 )
-shape = SubResource( 2 )
-
-[node name="ws8" type="StaticBody2D" parent="."]
-position = Vector2( 2205, -381 )
-rotation = -1.5801
-scale = Vector2( -0.965, -1.686 )
-collision_layer = 9
-collision_mask = 0
 
 [node name="ws7" type="StaticBody2D" parent="."]
-position = Vector2( -3159, -701 )
-rotation = -1.57697
-scale = Vector2( -1.61644, 9.32439 )
+position = Vector2( 4720, -1995 )
+rotation = -1.57079
+scale = Vector2( 8.23695, -1.043 )
 collision_layer = 9
 collision_mask = 0
 
@@ -303,170 +155,231 @@ scale = Vector2( 29.84, 1 )
 texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ws7"]
-position = Vector2( 16.4055, -0.526337 )
-rotation = -0.00101644
-scale = Vector2( 101.762, 1.02927 )
-shape = SubResource( 2 )
-
-[node name="ws2" type="StaticBody2D" parent="."]
-position = Vector2( 1277, -222 )
-scale = Vector2( -0.260146, -1.043 )
-collision_layer = 9
-collision_mask = 0
-
-[node name="Sprite" type="Sprite" parent="ws2"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ws2"]
-position = Vector2( 0.00134277, 0.548456 )
-scale = Vector2( 99.0475, 1 )
-shape = SubResource( 2 )
-
-[node name="ws3" type="StaticBody2D" parent="."]
-position = Vector2( -761, -121 )
-scale = Vector2( -0.260146, -1.043 )
-collision_layer = 9
-collision_mask = 0
-
-[node name="Sprite" type="Sprite" parent="ws3"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ws3"]
-position = Vector2( 0.00134277, 0.548456 )
-scale = Vector2( 99.0475, 1 )
-shape = SubResource( 2 )
-
-[node name="ws4" type="StaticBody2D" parent="."]
-position = Vector2( -1431, -914 )
-scale = Vector2( -0.483053, -1.043 )
-collision_layer = 9
-collision_mask = 0
-
-[node name="Sprite" type="Sprite" parent="ws4"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ws4"]
 position = Vector2( 0.0012207, 0.548462 )
 scale = Vector2( 99.0475, 1 )
 shape = SubResource( 2 )
 
-[node name="StaticBody2D7" type="StaticBody2D" parent="."]
-position = Vector2( 242, -723 )
-scale = Vector2( -0.260145, -3.00302 )
+[node name="ws6" type="StaticBody2D" parent="."]
+position = Vector2( -9.00024, -9975 )
+rotation = -3.14159
+scale = Vector2( 4.75695, -1.043 )
 collision_layer = 9
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D7"]
-position = Vector2( -0.000488281, 0.0513458 )
-scale = Vector2( 19.36, 1 )
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D7"]
+[node name="Sprite" type="Sprite" parent="ws6"]
 modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
 self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
 scale = Vector2( 29.84, 1 )
 texture = ExtResource( 3 )
 
-[node name="StaticBody2D8" type="StaticBody2D" parent="."]
-position = Vector2( 245, -919 )
-scale = Vector2( -0.140145, -3.00302 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ws6"]
+position = Vector2( 0.0012207, 0.548462 )
+scale = Vector2( 99.0475, 1 )
+shape = SubResource( 2 )
+
+[node name="ws8" type="StaticBody2D" parent="."]
+position = Vector2( 138, 4600 )
+rotation = -3.14159
+scale = Vector2( 4.75695, -1.043 )
 collision_layer = 9
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D8"]
-position = Vector2( -0.000488281, 0.0513306 )
-scale = Vector2( 19.36, 1 )
-shape = SubResource( 1 )
-
-[node name="Sprite" type="Sprite" parent="StaticBody2D8"]
+[node name="Sprite" type="Sprite" parent="ws8"]
 modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
 self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
 scale = Vector2( 29.84, 1 )
 texture = ExtResource( 3 )
 
-[node name="StaticBody2D9" type="StaticBody2D" parent="."]
-position = Vector2( 249, -1089 )
-scale = Vector2( -0.0601435, -2.16302 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ws8"]
+position = Vector2( 0.0012207, 0.548462 )
+scale = Vector2( 99.0475, 1 )
+shape = SubResource( 2 )
+
+[node name="Destructibles" type="Node" parent="."]
+
+[node name="Destructible" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( -2796, -1382 )
 collision_layer = 9
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D9"]
-position = Vector2( -0.000488281, 0.0514526 )
-scale = Vector2( 19.36, 1 )
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" parent="Destructibles/Destructible" index="0"]
+polygon = PoolVector2Array( 0, 0, 650, 2, 650, 2000, 0, 2000 )
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D9"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
+[node name="Polygonete" parent="Destructibles/Destructible/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 650, 2, 650, 2000, 0, 2000 )
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="."]
-position = Vector2( 5155, -2451 )
-scale = Vector2( 0.5, 100 )
+[node name="Destructible2" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( -3494, -2401 )
+collision_layer = 9
 collision_mask = 0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D3"]
-position = Vector2( 0, 0.137983 )
-scale = Vector2( 19.36, 1 )
-shape = SubResource( 1 )
+[node name="CollisionPolygon2D" parent="Destructibles/Destructible2" index="0"]
+polygon = PoolVector2Array( 0, 0, 650, 0, 650, 3000, 0, 3000 )
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D3"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-position = Vector2( -984, 14.06 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-offset = Vector2( 32.9759, -14.06 )
+[node name="Polygonete" parent="Destructibles/Destructible2/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 650, 0, 650, 3000, 0, 3000 )
 
-[node name="StaticBody2D10" type="StaticBody2D" parent="."]
-position = Vector2( 5155, -2451 )
-scale = Vector2( 0.5, 100 )
+[node name="Destructible3" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( -4499, -5692 )
+collision_layer = 9
 collision_mask = 0
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D10"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-position = Vector2( -984, 14.06 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
-offset = Vector2( 32.9759, -14.06 )
+[node name="CollisionPolygon2D" parent="Destructibles/Destructible3" index="0"]
+polygon = PoolVector2Array( 0, 0, 975, 0, 975, 6300, 0, 6300 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D10"]
-position = Vector2( 0, 0.137983 )
-scale = Vector2( 19.36, 1 )
-shape = SubResource( 1 )
+[node name="Polygonete" parent="Destructibles/Destructible3/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 975, 0, 975, 6300, 0, 6300 )
 
-[node name="StaticBody2D6" type="StaticBody2D" parent="."]
-position = Vector2( 566, 2615 )
-scale = Vector2( -20, 61.329 )
+[node name="Destructible4" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( 3728, -5692 )
+collision_layer = 9
 collision_mask = 0
 
-[node name="Sprite" type="Sprite" parent="StaticBody2D6"]
-modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-self_modulate = Color( 0.172549, 0.172549, 0.203922, 1 )
-scale = Vector2( 29.84, 1 )
-texture = ExtResource( 3 )
+[node name="CollisionPolygon2D" parent="Destructibles/Destructible4" index="0"]
+polygon = PoolVector2Array( 0, 0, 975, 0, 975, 6300, 0, 6300 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D6"]
-position = Vector2( 0.00137329, -1.46856 )
-scale = Vector2( 19.3568, 1 )
-shape = SubResource( 1 )
+[node name="Polygonete" parent="Destructibles/Destructible4/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 975, 0, 975, 6300, 0, 6300 )
+
+[node name="Destructible5" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( 2315, -1382 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" parent="Destructibles/Destructible5" index="0"]
+polygon = PoolVector2Array( 0, 0, 650, 2, 650, 2000, 0, 2000 )
+
+[node name="Polygonete" parent="Destructibles/Destructible5/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 650, 2, 650, 2000, 0, 2000 )
+
+[node name="Destructible6" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( 2965, -1995 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" parent="Destructibles/Destructible6" index="0"]
+polygon = PoolVector2Array( 0, 0, 750, 0, 750, 2600, 0, 2600 )
+
+[node name="Polygonete" parent="Destructibles/Destructible6/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 750, 0, 750, 2600, 0, 2600 )
+
+[node name="Destructible7" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( -1906, -951 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" parent="Destructibles/Destructible7" index="0"]
+polygon = PoolVector2Array( 0, 0, 950, 0, 950, 70, 0, 70 )
+
+[node name="Polygonete" parent="Destructibles/Destructible7/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 950, 0, 950, 70, 0, 70 )
+
+[node name="Destructible8" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( -1014, -155 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" parent="Destructibles/Destructible8" index="0"]
+polygon = PoolVector2Array( 0, 0, 520, 0, 520, 70, 0, 70 )
+
+[node name="Polygonete" parent="Destructibles/Destructible8/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 520, 0, 520, 70, 0, 70 )
+
+[node name="Destructible9" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( 1024, -257 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" parent="Destructibles/Destructible9" index="0"]
+polygon = PoolVector2Array( 0, 0, 520, 0, 520, 70, 0, 70 )
+
+[node name="Polygonete" parent="Destructibles/Destructible9/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 520, 0, 520, 70, 0, 70 )
+
+[node name="Piso" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( -19128, 600 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" parent="Destructibles/Piso" index="0"]
+polygon = PoolVector2Array( 0, 0, 40000, 0, 40000, 4000, 0, 4000 )
+
+[node name="Polygonete" parent="Destructibles/Piso/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 40000, 0, 40000, 4000, 0, 4000 )
+
+[node name="Edificio" type="Node" parent="Destructibles"]
+
+[node name="Destructible7" parent="Destructibles/Edificio" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( 174, -1158 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" parent="Destructibles/Edificio/Destructible7" index="0"]
+polygon = PoolVector2Array( 0, 0, 120, 0, 120, 150, 0, 150 )
+
+[node name="Polygonete" parent="Destructibles/Edificio/Destructible7/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 120, 0, 120, 150, 0, 150 )
+
+[node name="Destructible8" parent="Destructibles/Edificio" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( 98, -1008 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" parent="Destructibles/Edificio/Destructible8" index="0"]
+polygon = PoolVector2Array( 0, 0, 280, 0, 280, 200, 0, 200 )
+
+[node name="Polygonete" parent="Destructibles/Edificio/Destructible8/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 280, 0, 280, 200, 0, 200 )
+
+[node name="Destructible9" parent="Destructibles/Edificio" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( -9, -813 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" parent="Destructibles/Edificio/Destructible9" index="0"]
+polygon = PoolVector2Array( 0, 0, 500, 0, 500, 200, 0, 200 )
+
+[node name="Polygonete" parent="Destructibles/Edificio/Destructible9/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 500, 0, 500, 200, 0, 200 )
+
+[node name="Destructible10" parent="Destructibles/Edificio" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( -305, -611 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" parent="Destructibles/Edificio/Destructible10" index="0"]
+polygon = PoolVector2Array( 0, 0, 1060, -1, 1060, 850, 0, 850 )
+
+[node name="Polygonete" parent="Destructibles/Edificio/Destructible10/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 1060, -1, 1060, 850, 0, 850 )
+
+[node name="Destructible11" parent="Destructibles/Edificio" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( -700, 220 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" parent="Destructibles/Edificio/Destructible11" index="0"]
+polygon = PoolVector2Array( 0, 0, 1850, 0, 1850, 220, 0, 220 )
+
+[node name="Polygonete" parent="Destructibles/Edificio/Destructible11/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 0, 1850, 0, 1850, 220, 0, 220 )
+
+[node name="Destructible12" parent="Destructibles/Edificio" groups=["Destructible"] instance=ExtResource( 12 )]
+position = Vector2( -874, 384 )
+collision_layer = 9
+collision_mask = 0
+
+[node name="CollisionPolygon2D" parent="Destructibles/Edificio/Destructible12" index="0"]
+polygon = PoolVector2Array( 0, 50, 2250, 50, 2250, 220, 0, 220 )
+
+[node name="Polygonete" parent="Destructibles/Edificio/Destructible12/CollisionPolygon2D" index="0"]
+polygon = PoolVector2Array( 0, 50, 2250, 50, 2250, 220, 0, 220 )
 
 [node name="Label" type="Label" parent="."]
-margin_left = 2032.0
-margin_top = -755.0
-margin_right = 2673.0
-margin_bottom = -530.0
+margin_left = 2386.0
+margin_top = -808.0
+margin_right = 3027.0
+margin_bottom = -583.0
 rect_scale = Vector2( 0.996331, 1.78794 )
 rect_pivot_offset = Vector2( -4157, 511 )
 custom_colors/font_color = Color( 0.831373, 0.0470588, 0.25098, 1 )
@@ -477,10 +390,10 @@ text = "GOLPEA
    TECLA PUNTO"
 
 [node name="Label3" type="Label" parent="."]
-margin_left = 2732.0
-margin_top = -1733.0
-margin_right = 3373.0
-margin_bottom = -1432.0
+margin_left = 2965.0
+margin_top = -1876.0
+margin_right = 3606.0
+margin_bottom = -1575.0
 rect_scale = Vector2( 1.05128, 1.73489 )
 custom_colors/font_color = Color( 0.807843, 0.109804, 0.192157, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -491,10 +404,10 @@ text = "     LANZA
 	       TECLA COMA"
 
 [node name="Label4" type="Label" parent="."]
-margin_left = -3460.0
-margin_top = -2095.0
-margin_right = -2819.0
-margin_bottom = -1794.0
+margin_left = -3494.0
+margin_top = -2078.0
+margin_right = -2853.0
+margin_bottom = -1777.0
 rect_scale = Vector2( 1.04827, 1.84883 )
 custom_colors/font_color = Color( 1, 0.886275, 0.152941, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -505,10 +418,10 @@ text = "     LANZA
 	       TECLA E"
 
 [node name="Label2" type="Label" parent="."]
-margin_left = -2796.0
-margin_top = -1256.0
-margin_right = -2225.0
-margin_bottom = -955.0
+margin_left = -2760.0
+margin_top = -1158.0
+margin_right = -2189.0
+margin_bottom = -857.0
 rect_scale = Vector2( 1.16, 1.8 )
 custom_colors/font_color = Color( 0.941176, 0.886275, 0.0862745, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -518,12 +431,29 @@ text = "GOLPEA
                R"
 
 [node name="Label5" type="Label" parent="."]
-margin_left = -195.0
-margin_top = -480.0
-margin_right = 1289.0
-margin_bottom = -406.0
+margin_left = -235.0
+margin_top = -412.0
+margin_right = 1249.0
+margin_bottom = -269.0
 rect_scale = Vector2( 1.10216, 2.06375 )
 custom_colors/font_color = Color( 1, 1, 1, 0.666667 )
 custom_fonts/font = SubResource( 4 )
 text = "DESCUBRE NUEVAS 
    EXPERIENCIAS DE SALTO"
+
+[editable path="Destructibles/Destructible"]
+[editable path="Destructibles/Destructible2"]
+[editable path="Destructibles/Destructible3"]
+[editable path="Destructibles/Destructible4"]
+[editable path="Destructibles/Destructible5"]
+[editable path="Destructibles/Destructible6"]
+[editable path="Destructibles/Destructible7"]
+[editable path="Destructibles/Destructible8"]
+[editable path="Destructibles/Destructible9"]
+[editable path="Destructibles/Piso"]
+[editable path="Destructibles/Edificio/Destructible7"]
+[editable path="Destructibles/Edificio/Destructible8"]
+[editable path="Destructibles/Edificio/Destructible9"]
+[editable path="Destructibles/Edificio/Destructible10"]
+[editable path="Destructibles/Edificio/Destructible11"]
+[editable path="Destructibles/Edificio/Destructible12"]

@@ -21,11 +21,13 @@ func _physics_process(delta):
 	position += direction * VELOCITY * delta
 
 func _on_EnergyBall_body_entered(body:Object):
-	print(body)
 	if (body is KinematicBody2D):
 		if(body.global_position < global_position):	
 			body.notify_hit("left")
 		else:
 			body.notify_hit("right")
+	if body in get_tree().get_nodes_in_group("Destructible"):
+		var final_position = Transform2D(0, $Polygon2D.global_position).xform($Polygon2D.polygon)
+		body.carve(final_position)
 		
 	queue_free()

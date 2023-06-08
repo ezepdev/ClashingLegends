@@ -18,6 +18,7 @@ var knockback_force = Vector2(500, -500)
 var knockback_direction = Vector2.RIGHT
 var knockback_timer = 0
 var knockback_duration = 0.5
+var aire_knock = false
 
 # health player
 export (float) var max_health = 500.0
@@ -92,6 +93,7 @@ func fire():
 		proj_instance.initialize(projectile_container, arm.get_node("ArmTip").global_position, target)
 	
 func get_input(delta):
+	var h_movement_direction:int = int(Input.is_action_pressed("move_right" + str(id) )) - int(Input.is_action_pressed("move_left" + str(id)))
 	# Cannon fire
 	if Input.is_action_just_pressed("fire_cannon" + str(id)):
 #		if projectile_container == null:
@@ -147,11 +149,23 @@ func get_input(delta):
 					jump_force_charged = JUMP_CHARGE_FORCE
 				velocity.y -= jump_speed + jump_force_charged
 				jump_count -= 1
+				
+	if !is_on_floor():
+		if aire_knock:
+			velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
+		if jump_force_charged >= JUMP_CHARGE_FORCE && !aire_knock:
+			velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
+			velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -1000, 1000)
+		elif !aire_knock:
+			velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
+			velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -1000, 1000)
 
 	#horizontal speed
-	var h_movement_direction:int = int(Input.is_action_pressed("move_right" + str(id) )) - int(Input.is_action_pressed("move_left" + str(id)))
+	
 	if h_movement_direction != 0:
-		velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
+		if is_on_floor():
+			aire_knock = false
+			velocity.x = clamp(velocity.x + (h_movement_direction * 30), -1000, 1000)
 		if Input.is_action_just_pressed("move_right" + str(id)):
 			arm.position.x = 0
 			arm.scale.x = 1
@@ -179,13 +193,14 @@ func get_input(delta):
 				dash(-100)
 			else:
 				dashL_timer = 0
-	else:
+	elif is_on_floor():
 		velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
 
 func dash(valor):
 	global_position.x += valor
 
 func _physics_process(delta):
+	get_input(delta)
 	if isKnockback:
 		knockbackTimer += delta
 		if knockbackTimer >= KNOCKBACK_DURATION:
@@ -195,20 +210,19 @@ func _physics_process(delta):
 		else:
 			if isKnockbackRight:
 				velocity.x = KNOCKBACK_FORCE
-				velocity.x *= (1 - knockbackTimer / KNOCKBACK_DURATION)  # Frenado progresivo
+#				velocity.x *= (1 - knockbackTimer / KNOCKBACK_DURATION)  # Frenado progresivo
 				velocity.y = -KNOCKBACK_FORCE_UP
-				velocity.y *= (1 - knockbackTimer / KNOCKBACK_DURATION)  # Frenado progresivo
-				velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, SLOPE_THRESHOLD)
+#				velocity.y *= (1 - knockbackTimer / KNOCKBACK_DURATION)  # Frenado progresivo
+#				velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, SLOPE_THRESHOLD)
 
 			else: 
 				velocity.x = -KNOCKBACK_FORCE
-				velocity.x *= (1 - knockbackTimer / KNOCKBACK_DURATION)  # Frenado progresivo
+#				velocity.x *= (1 - knockbackTimer / KNOCKBACK_DURATION)  # Frenado progresivo
 				velocity.y = -KNOCKBACK_FORCE_UP
-				velocity.y *= (1 - knockbackTimer / KNOCKBACK_DURATION)  # Frenado progresivo
-				velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, SLOPE_THRESHOLD)
+#				velocity.y *= (1 - knockbackTimer / KNOCKBACK_DURATION)  # Frenado progresivo
+#				velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, SLOPE_THRESHOLD)
 	dash_timer += delta
 	dashL_timer += delta
-	get_input(delta)
 	was_on_floor = is_on_floor()
 	
 	var snap:Vector2
@@ -235,6 +249,8 @@ func notify_hit(empuje) -> void:
 	if(empuje == "left"):
 		isKnockback = true
 		isKnockbackRight = false
+		aire_knock = true
 	elif(empuje == "right"):
 		isKnockback = true
 		isKnockbackRight = true
+		aire_knock = true

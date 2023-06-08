@@ -8,9 +8,12 @@ func _ready():
 	randomize()
 	player1.initialize(self , 1)
 	player2.initialize(self , 2)
-
+	
 func _process(delta):
 	if (Input.is_action_just_pressed("pause")):
 		get_tree().set_pause(true);
 		menu_pause.visible = true;
+
+
+	
 	
