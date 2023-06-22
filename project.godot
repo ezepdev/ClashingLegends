@@ -9,12 +9,24 @@
 config_version=4
 
 _global_script_classes=[ {
+"base": "Node",
+"class": "AbstractState",
+"language": "GDScript",
+"path": "res://AbstractState.gd"
+}, {
+"base": "Node",
+"class": "AbstractStateMachine",
+"language": "GDScript",
+"path": "res://AbstractStateMachine.gd"
+}, {
 "base": "KinematicBody2D",
 "class": "Player",
 "language": "GDScript",
 "path": "res://Player.gd"
 } ]
 _global_script_class_icons={
+"AbstractState": "",
+"AbstractStateMachine": "",
 "Player": ""
 }
 

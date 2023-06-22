@@ -1,27 +1,40 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/chararacters/buddy_orange.png" type="Texture" id=2]
 [ext_resource path="res://assets/player.png" type="Texture" id=3]
+[ext_resource path="res://assets/dbz/Goku-2_04-1.png.png" type="Texture" id=7]
+
+[sub_resource type="CapsuleShape2D" id=3]
+radius = 56.0
+height = 146.0
+
+[sub_resource type="Animation" id=4]
+resource_name = "idle"
 
 [node name="Player2" instance=ExtResource( 1 )]
 collision_layer = 4
 collision_mask = 0
-projectile_scene = null
 
-[node name="Body" parent="." index="0"]
-position = Vector2( 0.500004, 0.5 )
-scale = Vector2( 0.467626, 0.467626 )
-texture = ExtResource( 2 )
+[node name="Body" parent="." index="1"]
+scale = Vector2( 5, 5 )
+texture = ExtResource( 7 )
+hframes = 7
 
 [node name="Eye" parent="Body" index="0"]
+visible = false
 margin_left = -1.06924
 margin_top = -26.7308
 margin_right = 798.931
 margin_bottom = 573.269
 rect_scale = Vector2( 0.04, -0.044 )
 
-[node name="Arm" parent="." index="2"]
+[node name="TextureRect" parent="Body/Eye" index="0"]
+visible = false
+
+[node name="CollisionShape2D" parent="." index="2"]
+shape = SubResource( 3 )
+
+[node name="Arm" parent="." index="3"]
 position = Vector2( 0, 0 )
 script = null
 
@@ -39,3 +52,6 @@ collision_mask = 4
 
 [node name="ArmTip" parent="Arm" index="2"]
 position = Vector2( 49, 0 )
+
+[node name="AnimationPlayer" parent="." index="4"]
+anims/idle = SubResource( 4 )

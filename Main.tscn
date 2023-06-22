@@ -1,10 +1,9 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=16 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player2.tscn" type="PackedScene" id=2]
 [ext_resource path="res://assets/floor.png" type="Texture" id=3]
 [ext_resource path="res://Player1.tscn" type="PackedScene" id=4]
-[ext_resource path="res://EnergyBall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://Camera2D.gd" type="Script" id=6]
 [ext_resource path="res://assets/GUI/lifebar_bg.png" type="Texture" id=7]
 [ext_resource path="res://assets/GUI/lifebar_fill.png" type="Texture" id=8]
@@ -35,10 +34,10 @@ follow_viewport_enable = true
 [node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -5570.0
-margin_top = -5069.0
-margin_right = 12177.0
-margin_bottom = 3659.0
+margin_left = -10218.0
+margin_top = -10304.0
+margin_right = 16768.0
+margin_bottom = 5250.0
 rect_scale = Vector2( 0.687708, 0.766853 )
 rect_clip_content = true
 texture = ExtResource( 11 )
@@ -109,19 +108,11 @@ anchor_bottom = 1.0
 [node name="Player1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 2740, -1981 )
 collision_layer = 4
-ACCELERATION = 150.0
-jump_speed = 500
-gravity = 15
-projectile_scene = ExtResource( 5 )
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
 position = Vector2( -3073, -3194 )
 collision_layer = 2
 collision_mask = 1
-ACCELERATION = 150.0
-jump_speed = 500
-gravity = 15
-projectile_scene = ExtResource( 5 )
 
 [node name="ws5" type="StaticBody2D" parent="."]
 position = Vector2( -4499, -1921 )
