@@ -7,7 +7,7 @@
 [ext_resource path="res://EnergyBall.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 32, 32 )
+extents = Vector2( 37.5, 32 )
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 258
@@ -33,6 +33,7 @@ rect_scale = Vector2( 3, -3 )
 texture = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 1, 0 )
 shape = SubResource( 1 )
 
 [node name="Arm" type="Sprite" parent="."]
@@ -41,3 +42,8 @@ script = ExtResource( 4 )
 
 [node name="ArmTip" type="Position2D" parent="Arm"]
 position = Vector2( 17, 0 )
+
+[node name="DashPolice" type="RayCast2D" parent="."]
+position = Vector2( 0, -32 )
+enabled = true
+cast_to = Vector2( 165, 0 )

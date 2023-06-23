@@ -5,12 +5,14 @@ onready var arm = $Arm
 onready var target
 onready var body : Sprite = $Body
 onready var body_eye : TextureRect = $Body.get_child(0)
+onready var countdown_timer = $CountdownTimer
+onready var dash_police = $DashPolice
 
 
 signal health_changed(current_health,id)
 signal mana_changed(current_mana,id)
 
-
+var fire_available = true
 var loading_color = Color(1, 1, 1)
 var target_color = Color(1, 0, 0)
 var charge_mana_color = Color(0, 0.7, 1.0)
@@ -100,11 +102,13 @@ func get_mana():
 	return (mana_player / max_mana) * 100
 	
 func fire():
-	if projectile_scene != null:
+	if projectile_scene != null && fire_available:
 		var proj_instance = projectile_scene.instance()
 		proj_instance.initialize(projectile_container, arm.get_node("ArmTip").global_position, target)
+		fire_available = false		
 		mana_player -= energy_power_penalty
 		emit_signal("mana_changed",get_mana(),id)
+		countdown_timer.start()
 		
 		
 func get_input(delta):
@@ -195,7 +199,9 @@ func get_input(delta):
 			velocity.x = clamp(velocity.x + (h_movement_direction * 30), -1000, 1000)
 		if Input.is_action_just_pressed("move_right" + str(id)):
 			arm.position.x = 0
-			arm.scale.x = 1
+			if (arm.scale.x < 0):
+				arm.scale.x = -(arm.scale.x)	
+				dash_police.scale.x = -(dash_police.scale.x)
 			body_eye.rect_scale.x = 0.05
 			dash_count += 1
 			if dash_count < MAX_DASH_COUNT:
@@ -208,7 +214,9 @@ func get_input(delta):
 				dash_timer = 0
 		if Input.is_action_just_pressed("move_left" + str(id)):
 			arm.position.x = 0
-			arm.scale.x = -1
+			if (arm.scale.x > 0):
+				arm.scale.x = -(arm.scale.x)
+				dash_police.scale.x = -(dash_police.scale.x)			
 			body_eye.rect_scale.x = -0.05
 			
 			dashL_count += 1
@@ -224,10 +232,10 @@ func get_input(delta):
 		velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
 
 func dash(valor):
-	if (mana_player - 100 > 0):
+	if (!dash_police.is_colliding() && mana_player - 100 > 0):
 		mana_player -= 100
+		global_position.x += valor	
 		emit_signal("mana_changed",get_mana(),id)
-		global_position.x += valor
 
 func _physics_process(delta):
 	get_input(delta)
@@ -263,7 +271,8 @@ func _physics_process(delta):
 
 func hit():
 	var col = get_node("Arm/RayCast2D").get_collider()
-	if get_node("Arm/RayCast2D").is_colliding():
+	print(col)
+	if get_node("Arm/RayCast2D").is_colliding() && col.get_class() == "KinematicBody2D":
 		if global_position < col.global_position:
 			col.notify_hit("right")
 		else:
@@ -284,3 +293,7 @@ func notify_hit(empuje) -> void:
 		isKnockback = true
 		isKnockbackRight = true
 		aire_knock = true
+
+
+func _on_CountdownTimer_timeout():
+	fire_available = true

@@ -21,21 +21,29 @@ margin_right = 798.931
 margin_bottom = 573.269
 rect_scale = Vector2( 0.04, -0.044 )
 
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2( 0.5, 0 )
+
 [node name="Arm" parent="." index="2"]
 position = Vector2( 0, 0 )
 script = null
 
 [node name="ArmSprite" type="Sprite" parent="Arm" index="0"]
-position = Vector2( 32.5, -2 )
-scale = Vector2( 0.734, 0.211 )
+position = Vector2( 57, 0 )
+scale = Vector2( 0.74, 0.2 )
 texture = ExtResource( 3 )
 
 [node name="RayCast2D" type="RayCast2D" parent="Arm" index="1"]
-position = Vector2( 9, -1 )
-scale = Vector2( 1, 2.759 )
+rotation = 0.00380089
+scale = Vector2( 1, 8.9588 )
 enabled = true
-cast_to = Vector2( 47, 0 )
-collision_mask = 4
+cast_to = Vector2( 81.9994, -0.0347895 )
+collision_mask = 5
 
 [node name="ArmTip" parent="Arm" index="2"]
-position = Vector2( 49, 0 )
+position = Vector2( 50, 0 )
+
+[node name="CountdownTimer" type="Timer" parent="." index="3"]
+wait_time = 0.5
+
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_CountdownTimer_timeout"]
