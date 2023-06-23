@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player2.tscn" type="PackedScene" id=2]
@@ -13,6 +13,8 @@
 [ext_resource path="res://assets/City-Background-in-the-Afternoon-Graphics-3175113-1.jpg" type="Texture" id=11]
 [ext_resource path="res://Destructible.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/font/Urban Heroes.ttf" type="DynamicFontData" id=13]
+[ext_resource path="res://assets/GUI/energy_bar_bg.png" type="Texture" id=14]
+[ext_resource path="res://assets/GUI/energy_bar_fill.png" type="Texture" id=15]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 9.83874, 32.3791 )
@@ -68,10 +70,10 @@ __meta__ = {
 }
 
 [node name="LifeBarPlayer1" type="TextureProgress" parent="UI/GUI"]
-anchor_left = 0.59375
-anchor_top = 0.035
-anchor_right = 0.980469
-anchor_bottom = 0.103667
+anchor_left = 0.564453
+anchor_top = 0.0383333
+anchor_right = 0.955078
+anchor_bottom = 0.105
 rect_min_size = Vector2( 396, 0 )
 size_flags_horizontal = 2
 size_flags_vertical = 2
@@ -86,10 +88,10 @@ __meta__ = {
 }
 
 [node name="LifeBarPlayer2" type="TextureProgress" parent="UI/GUI"]
-anchor_left = 0.0195313
-anchor_top = 0.035
-anchor_right = 0.40625
-anchor_bottom = 0.103667
+anchor_left = 0.0458984
+anchor_top = 0.04
+anchor_right = 0.436523
+anchor_bottom = 0.106667
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 8 )
 tint_under = Color( 0.913725, 0.988235, 0.0156863, 1 )
@@ -99,6 +101,31 @@ __meta__ = {
 }
 
 [node name="Tween" type="Tween" parent="UI/GUI"]
+
+[node name="ManaBarP2" type="TextureProgress" parent="UI/GUI"]
+anchor_left = 0.0458984
+anchor_top = 0.106667
+anchor_right = 0.338867
+anchor_bottom = 0.14
+texture_under = ExtResource( 14 )
+texture_progress = ExtResource( 15 )
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="ManaBarP1" type="TextureProgress" parent="UI/GUI"]
+anchor_left = 0.662109
+anchor_top = 0.105
+anchor_right = 0.955078
+anchor_bottom = 0.138333
+texture_under = ExtResource( 14 )
+texture_progress = ExtResource( 15 )
+fill_mode = 1
+nine_patch_stretch = true
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Menu" type="Control" parent="UI"]
 anchor_right = 1.0

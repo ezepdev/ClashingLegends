@@ -8,9 +8,12 @@ onready var body_eye : TextureRect = $Body.get_child(0)
 
 
 signal health_changed(current_health,id)
+signal mana_changed(current_mana,id)
+
 
 var loading_color = Color(1, 1, 1)
 var target_color = Color(1, 0, 0)
+var charge_mana_color = Color(0, 0.7, 1.0)
 var color_transition_duration = 1.0
 var color_transition_timer = 0.0
 
@@ -22,7 +25,13 @@ var aire_knock = false
 
 # health player
 export (float) var max_health = 500.0
+export (float) var max_mana = 500.0
+
+export (float) var energy_power_penalty = 50.0
+
+
 var health_player:float = max_health
+var mana_player:float = max_mana
 
 const FLOOR_NORMAL := Vector2.UP  # Igual a Vector2(0, -1)
 const SNAP_DIRECTION := Vector2.UP
@@ -70,6 +79,7 @@ var original_color = Color(1,1,1)
 
 func _ready():
 	health_player = max_health
+	mana_player = max_mana
 	original_color = body.modulate
 
 func initialize(projectile_container , id):
@@ -86,12 +96,17 @@ func initialize(projectile_container , id):
 func get_health():
 	return (health_player / max_health) * 100
 
+func get_mana():
+	return (mana_player / max_mana) * 100
 	
 func fire():
 	if projectile_scene != null:
 		var proj_instance = projectile_scene.instance()
 		proj_instance.initialize(projectile_container, arm.get_node("ArmTip").global_position, target)
-	
+		mana_player -= energy_power_penalty
+		emit_signal("mana_changed",get_mana(),id)
+		
+		
 func get_input(delta):
 	var h_movement_direction:int = int(Input.is_action_pressed("move_right" + str(id) )) - int(Input.is_action_pressed("move_left" + str(id)))
 	# Cannon fire
@@ -99,7 +114,8 @@ func get_input(delta):
 #		if projectile_container == null:
 #			projectile_container = get_parent()
 #			arm.projectile_container = projectile_container
-		fire()
+		if (mana_player > 0):
+			fire()
 	
 	if Input.is_action_just_pressed("hit_enemy" + str(id)):
 #		if projectile_container == null:
@@ -110,6 +126,17 @@ func get_input(delta):
 	if Input.is_action_just_released("hit_enemy" + str(id)):
 		arm.visible = false;	
 		
+		
+	# Energy charge 
+	if Input.is_action_pressed("charge_mana" + str(id)) && is_on_floor():
+		if (mana_player + 10 < max_mana):
+			body.modulate = charge_mana_color
+			mana_player += 10
+			print(mana_player)
+			emit_signal("mana_changed",get_mana(),id)
+	
+	if Input.is_action_just_released("charge_mana" + str(id)):
+		body.modulate = loading_color
 	# Jump Action
 	var jump: bool = Input.is_action_just_pressed('jump' + str(id))
 	var on_floor: bool = is_on_floor()
@@ -197,7 +224,10 @@ func get_input(delta):
 		velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
 
 func dash(valor):
-	global_position.x += valor
+	if (mana_player - 100 > 0):
+		mana_player -= 100
+		emit_signal("mana_changed",get_mana(),id)
+		global_position.x += valor
 
 func _physics_process(delta):
 	get_input(delta)

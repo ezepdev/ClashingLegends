@@ -15,9 +15,7 @@ scale = Vector2( 0.733333, 0.250965 )
 texture = ExtResource( 3 )
 
 [node name="Eye" parent="Body" index="0"]
-margin_left = -7.62939e-06
 margin_top = -73.7154
-margin_right = 800.0
 margin_bottom = 526.285
 rect_scale = Vector2( 0.04, 0.115385 )
 
