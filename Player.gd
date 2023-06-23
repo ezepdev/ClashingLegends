@@ -8,6 +8,7 @@ onready var body_eye : TextureRect = $Body.get_child(0)
 onready var countdown_timer = $CountdownTimer
 onready var dash_police = $DashPolice
 
+onready var animTreePlayback = $AnimationTree.get("parameters/playback")
 
 signal health_changed(current_health,id)
 signal mana_changed(current_mana,id)
@@ -80,6 +81,7 @@ var proj_instance
 var original_color = Color(1,1,1)
 
 func _ready():
+	animTreePlayback.start("idle")
 	health_player = max_health
 	mana_player = max_mana
 	original_color = body.modulate
@@ -165,6 +167,7 @@ func get_input(delta):
 			jump_force_charged = JUMP_CHARGE_FORCE / 2
 
 	if Input.is_action_just_released("jump" + str(id)) && jump_count > 0:
+				animTreePlayback.travel("jump")
 				color_transition_timer = 0
 				body.modulate = loading_color
 				if !on_floor && jump_count == 1 && velocity.y > 0:
@@ -197,41 +200,46 @@ func get_input(delta):
 		if is_on_floor():
 			velocity.x = clamp(velocity.x + (h_movement_direction * 30), -1500, 1500)
 		if Input.is_action_just_pressed("move_right" + str(id)):
+			body.flip_h = false
 			arm.position.x = 0
 			if (arm.scale.x < 0):
 				arm.scale.x = -(arm.scale.x)	
 				dash_police.scale.x = -(dash_police.scale.x)
 			body_eye.rect_scale.x = 0.05
+			animTreePlayback.travel("move")
 			dash_count += 1
 			if dash_count < MAX_DASH_COUNT:
 				dash_timer = 0
 			elif dash_timer <= DASH_TIME_THRESHOLD:
 				dash_count = 0
 				dash_timer = 0
-				dash(100)
+				dash(300)
 			else:
 				dash_timer = 0
 		if Input.is_action_just_pressed("move_left" + str(id)):
+			body.flip_h = true
 			arm.position.x = 0
 			if (arm.scale.x > 0):
 				arm.scale.x = -(arm.scale.x)
 				dash_police.scale.x = -(dash_police.scale.x)			
 			body_eye.rect_scale.x = -0.05
-			
+			animTreePlayback.travel("move")
 			dashL_count += 1
 			if dashL_count < MAX_DASH_COUNT:
 				dashL_timer = 0
 			elif dashL_timer <= DASH_TIME_THRESHOLD:
 				dashL_count = 0
 				dashL_timer = 0
-				dash(-100)
+				dash(-300)
 			else:
 				dashL_timer = 0
 	elif is_on_floor():
+		animTreePlayback.travel("idle")	
 		velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
 
 func dash(valor):
 	if (!dash_police.is_colliding() && mana_player - 100 > 0):
+		animTreePlayback.travel("dash")
 		mana_player -= 100
 		global_position.x += valor	
 		emit_signal("mana_changed",get_mana(),id)

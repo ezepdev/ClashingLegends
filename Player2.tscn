@@ -1,30 +1,270 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=30 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/chararacters/buddy_orange.png" type="Texture" id=2]
+[ext_resource path="res://assets/dbz/Vegito-Normal_43.png" type="Texture" id=2]
 [ext_resource path="res://assets/player.png" type="Texture" id=3]
+[ext_resource path="res://assets/dbz/Vegito-Normal_40.png" type="Texture" id=4]
+[ext_resource path="res://assets/dbz/Vegito-Normal_48.png" type="Texture" id=5]
+[ext_resource path="res://assets/dbz/Vegito-Normal_27.png" type="Texture" id=6]
+
+[sub_resource type="CapsuleShape2D" id=21]
+
+[sub_resource type="Animation" id=22]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=1]
+resource_name = "dash"
+length = 0.05
+step = 0.016
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 2 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 4 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.016, 0.032, 0.048 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2, 3 ]
+}
+
+[sub_resource type="Animation" id=2]
+resource_name = "fly"
+
+[sub_resource type="Animation" id=3]
+resource_name = "idle"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 6 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
+[sub_resource type="Animation" id=4]
+resource_name = "jump"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 5 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 3 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2 ),
+"transitions": PoolRealArray( 1, 1, 1 ),
+"update": 1,
+"values": [ 0, 1, 2 ]
+}
+
+[sub_resource type="Animation" id=5]
+resource_name = "move"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:hframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 4 ) ]
+}
+
+[sub_resource type="AnimationNodeAnimation" id=6]
+animation = "dash"
+
+[sub_resource type="AnimationNodeAnimation" id=8]
+animation = "idle"
+
+[sub_resource type="AnimationNodeAnimation" id=9]
+animation = "jump"
+
+[sub_resource type="AnimationNodeAnimation" id=10]
+animation = "move"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=13]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=14]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=15]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=18]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=19]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=20]
+switch_mode = 2
+auto_advance = true
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=23]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=24]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=25]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id=26]
+switch_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id=11]
+states/dash/node = SubResource( 6 )
+states/dash/position = Vector2( 361, 230 )
+states/idle/node = SubResource( 8 )
+states/idle/position = Vector2( 607, 57 )
+states/jump/node = SubResource( 9 )
+states/jump/position = Vector2( 513, 286 )
+states/move/node = SubResource( 10 )
+states/move/position = Vector2( 787, 211 )
+transitions = [ "idle", "dash", SubResource( 13 ), "dash", "jump", SubResource( 14 ), "jump", "move", SubResource( 15 ), "move", "jump", SubResource( 18 ), "jump", "dash", SubResource( 19 ), "dash", "idle", SubResource( 20 ), "idle", "move", SubResource( 23 ), "move", "idle", SubResource( 24 ), "idle", "jump", SubResource( 25 ), "jump", "idle", SubResource( 26 ) ]
+
+[sub_resource type="AnimationNodeStateMachinePlayback" id=12]
 
 [node name="Player2" instance=ExtResource( 1 )]
 collision_layer = 4
 collision_mask = 0
 projectile_scene = null
 
-[node name="Body" parent="." index="0"]
-position = Vector2( 0.500004, 0.5 )
-scale = Vector2( 0.467626, 0.467626 )
+[node name="Body" parent="." index="1"]
+scale = Vector2( 5, 5 )
 texture = ExtResource( 2 )
+hframes = 4
+frame = 3
 
 [node name="Eye" parent="Body" index="0"]
+visible = false
 margin_left = -1.06924
 margin_top = -26.7308
 margin_right = 798.931
 margin_bottom = 573.269
 rect_scale = Vector2( 0.04, -0.044 )
 
-[node name="CollisionShape2D" parent="." index="1"]
-position = Vector2( 0.5, 0 )
+[node name="TextureRect" parent="Body/Eye" index="0"]
+visible = false
 
-[node name="Arm" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="2"]
+scale = Vector2( -5, 6 )
+shape = SubResource( 21 )
+
+[node name="CountdownTimer" type="Timer" parent="." index="3"]
+wait_time = 0.5
+
+[node name="Arm" parent="." index="4"]
 position = Vector2( 0, 0 )
 script = null
 
@@ -43,7 +283,19 @@ collision_mask = 5
 [node name="ArmTip" parent="Arm" index="2"]
 position = Vector2( 50, 0 )
 
-[node name="CountdownTimer" type="Timer" parent="." index="3"]
-wait_time = 0.5
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." index="6"]
+reset_on_save = false
+anims/RESET = SubResource( 22 )
+anims/dash = SubResource( 1 )
+anims/fly = SubResource( 2 )
+anims/idle = SubResource( 3 )
+anims/jump = SubResource( 4 )
+anims/move = SubResource( 5 )
+
+[node name="AnimationTree" type="AnimationTree" parent="." index="7"]
+tree_root = SubResource( 11 )
+anim_player = NodePath("../AnimationPlayer")
+active = true
+parameters/playback = SubResource( 12 )
 
 [connection signal="timeout" from="CountdownTimer" to="." method="_on_CountdownTimer_timeout"]
