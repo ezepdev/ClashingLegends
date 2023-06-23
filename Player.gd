@@ -183,20 +183,19 @@ func get_input(delta):
 				
 	if !is_on_floor():
 		if aire_knock:
-			velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -H_SPEED_LIMIT, H_SPEED_LIMIT)
+			velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -8000, 8000)
 		if jump_force_charged >= JUMP_CHARGE_FORCE && !aire_knock:
 			velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
-			velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -1000, 1000)
+			velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -1800, 1800)
 		elif !aire_knock:
 			velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
-			velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -1000, 1000)
+			velocity.x = clamp(velocity.x + (h_movement_direction * ACCELERATION), -1800, 1800)
 
 	#horizontal speed
 	
 	if h_movement_direction != 0:
 		if is_on_floor():
-			aire_knock = false
-			velocity.x = clamp(velocity.x + (h_movement_direction * 30), -1000, 1000)
+			velocity.x = clamp(velocity.x + (h_movement_direction * 30), -1500, 1500)
 		if Input.is_action_just_pressed("move_right" + str(id)):
 			arm.position.x = 0
 			if (arm.scale.x < 0):
@@ -238,27 +237,28 @@ func dash(valor):
 		emit_signal("mana_changed",get_mana(),id)
 
 func _physics_process(delta):
-	get_input(delta)
 	if isKnockback:
 		knockbackTimer += delta
 		if knockbackTimer >= KNOCKBACK_DURATION:
 			isKnockback = false
 			isKnockbackRight = false
 			knockbackTimer = 0
+			aire_knock = false
 		else:
 			if isKnockbackRight:
-				velocity.x = KNOCKBACK_FORCE
+				velocity.x = 3000
 #				velocity.x *= (1 - knockbackTimer / KNOCKBACK_DURATION)  # Frenado progresivo
-				velocity.y = -KNOCKBACK_FORCE_UP
+				velocity.y = -500
 #				velocity.y *= (1 - knockbackTimer / KNOCKBACK_DURATION)  # Frenado progresivo
 #				velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, SLOPE_THRESHOLD)
 
 			else: 
-				velocity.x = -KNOCKBACK_FORCE
+				velocity.x = -3000
 #				velocity.x *= (1 - knockbackTimer / KNOCKBACK_DURATION)  # Frenado progresivo
-				velocity.y = -KNOCKBACK_FORCE_UP
+				velocity.y = -500
 #				velocity.y *= (1 - knockbackTimer / KNOCKBACK_DURATION)  # Frenado progresivo
 #				velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, SLOPE_THRESHOLD)
+	get_input(delta)
 	dash_timer += delta
 	dashL_timer += delta
 	was_on_floor = is_on_floor()
@@ -286,14 +286,21 @@ func notify_hit(empuje) -> void:
 		get_tree().change_scene_to(main_scene) 
 		queue_free()
 	if(empuje == "left"):
+		aire_knock = true
 		isKnockback = true
 		isKnockbackRight = false
-		aire_knock = true
 	elif(empuje == "right"):
+		aire_knock = true
 		isKnockback = true
 		isKnockbackRight = true
-		aire_knock = true
 
 
 func _on_CountdownTimer_timeout():
 	fire_available = true
+
+
+func _on_Area2D_body_entered(body):
+	if aire_knock:
+		if body in get_tree().get_nodes_in_group("Destructible"):
+			var final_position = Transform2D(0, $Area2D/Polygon2D.global_position).xform($Area2D/Polygon2D.polygon)
+			body.carve(final_position)
