@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
@@ -9,9 +9,7 @@
 [ext_resource path="res://Idle.gd" type="Script" id=7]
 [ext_resource path="res://Walk.gd" type="Script" id=8]
 [ext_resource path="res://Jump.gd" type="Script" id=9]
-[ext_resource path="res://Shoot.gd" type="Script" id=10]
 [ext_resource path="res://Dash.gd" type="Script" id=11]
-[ext_resource path="res://Attak.gd" type="Script" id=12]
 [ext_resource path="res://Knockback.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
@@ -42,12 +40,6 @@ script = ExtResource( 9 )
 
 [node name="Dash" type="Node" parent="PlayerStateMachine"]
 script = ExtResource( 11 )
-
-[node name="Shoot" type="Node" parent="PlayerStateMachine"]
-script = ExtResource( 10 )
-
-[node name="Attak" type="Node" parent="PlayerStateMachine"]
-script = ExtResource( 12 )
 
 [node name="Knockback" type="Node" parent="PlayerStateMachine"]
 script = ExtResource( 13 )
@@ -89,4 +81,9 @@ monitorable = false
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource( 3 )
 
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="hit" from="." to="PlayerStateMachine" method="_on_Player_hit"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]

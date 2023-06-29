@@ -5,9 +5,7 @@ func _ready() -> void:
 		"idle": $Idle,
 		"walk": $Walk,
 		"jump": $Jump,
-		"attack": $Attak,
 		"dash": $Dash,
-		"shoot": $Shoot,
 		"knockback": $Knockback
 	}
 

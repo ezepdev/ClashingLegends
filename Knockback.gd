@@ -26,6 +26,5 @@ func update(delta:float) -> void:
 func _on_animation_finished(anim_name: String) -> void:
 	return
 
-
 func handle_event(event: String, value = null) -> void:
 	return

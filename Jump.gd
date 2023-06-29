@@ -16,9 +16,7 @@ func exit() -> void:
 
 func handle_input(event: InputEvent) -> void:
 	if event.is_action_pressed("fire_cannon" + str(character.id)):
-		emit_signal("finished" , "shoot")
-	if event.is_action_pressed("hit_enemy" + str(character.id)):
-		emit_signal("finished" , "attack")
+		character.fire()
 	if event.is_action_pressed("jump" + str(character.id)) && character.jump_count == 1:
 		if character.move_direction != 0:
 			character._play_animation("fly")
@@ -32,6 +30,7 @@ func update(delta:float) -> void:
 	character.handle_movement()
 	character.apply_speed_limit()
 	character._apply_movement()
+	character.handle_hit()
 	if character.move_direction == 0:
 		character._handle_deacceleration()
 	if character.is_on_floor():
