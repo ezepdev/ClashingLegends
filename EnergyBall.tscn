@@ -1,12 +1,14 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://assets/proyectile_player.png" type="Texture" id=1]
+[ext_resource path="res://Polygon2D.gd" type="Script" id=1]
 [ext_resource path="res://EnergyBall.gd" type="Script" id=2]
+[ext_resource path="res://assets/dbz/energy-pic.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 8.0
+radius = 13.0384
 
 [node name="EnergyBall" type="RigidBody2D"]
+scale = Vector2( 5, 5 )
 collision_layer = 0
 collision_mask = 0
 mode = 3
@@ -14,19 +16,19 @@ contacts_reported = 500
 contact_monitor = true
 applied_force = Vector2( 500, 0 )
 script = ExtResource( 2 )
-VELOCITY = 1000.0
 
 [node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 1 )
+texture = ExtResource( 3 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 3
+position = Vector2( 3, 0 )
 shape = SubResource( 1 )
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 position = Vector2( 3.8147e-06, 0 )
-scale = Vector2( 3.78756, 3.76866 )
-color = Color( 1, 1, 1, 0 )
-polygon = PoolVector2Array( -1.00717e-06, 45.9049, -17.4255, 41.9247, -32.4748, 23.8812, -34.0589, -5.57227, -15.5773, -28.6574, 16.6334, -28.392, 38.2832, -9.02177, 36.9631, 18.5742, 22.1779, 39.2712 )
+color = Color( 0.113725, 1, 0.0117647, 0 )
+script = ExtResource( 1 )
+radius = 300.0
 
 [connection signal="body_entered" from="." to="." method="_on_EnergyBall_body_entered"]

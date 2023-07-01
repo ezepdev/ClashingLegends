@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/1UP 👾 (16-Bit Arcade No Copyright Music) [IkiBtQ_6Bug].mp3-b8d7d2dcdeda592c07fb00b2376380db.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/1UP 👾 (16-Bit Arcade No Copyright Music) [IkiBtQ_6Bug].mp3"
+dest_files=[ "res://.import/1UP 👾 (16-Bit Arcade No Copyright Music) [IkiBtQ_6Bug].mp3-b8d7d2dcdeda592c07fb00b2376380db.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

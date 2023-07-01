@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Battle Arcade 👾 (16-Bit Arcade No Copyright Music) [v9cb0DOVBHA].mp3-e292e1f2f741a3493cb5133b42b9029d.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/Battle Arcade 👾 (16-Bit Arcade No Copyright Music) [v9cb0DOVBHA].mp3"
+dest_files=[ "res://.import/Battle Arcade 👾 (16-Bit Arcade No Copyright Music) [v9cb0DOVBHA].mp3-e292e1f2f741a3493cb5133b42b9029d.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

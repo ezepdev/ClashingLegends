@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/IDKFA 👾 (16-Bit Arcade No Copyright Music) [Y873NKTgb6Y].mp3-eb1cb2e7df1bbfbd099d87a2909435a7.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/IDKFA 👾 (16-Bit Arcade No Copyright Music) [Y873NKTgb6Y].mp3"
+dest_files=[ "res://.import/IDKFA 👾 (16-Bit Arcade No Copyright Music) [Y873NKTgb6Y].mp3-eb1cb2e7df1bbfbd099d87a2909435a7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

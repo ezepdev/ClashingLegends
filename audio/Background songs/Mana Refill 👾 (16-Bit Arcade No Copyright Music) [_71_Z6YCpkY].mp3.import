@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Mana Refill 👾 (16-Bit Arcade No Copyright Music) [_71_Z6YCpkY].mp3-433c7c27c0f27ad2fab2ca2d49671d2b.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/Mana Refill 👾 (16-Bit Arcade No Copyright Music) [_71_Z6YCpkY].mp3"
+dest_files=[ "res://.import/Mana Refill 👾 (16-Bit Arcade No Copyright Music) [_71_Z6YCpkY].mp3-433c7c27c0f27ad2fab2ca2d49671d2b.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

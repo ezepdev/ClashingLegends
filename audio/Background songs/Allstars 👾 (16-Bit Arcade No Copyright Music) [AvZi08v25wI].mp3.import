@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Allstars 👾 (16-Bit Arcade No Copyright Music) [AvZi08v25wI].mp3-503724b008619b4c249f7232719b7d82.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/Allstars 👾 (16-Bit Arcade No Copyright Music) [AvZi08v25wI].mp3"
+dest_files=[ "res://.import/Allstars 👾 (16-Bit Arcade No Copyright Music) [AvZi08v25wI].mp3-503724b008619b4c249f7232719b7d82.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

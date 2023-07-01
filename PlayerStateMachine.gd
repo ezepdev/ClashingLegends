@@ -6,7 +6,8 @@ func _ready() -> void:
 		"walk": $Walk,
 		"jump": $Jump,
 		"dash": $Dash,
-		"knockback": $Knockback
+		"knockback": $Knockback,
+		"charge" : $Charge
 	}
 
 func _on_Player_hit(dmg, knockback):

@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
@@ -9,20 +9,26 @@
 [ext_resource path="res://Idle.gd" type="Script" id=7]
 [ext_resource path="res://Walk.gd" type="Script" id=8]
 [ext_resource path="res://Jump.gd" type="Script" id=9]
+[ext_resource path="res://Polygon2D.gd" type="Script" id=10]
 [ext_resource path="res://Dash.gd" type="Script" id=11]
+[ext_resource path="res://Charge.gd" type="Script" id=12]
 [ext_resource path="res://Knockback.gd" type="Script" id=13]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 32, 32 )
-
-[sub_resource type="CircleShape2D" id=3]
-radius = 71.0211
 
 [node name="Player" type="KinematicBody2D"]
 collision_layer = 258
 collision_mask = 258
 script = ExtResource( 1 )
 projectile_scene = ExtResource( 5 )
+
+[node name="DashPolice" type="RayCast2D" parent="."]
+position = Vector2( 0, 10 )
+rotation = -1.5708
+scale = Vector2( 4, 1 )
+enabled = true
+cast_to = Vector2( 0, 350 )
 
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource( 6 )
@@ -43,6 +49,9 @@ script = ExtResource( 11 )
 
 [node name="Knockback" type="Node" parent="PlayerStateMachine"]
 script = ExtResource( 13 )
+
+[node name="Charge" type="Node" parent="PlayerStateMachine"]
+script = ExtResource( 12 )
 
 [node name="Body" type="Sprite" parent="."]
 texture = ExtResource( 2 )
@@ -73,17 +82,32 @@ position = Vector2( 17, 0 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Enemy_Detection_Area" type="Area2D" parent="."]
 collision_layer = 0
 collision_mask = 0
+monitoring = false
 monitorable = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource( 3 )
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemy_Detection_Area"]
 
 [node name="DashTimer" type="Timer" parent="."]
 wait_time = 0.2
 one_shot = true
 
+[node name="DestructionArea" type="Area2D" parent="."]
+monitorable = false
+
+[node name="Polygon2D" type="Polygon2D" parent="DestructionArea"]
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestructionArea"]
+
+[node name="CountdownTimer" type="Timer" parent="."]
+
+[node name="PlayerAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="PlayerVoice" type="AudioStreamPlayer" parent="."]
+
 [connection signal="hit" from="." to="PlayerStateMachine" method="_on_Player_hit"]
 [connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_CountdownTimer_timeout"]

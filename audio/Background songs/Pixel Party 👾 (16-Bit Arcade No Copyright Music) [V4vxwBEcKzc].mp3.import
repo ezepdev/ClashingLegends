@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Pixel Party 👾 (16-Bit Arcade No Copyright Music) [V4vxwBEcKzc].mp3-8191448d1880a8dcbd6e294c1f9db2d0.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/Pixel Party 👾 (16-Bit Arcade No Copyright Music) [V4vxwBEcKzc].mp3"
+dest_files=[ "res://.import/Pixel Party 👾 (16-Bit Arcade No Copyright Music) [V4vxwBEcKzc].mp3-8191448d1880a8dcbd6e294c1f9db2d0.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

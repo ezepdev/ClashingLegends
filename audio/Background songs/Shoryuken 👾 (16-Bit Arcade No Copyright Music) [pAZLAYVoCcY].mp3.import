@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Shoryuken 👾 (16-Bit Arcade No Copyright Music) [pAZLAYVoCcY].mp3-8aaeb54d62b1ff565926803da5d0bd7e.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/Shoryuken 👾 (16-Bit Arcade No Copyright Music) [pAZLAYVoCcY].mp3"
+dest_files=[ "res://.import/Shoryuken 👾 (16-Bit Arcade No Copyright Music) [pAZLAYVoCcY].mp3-8aaeb54d62b1ff565926803da5d0bd7e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

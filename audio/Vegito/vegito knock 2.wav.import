@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/vegito knock 2.wav-a16d446710eb6d8b1d2e363a9cfdfe9e.sample"
+
+[deps]
+
+source_file="res://audio/Vegito/vegito knock 2.wav"
+dest_files=[ "res://.import/vegito knock 2.wav-a16d446710eb6d8b1d2e363a9cfdfe9e.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

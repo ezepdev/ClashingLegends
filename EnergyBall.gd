@@ -4,14 +4,27 @@ export (float) var VELOCITY:float = 5000.0
 
 var direction:Vector2
 var target:KinematicBody2D
-	
+var sprite1 = "res://assets/dbz/energy-pic.png"
+var sprite2 = "res://assets/dbz/energy-veg.png"
+var texture : Texture
+var audio_player
+
 func initialize(container, spawn_position:Vector2, target):
 	global_position = spawn_position
 	container.add_child(self)
+	audio_player = get_parent().get_node("Explosion")
+	if global_position.x < target.global_position.x:
+			$Sprite.flip_h = false
+	else:
+			$Sprite.flip_h = true
 	if(target.id == 1):
+		texture = ResourceLoader.load(sprite1)
+		$Sprite.texture = texture
 		collision_mask |= 4
 		collision_mask |= 8
 	else:
+		texture = ResourceLoader.load(sprite2)
+		$Sprite.texture = texture
 		collision_mask = 2
 		collision_mask |= 8
 	self.target = target
@@ -21,13 +34,10 @@ func _physics_process(delta):
 	position += direction * VELOCITY * delta
 
 func _on_EnergyBall_body_entered(body:Object):
-	if (body is KinematicBody2D):
-		if(body.global_position < global_position):	
-			body.notify_hit("left")
-		else:
-			body.notify_hit("right")
-	if body in get_tree().get_nodes_in_group("Destructible"):
+	audio_player.play()
+	if body is KinematicBody2D:
+		body.notify_hit(60 , global_position.direction_to(body.global_position))
+	elif body in get_tree().get_nodes_in_group("Destructible"):
 		var final_position = Transform2D(0, $Polygon2D.global_position).xform($Polygon2D.polygon)
-		body.carve(final_position)
-		
+		body.carve(final_position)	
 	queue_free()

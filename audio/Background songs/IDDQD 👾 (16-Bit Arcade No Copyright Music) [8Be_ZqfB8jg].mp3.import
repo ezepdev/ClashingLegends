@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/IDDQD 👾 (16-Bit Arcade No Copyright Music) [8Be_ZqfB8jg].mp3-6c074e2cfb8514881d53232d273ae22c.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/IDDQD 👾 (16-Bit Arcade No Copyright Music) [8Be_ZqfB8jg].mp3"
+dest_files=[ "res://.import/IDDQD 👾 (16-Bit Arcade No Copyright Music) [8Be_ZqfB8jg].mp3-6c074e2cfb8514881d53232d273ae22c.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

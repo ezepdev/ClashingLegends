@@ -32,5 +32,5 @@ func update(delta:float) -> void:
 func handle_event(event: String, value = null) -> void:
 	match event:
 		"hit":
-			character.handle_hit(value[0])
+			character._handle_hit(value[0])
 			emit_signal("finished", "knockback" , value[1])

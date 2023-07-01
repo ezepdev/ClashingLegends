@@ -1,13 +1,22 @@
+tool
 extends StaticBody2D
+class_name Destructible
 
 onready var default_quadrant_polygon: Array = $CollisionPolygon2D.polygon
 onready var texture : StreamTexture = $CollisionPolygon2D/Polygonete.texture
+onready var audio = $CollisionPolygon2D/AudioStreamPlayer
+var explosionAudio = load("res://audio/Explosion.wav")
+export (Array , Vector2) var starting_polygon : Array
 
+
+func _ready():
+	generate(starting_polygon)
 
 func carve(clipping_polygon):
 	"""
 	Carves the clipping_polygon away from the quadrant
 	"""
+	
 	for colpol in get_children():
 		var final_polygon_square = Transform2D(0, global_position).xform(colpol.polygon)
 		if Geometry.intersect_polygons_2d(final_polygon_square , clipping_polygon):
@@ -56,6 +65,8 @@ func carve(clipping_polygon):
 					for i in range(n_clipped_polygons-1):
 						var new_col = _new_colpol(Transform2D(0, -global_position).xform(clipped_polygons[i+1]))
 						call_deferred("add_child" , new_col)
+#	if self != null:
+#		audio.play()
 						
 func _split_polygon(clip_polygon: Array):
 	"""
@@ -103,16 +114,22 @@ func _new_colpol(polygon):
 	"""
 	var colpol = CollisionPolygon2D.new()
 	var polygonete = Polygon2D.new()
-	colpol.name = "CollisionPolygon2D"
+#	var audioStream = AudioStreamPlayer.new()
+#	audioStream.stream = explosionAudio
+#	colpol.name = "CollisionPolygon2D"
 	polygonete.texture = texture
 	polygonete.polygon = polygon
 	polygonete.name = "Polygonete"
 	colpol.polygon = polygon
 	colpol.add_child(polygonete)
+#	colpol.add_child(audioStream)
 	
 	return colpol
 
 func update_col(colpol , cutpol):
 	colpol.set_polygon(Transform2D(0, -global_position).xform(cutpol))
 	colpol.get_node("Polygonete").polygon = colpol.polygon
-	
+
+func generate(polygon :Array):
+	$CollisionPolygon2D.polygon = polygon
+	$CollisionPolygon2D/Polygonete.polygon = polygon
