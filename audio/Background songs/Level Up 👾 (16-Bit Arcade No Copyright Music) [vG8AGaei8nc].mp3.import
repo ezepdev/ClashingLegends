@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Level Up 👾 (16-Bit Arcade No Copyright Music) [vG8AGaei8nc].mp3-4156ab8e7cf5f744d37a4bd51e2f3874.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/Level Up 👾 (16-Bit Arcade No Copyright Music) [vG8AGaei8nc].mp3"
+dest_files=[ "res://.import/Level Up 👾 (16-Bit Arcade No Copyright Music) [vG8AGaei8nc].mp3-4156ab8e7cf5f744d37a4bd51e2f3874.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

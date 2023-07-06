@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BCVTOSND_00036.wav-f2267e1e30d3011b9c56b3456512fe4f.sample"
+
+[deps]
+
+source_file="res://audio/BCVTOSND_00036.wav"
+dest_files=[ "res://.import/BCVTOSND_00036.wav-f2267e1e30d3011b9c56b3456512fe4f.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Falling In Reverse - 'Voices In My Head' ｜ Instrumental ｜ 🎸💯🔥 [v4xoWeZiEeE] (mp3cut.net).mp3-d5869202178cd4039b6574c77cedf5f3.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/Falling In Reverse - 'Voices In My Head' ｜ Instrumental ｜ 🎸💯🔥 [v4xoWeZiEeE] (mp3cut.net).mp3"
+dest_files=[ "res://.import/Falling In Reverse - 'Voices In My Head' ｜ Instrumental ｜ 🎸💯🔥 [v4xoWeZiEeE] (mp3cut.net).mp3-d5869202178cd4039b6574c77cedf5f3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

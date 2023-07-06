@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Voyage 👾 (16-Bit Arcade No Copyright Music) [qqaChAqCJiU].mp3-64f17bd02191bd44748f87c5cb3abda4.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/Voyage 👾 (16-Bit Arcade No Copyright Music) [qqaChAqCJiU].mp3"
+dest_files=[ "res://.import/Voyage 👾 (16-Bit Arcade No Copyright Music) [qqaChAqCJiU].mp3-64f17bd02191bd44748f87c5cb3abda4.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

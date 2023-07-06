@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Jump High 👾 (16-Bit Arcade No Copyright Music) [STSN6TMCKxQ].mp3-1976ed5e80cc19fdfeee203bdc5d44a3.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/Jump High 👾 (16-Bit Arcade No Copyright Music) [STSN6TMCKxQ].mp3"
+dest_files=[ "res://.import/Jump High 👾 (16-Bit Arcade No Copyright Music) [STSN6TMCKxQ].mp3-1976ed5e80cc19fdfeee203bdc5d44a3.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

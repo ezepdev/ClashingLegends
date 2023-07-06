@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Sonic Boom 👾 (16-Bit Arcade No Copyright Music) [aJSafqknXsw].mp3-801e9409519b1882d3288e012483699e.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/Sonic Boom 👾 (16-Bit Arcade No Copyright Music) [aJSafqknXsw].mp3"
+dest_files=[ "res://.import/Sonic Boom 👾 (16-Bit Arcade No Copyright Music) [aJSafqknXsw].mp3-801e9409519b1882d3288e012483699e.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

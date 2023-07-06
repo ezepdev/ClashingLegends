@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/BCGOKSND_00005.wav-f9a641720e24bee4a6037e8c3d99328d.sample"
+
+[deps]
+
+source_file="res://audio/BCGOKSND_00005.wav"
+dest_files=[ "res://.import/BCGOKSND_00005.wav-f9a641720e24bee4a6037e8c3d99328d.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

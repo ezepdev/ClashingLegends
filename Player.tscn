@@ -1,0 +1,145 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://Player.gd" type="Script" id=1]
+[ext_resource path="res://assets/player.png" type="Texture" id=2]
+[ext_resource path="res://assets/background.png" type="Texture" id=3]
+[ext_resource path="res://Arm.gd" type="Script" id=4]
+[ext_resource path="res://EnergyBall.tscn" type="PackedScene" id=5]
+[ext_resource path="res://PlayerStateMachine.gd" type="Script" id=6]
+[ext_resource path="res://Idle.gd" type="Script" id=7]
+[ext_resource path="res://Walk.gd" type="Script" id=8]
+[ext_resource path="res://Jump.gd" type="Script" id=9]
+[ext_resource path="res://Polygon2D.gd" type="Script" id=10]
+[ext_resource path="res://Dash.gd" type="Script" id=11]
+[ext_resource path="res://Charge.gd" type="Script" id=12]
+[ext_resource path="res://Knockback.gd" type="Script" id=13]
+
+[sub_resource type="GDScript" id=2]
+script/source = "extends \"res://AbstractState.gd\"
+
+
+func enter(value = null , value2 = null) -> void:
+	print(\"dead\")
+# Clean up the state. Reinitialize values like a timer
+func exit() -> void:
+	return
+
+
+func handle_input(event: InputEvent) -> void:
+	return
+
+func update(delta:float) -> void:
+		character._handle_deacceleration()
+		character.apply_speed_limit()
+		character._apply_movement()
+
+
+func _on_animation_finished(anim_name: String) -> void:
+	return
+
+
+func handle_event(event: String, value = null) -> void:
+	return
+"
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 32, 32 )
+
+[node name="Player" type="KinematicBody2D"]
+collision_layer = 258
+collision_mask = 258
+script = ExtResource( 1 )
+projectile_scene = ExtResource( 5 )
+
+[node name="DashPolice" type="RayCast2D" parent="."]
+position = Vector2( 0, 10 )
+rotation = -1.5708
+scale = Vector2( 4, 1 )
+enabled = true
+cast_to = Vector2( 0, 600 )
+
+[node name="PlayerStateMachine" type="Node" parent="."]
+script = ExtResource( 6 )
+START_STATE = NodePath("Idle")
+character_path = NodePath("..")
+
+[node name="Idle" type="Node" parent="PlayerStateMachine"]
+script = ExtResource( 7 )
+
+[node name="Walk" type="Node" parent="PlayerStateMachine"]
+script = ExtResource( 8 )
+
+[node name="Jump" type="Node" parent="PlayerStateMachine"]
+script = ExtResource( 9 )
+
+[node name="Dash" type="Node" parent="PlayerStateMachine"]
+script = ExtResource( 11 )
+
+[node name="Knockback" type="Node" parent="PlayerStateMachine"]
+script = ExtResource( 13 )
+
+[node name="Charge" type="Node" parent="PlayerStateMachine"]
+script = ExtResource( 12 )
+
+[node name="Dead" type="Node" parent="PlayerStateMachine"]
+script = SubResource( 2 )
+
+[node name="Body" type="Sprite" parent="."]
+texture = ExtResource( 2 )
+
+[node name="Eye" type="TextureRect" parent="Body"]
+margin_right = 800.0
+margin_bottom = 600.0
+rect_scale = Vector2( 0.041, -0.044 )
+texture = ExtResource( 3 )
+
+[node name="TextureRect" type="TextureRect" parent="Body/Eye"]
+margin_left = 500.0
+margin_top = 400.0
+margin_right = 564.0
+margin_bottom = 464.0
+rect_scale = Vector2( 3, -3 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="Arm" type="Sprite" parent="."]
+position = Vector2( 32, 0 )
+script = ExtResource( 4 )
+
+[node name="ArmTip" type="Position2D" parent="Arm"]
+position = Vector2( 17, 0 )
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+
+[node name="Enemy_Detection_Area" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+monitoring = false
+monitorable = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Enemy_Detection_Area"]
+
+[node name="DashTimer" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
+[node name="DestructionArea" type="Area2D" parent="."]
+monitorable = false
+
+[node name="Polygon2D" type="Polygon2D" parent="DestructionArea"]
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestructionArea"]
+
+[node name="CountdownTimer" type="Timer" parent="."]
+wait_time = 0.25
+
+[node name="PlayerAudio" type="AudioStreamPlayer" parent="."]
+
+[node name="PlayerVoice" type="AudioStreamPlayer" parent="."]
+
+[connection signal="hit" from="." to="PlayerStateMachine" method="_on_Player_hit"]
+[connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
+[connection signal="timeout" from="CountdownTimer" to="." method="_on_CountdownTimer_timeout"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Punch Out 👾 (16-Bit Arcade No Copyright Music) [PZdKadG4l-k].mp3-9b4356d819b53aca9d111d5b9a1892e7.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/Punch Out 👾 (16-Bit Arcade No Copyright Music) [PZdKadG4l-k].mp3"
+dest_files=[ "res://.import/Punch Out 👾 (16-Bit Arcade No Copyright Music) [PZdKadG4l-k].mp3-9b4356d819b53aca9d111d5b9a1892e7.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Continue 👾 (16-Bit Arcade No Copyright Music) [ablGbOIebSE].mp3-68a91bb35744159ba4ae98d9692cf400.mp3str"
+
+[deps]
+
+source_file="res://audio/Background songs/Continue 👾 (16-Bit Arcade No Copyright Music) [ablGbOIebSE].mp3"
+dest_files=[ "res://.import/Continue 👾 (16-Bit Arcade No Copyright Music) [ablGbOIebSE].mp3-68a91bb35744159ba4ae98d9692cf400.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0
