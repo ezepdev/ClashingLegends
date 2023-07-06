@@ -36,7 +36,7 @@ func _physics_process(delta):
 func _on_EnergyBall_body_entered(body:Object):
 	audio_player.play()
 	if body is KinematicBody2D:
-		body.notify_hit(60 , global_position.direction_to(body.global_position))
+		body.notify_hit(60 , global_position.direction_to(body.global_position), 2000)
 	elif body in get_tree().get_nodes_in_group("Destructible"):
 		var final_position = Transform2D(0, $Polygon2D.global_position).xform($Polygon2D.polygon)
 		body.carve(final_position)	

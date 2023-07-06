@@ -25,7 +25,6 @@ func carve(clipping_polygon):
 
 			match n_clipped_polygons:
 				0:
-					print("zero")
 					# clipping_|polygon completely overlaps colpol
 					colpol.free()
 				1:
@@ -35,9 +34,7 @@ func carve(clipping_polygon):
 #					colpol.set_polygon(Transform2D(0, -global_position).xform(clipped_polygons[0]))
 #					colpol.get_node("Polygonete").polygon = colpol.polygon
 	#				colpol.update_pol(clipped_polygons[0])
-					print("un poligono")
 				2:
-					print("dos poligonos")
 					# Check if you carved a hole (one of the two polygons
 					# is clockwise). If so, split the polygon in two that
 					# together make a "hollow" collision shape
@@ -51,7 +48,6 @@ func carve(clipping_polygon):
 						colpol.free()
 						# if its not a hole, behave as in match _
 					else:
-						print("dos pero no se")
 						#colpol.update_pol(clipped_polygons[0])
 						call_deferred("update_col" , colpol , clipped_polygons[0])
 						for i in range(n_clipped_polygons-1):

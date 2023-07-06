@@ -159,7 +159,7 @@ position = Vector2( 14068, -4749 )
 collision_layer = 4
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -13237, -4479 )
+position = Vector2( 6956, -5397 )
 collision_layer = 2
 collision_mask = 1
 
@@ -238,10 +238,10 @@ shape = SubResource( 2 )
 [node name="Destructibles" type="Node" parent="."]
 
 [node name="Control" type="Control" parent="Destructibles"]
-margin_left = 9477.0
-margin_top = -3420.0
-margin_right = 11209.0
-margin_bottom = -867.0
+margin_left = -10128.0
+margin_top = 3104.0
+margin_right = -5628.0
+margin_bottom = 5604.0
 script = ExtResource( 16 )
 destructible_scene = ExtResource( 12 )
 
@@ -256,7 +256,7 @@ polygon = PoolVector2Array( 0, 0, 650, 2, 650, 2000, 0, 2000 )
 polygon = PoolVector2Array( 0, 0, 650, 2, 650, 2000, 0, 2000 )
 
 [node name="Destructible2" parent="Destructibles" instance=ExtResource( 12 )]
-position = Vector2( -13500, -2401 )
+position = Vector2( -13499, -2396 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 650, 0 ), Vector2( 650, 3000 ), Vector2( 0, 3000 ) ]
 
 [node name="CollisionPolygon2D" parent="Destructibles/Destructible2" index="0"]
@@ -335,16 +335,6 @@ polygon = PoolVector2Array( 0, 0, 520, 0, 520, 70, 0, 70 )
 [node name="Polygonete" parent="Destructibles/Destructible9/CollisionPolygon2D" index="1"]
 polygon = PoolVector2Array( 0, 0, 520, 0, 520, 70, 0, 70 )
 
-[node name="Piso" parent="Destructibles" instance=ExtResource( 12 )]
-position = Vector2( -19128, 600 )
-starting_polygon = [ Vector2( 0, 0 ), Vector2( 40000, 0 ), Vector2( 40000, 8000 ), Vector2( 0, 8000 ) ]
-
-[node name="CollisionPolygon2D" parent="Destructibles/Piso" index="0"]
-polygon = PoolVector2Array( 0, 0, 40000, 0, 40000, 8000, 0, 8000 )
-
-[node name="Polygonete" parent="Destructibles/Piso/CollisionPolygon2D" index="1"]
-polygon = PoolVector2Array( 0, 0, 40000, 0, 40000, 8000, 0, 8000 )
-
 [node name="Edificio" type="Node" parent="Destructibles"]
 
 [node name="Destructible7" parent="Destructibles/Edificio" instance=ExtResource( 12 )]
@@ -368,7 +358,7 @@ polygon = PoolVector2Array( 0, 0, 280, 0, 280, 200, 0, 200 )
 polygon = PoolVector2Array( 0, 0, 280, 0, 280, 200, 0, 200 )
 
 [node name="Destructible9" parent="Destructibles/Edificio" instance=ExtResource( 12 )]
-position = Vector2( -9, -813 )
+position = Vector2( -9, -811 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 500, 0 ), Vector2( 500, 200 ), Vector2( 0, 200 ) ]
 
 [node name="CollisionPolygon2D" parent="Destructibles/Edificio/Destructible9" index="0"]
@@ -408,7 +398,7 @@ polygon = PoolVector2Array( 0, 50, 2250, 50, 2250, 220, 0, 220 )
 polygon = PoolVector2Array( 0, 50, 2250, 50, 2250, 220, 0, 220 )
 
 [node name="Destructible10" parent="Destructibles" instance=ExtResource( 12 )]
-position = Vector2( -10944, -3420 )
+position = Vector2( -10953, -3388 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 2000, 0 ), Vector2( 2000, 4000 ), Vector2( 0, 4000 ) ]
 
 [node name="CollisionPolygon2D" parent="Destructibles/Destructible10" index="0"]
@@ -418,7 +408,7 @@ polygon = PoolVector2Array( 0, 0, 2000, 0, 2000, 4000, 0, 4000 )
 polygon = PoolVector2Array( 0, 0, 2000, 0, 2000, 4000, 0, 4000 )
 
 [node name="Destructible11" parent="Destructibles" instance=ExtResource( 12 )]
-position = Vector2( -4022, -5421 )
+position = Vector2( -4024, -5397 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 2000, 0 ), Vector2( 2000, 6000 ), Vector2( 0, 6000 ) ]
 
 [node name="CollisionPolygon2D" parent="Destructibles/Destructible11" index="0"]
@@ -439,7 +429,7 @@ polygon = PoolVector2Array( 0, 0, 1000, 0, 1000, 100, 0, 100 )
 polygon = PoolVector2Array( 0, 0, 1000, 0, 1000, 100, 0, 100 )
 
 [node name="Destructible13" parent="Destructibles" instance=ExtResource( 12 )]
-position = Vector2( 4355, -5421 )
+position = Vector2( 4356, -5394 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 2000, 0 ), Vector2( 2000, 6000 ), Vector2( 0, 6000 ) ]
 
 [node name="CollisionPolygon2D" parent="Destructibles/Destructible13" index="0"]
@@ -447,6 +437,150 @@ polygon = PoolVector2Array( 0, 0, 2000, 0, 2000, 6000, 0, 6000 )
 
 [node name="Polygonete" parent="Destructibles/Destructible13/CollisionPolygon2D" index="1"]
 polygon = PoolVector2Array( 0, 0, 2000, 0, 2000, 6000, 0, 6000 )
+
+[node name="Destructible14" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -19128, 604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible15" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -19128, 3104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible16" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -19128, 5604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible17" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -19128, 8104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible18" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -14628, 8104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible19" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -10128, 8104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible20" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -5628, 8104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible21" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -1128, 8104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible22" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 3372, 8104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible23" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 7872, 8104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible24" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 12372, 8104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible25" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 16872, 8104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible26" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 16872, 5604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible27" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 16872, 3104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible28" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 16872, 604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible29" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 12372, 604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible30" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 7872, 604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible31" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 3372, 604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible32" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -1128, 604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible33" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -5628, 604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible34" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -10128, 604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible35" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -14628, 604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible36" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -14628, 3104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible37" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -14628, 5604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible38" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -10128, 5604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible39" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -5628, 5604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible40" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -1128, 5604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible41" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 3372, 5604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible42" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 7872, 5604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible43" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 12372, 5604 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible44" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 12372, 3104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible45" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 7872, 3104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible46" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( 3372, 3104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible47" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -1128, 3104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible48" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -5628, 3104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
+
+[node name="Destructible49" parent="Destructibles" instance=ExtResource( 12 )]
+position = Vector2( -10128, 3104 )
+starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
 
 [node name="Label" type="Label" parent="."]
 visible = false
@@ -534,7 +668,6 @@ stream = ExtResource( 15 )
 [editable path="Destructibles/Destructible7"]
 [editable path="Destructibles/Destructible8"]
 [editable path="Destructibles/Destructible9"]
-[editable path="Destructibles/Piso"]
 [editable path="Destructibles/Edificio/Destructible7"]
 [editable path="Destructibles/Edificio/Destructible8"]
 [editable path="Destructibles/Edificio/Destructible9"]

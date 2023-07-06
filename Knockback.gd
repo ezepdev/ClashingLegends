@@ -8,8 +8,14 @@ var destructibles: Array
 var destruction_polygon 
 var gravity = 10
 var audio_explosion
+var power_copy
 
-func enter(knockback = null) -> void:
+func enter(knockback = null , power = null )  -> void:
+	if power < 1000:
+		KNOCKBACK_DURATION = 0.3
+	power_copy = power
+	if power < 6000:
+		KNOCKBACK_END = 1
 	if knockback.x > 0:
 		character.body.flip_h = true
 	elif knockback.x < 0:
@@ -21,12 +27,8 @@ func enter(knockback = null) -> void:
 	character.get_node("DestructionArea").monitoring = true
 	knockbackTimer = 0
 	knockback_copy = knockback
-	character.velocity = knockback * 6000
+	character.velocity = knockback * power
 
-func handle_input(event: InputEvent) -> void:
-	if knockbackTimer >= KNOCKBACK_DURATION:
-		if event:
-			emit_signal("finished" , "idle")
 
 func exit()  -> void:
 	return
@@ -42,7 +44,7 @@ func update(delta:float) -> void:
 		if knockbackTimer >= KNOCKBACK_DURATION:
 			if character.move_direction != 0:
 				emit_signal("finished" , "walk")
-			elif knockbackTimer >= KNOCKBACK_END:
+			else:
 				emit_signal("finished" , "idle")
 
 func calculate_destruction(body , destruction_polygon):

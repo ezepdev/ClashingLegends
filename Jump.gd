@@ -3,7 +3,7 @@ extends "res://AbstractState.gd"
 var doble_jump
 var land_sound = load("res://audio/land2.wav")
 var jump_sound = load("res://audio/jump (2).wav")
-func enter(value = null) -> void:
+func enter(value = null , value2 = null) -> void:
 	character.audio_player.stream = jump_sound
 	character.audio_player.play()
 	character.snap_vector = Vector2.ZERO
@@ -18,8 +18,6 @@ func exit() -> void:
 
 
 func handle_input(event: InputEvent) -> void:
-	if event.is_action_pressed("fire_cannon" + str(character.id)):
-		character.fire()
 	if event.is_action_pressed("jump" + str(character.id)) && character.jump_count == 1:
 		character.audio_player.stream = jump_sound
 		character.audio_player.play()
@@ -39,6 +37,7 @@ func update(delta:float) -> void:
 	character.handle_jump()
 	character._apply_movement()
 	character.handle_hit()
+	character.handle_fire()
 	if character.move_direction == 0:
 		character._handle_deacceleration()
 	if character.is_on_floor():
@@ -54,4 +53,4 @@ func handle_event(event: String, value = null) -> void:
 		match event:
 			"hit":
 				character._handle_hit(value[0])
-				emit_signal("finished", "knockback" , value[1])
+				emit_signal("finished", "knockback" , value[1], value[2])

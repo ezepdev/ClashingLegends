@@ -49,11 +49,9 @@ func _bind_manabar(manabar: TextureProgress,value:float):
 	manabar.value = value
 
 func _on_Player_health_changed(current_health:float,id:int):
-	print("GUI receive player damage signal from player: " + str(id) )
 	update_health(current_health, id)
 
 func _on_Player_mana_changed(current_mana:float,id:int):
-	print("GUI receive mana change signal from player: " + str(id) )
 	update_mana(current_mana, id)
 
 func update_health(new_value,id):
@@ -65,7 +63,6 @@ func update_health(new_value,id):
 		tween.start()
 		
 func update_mana(new_value,id):
-	print(new_value)
 	if (id == 1):
 		tween.interpolate_property(self, "animated_mana_player1", animated_mana_player1, new_value, 0.5, Tween.TRANS_LINEAR, Tween.EASE_IN)
 	else:

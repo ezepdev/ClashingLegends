@@ -1,7 +1,7 @@
 extends "res://AbstractState.gd"
 
 
-func enter(value = null) -> void:
+func enter(value = null , value2 = null) -> void:
 	character._play_animation("energy")
 
 # Clean up the state. Reinitialize values like a timer

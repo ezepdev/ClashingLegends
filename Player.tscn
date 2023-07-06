@@ -28,7 +28,7 @@ position = Vector2( 0, 10 )
 rotation = -1.5708
 scale = Vector2( 4, 1 )
 enabled = true
-cast_to = Vector2( 0, 350 )
+cast_to = Vector2( 0, 600 )
 
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource( 6 )
@@ -103,6 +103,7 @@ script = ExtResource( 10 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DestructionArea"]
 
 [node name="CountdownTimer" type="Timer" parent="."]
+wait_time = 0.25
 
 [node name="PlayerAudio" type="AudioStreamPlayer" parent="."]
 

@@ -10,5 +10,5 @@ func _ready() -> void:
 		"charge" : $Charge
 	}
 
-func _on_Player_hit(dmg, knockback):
-	current_state.handle_event("hit" , [dmg, knockback])
+func _on_Player_hit(dmg, knockback , power):
+	current_state.handle_event("hit" , [dmg, knockback, power])

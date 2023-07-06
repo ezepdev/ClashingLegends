@@ -14,7 +14,7 @@ onready var audio_voice = $PlayerVoice
 
 # signals
 signal health_changed(current_health,id)
-signal hit(dmg , knockback)
+signal hit(dmg , knockback , power)
 signal mana_changed(current_mana,id)
 
 # state/life
@@ -91,6 +91,8 @@ var proj_instance
 
 var isAudioPlaying = false
 
+var hit_force = 0
+
 func _ready():
 	health_player = max_health
 	mana_player = max_mana
@@ -110,7 +112,7 @@ func handle_energy_charge():
 		# Energy charge 
 	if Input.is_action_pressed("charge_mana" + str(id)) && is_on_floor():
 		if (mana_player + 10 < max_mana):
-			mana_player += 10
+			mana_player += 2
 			emit_signal("mana_changed",get_mana(),id)
 	
 	if Input.is_action_just_released("charge_mana" + str(id)):
@@ -126,11 +128,13 @@ func handle_movement():
 		dash_police.scale.y = -1
 		$Arm/ArmTip.position.x = -100
 		$Enemy_Detection_Area.scale.x = -1
+		hit_force = -velocity.x
 	elif move_direction > 0:
 		dash_police.scale.y = 1
 		body.flip_h = false
 		$Arm/ArmTip.position.x = 100
 		$Enemy_Detection_Area.scale.x = 1
+		hit_force = velocity.x
 	if Input.is_action_just_pressed("move_right" + str(id)):
 		last_action_name = "move_right" + str(id)
 		can_dash = true
@@ -143,7 +147,6 @@ func handle_movement():
 func handle_dash():
 		is_action_repeat = last_action_name == get_current_action_name()
 		count_is_action_repeated;
-		print(count_is_action_repeated)
 		if is_action_repeat: 
 			count_is_action_repeated += 1
 		if !is_action_repeat || count_is_action_repeated > 1:
@@ -184,7 +187,7 @@ func fire():
 #NEW
 
 func handle_fire():
-	if Input.is_action_just_pressed("fire_cannon" + str(id)):
+	if Input.is_action_pressed("fire_cannon" + str(id)):
 		if (mana_player > 0):
 			fire()
 
@@ -200,7 +203,6 @@ func handle_charge_jump(delta):
 	var on_floor: bool = is_on_floor()
 	
 	if Input.is_action_pressed("jump" + str(id)):
-		
 		_play_animation("chargejump", false)
 		jump_pressed_time += delta
 #		if on_floor:
@@ -238,7 +240,7 @@ func handle_jump():
 
 func dash(valor):
 		mana_player -= 100
-		global_position.x += valor	
+		global_position.x += valor
 		emit_signal("mana_changed",get_mana(),id)
 
 	
@@ -251,14 +253,14 @@ func get_current_action_name():
 func hit():
 	$Enemy_Detection_Area.monitoring = true
 	
-func notify_hit(dmg , knockback) -> void:
-	emit_signal("hit" , dmg , knockback)
+func notify_hit(dmg , knockback , power) -> void:
+	emit_signal("hit" , dmg , knockback,  power)
 	
 	
 func _handle_hit(dmg :int):
 	health_player = health_player - dmg
 	emit_signal("health_changed",(health_player / max_health) * 100,id)
-	if (health_player == 0):
+	if (health_player <= 0):
 		var main_scene = load("res://screens/MainMenu.tscn")
 		get_tree().change_scene_to(main_scene) 
 		queue_free()
@@ -283,11 +285,12 @@ func _play_animation(animation_name:String, should_restart:bool = true, playback
 func _on_DashTimer_timeout():
 	can_dash = false
 	
-
-
 func _on_Enemy_Detection_Area_body_entered(body : Player):
+	var y_hit = velocity.y
+	if velocity.y <=  0:
+		y_hit = -velocity.y
 	if body != null:
-		body.notify_hit(60 , global_position.direction_to(body.global_position))
+		body.notify_hit(60 , global_position.direction_to(body.global_position) , hit_force + y_hit + 500)
 
 func _on_CountdownTimer_timeout():
 	fire_available = true

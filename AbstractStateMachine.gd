@@ -78,7 +78,7 @@ func _on_animation_finished(anim_name: String = "") -> void:
 	current_state._on_animation_finished(anim_name)
 
 
-func _change_state(state_name: String , value = null) -> void:
+func _change_state(state_name: String , value = null, value2 = null) -> void:
 	if not _active:
 		return
 	current_state.exit()
@@ -92,5 +92,4 @@ func _change_state(state_name: String , value = null) -> void:
 	emit_signal("state_changed", current_state)
 	
 	if state_name != "previous":
-		current_state.enter(value)
-	print(state_name)
+		current_state.enter(value , value2)

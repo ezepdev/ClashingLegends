@@ -753,10 +753,10 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="Body" parent="." index="2"]
-position = Vector2( 0, -59 )
 scale = Vector2( 5, 5 )
-texture = ExtResource( 10 )
-hframes = 3
+texture = ExtResource( 8 )
+hframes = 2
+frame = 1
 
 [node name="Eye" parent="Body" index="0"]
 visible = false
@@ -813,7 +813,7 @@ anims/shoot = SubResource( 12 )
 collision_mask = 4
 
 [node name="CollisionPolygon2D" parent="Enemy_Detection_Area" index="0"]
-polygon = PoolVector2Array( -2, -3, 2, 161, 164, 96, 159, -122, 0, -184 )
+polygon = PoolVector2Array( -54, -240, -1, -236, 96, -212, 146, -155, 174, -85, 191, -21, 190, 44, 167, 105, 118, 164, 48, 193, -18, 202, -69, 192, -60, -9, -62, -92, -58, -146, -55, -198 )
 
 [node name="DestructionArea" parent="." index="8"]
 collision_layer = 0
@@ -830,11 +830,11 @@ num_sides = 32
 shape = SubResource( 10 )
 
 [node name="PlayerAudio" parent="." index="10"]
-stream = ExtResource( 12 )
+stream = ExtResource( 14 )
 volume_db = -5.0
 
 [node name="PlayerVoice" parent="." index="11"]
-stream = ExtResource( 17 )
+stream = ExtResource( 16 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine/Dash" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Enemy_Detection_Area" to="." method="_on_Enemy_Detection_Area_body_entered"]
