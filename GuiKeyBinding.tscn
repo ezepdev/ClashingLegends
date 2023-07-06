@@ -1,0 +1,81 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://BtnParent.tscn" type="PackedScene" id=1]
+[ext_resource path="res://GuiKeyBinding.gd" type="Script" id=2]
+
+[node name="GuiKeyBinding" type="CanvasLayer"]
+pause_mode = 2
+layer = 3
+script = ExtResource( 2 )
+
+[node name="GridContainer" type="GridContainer" parent="."]
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -54.0
+margin_top = -42.0
+margin_right = 54.0
+margin_bottom = 42.0
+custom_constants/vseparation = 12
+custom_constants/hseparation = 12
+columns = 2
+
+[node name="Label" type="Label" parent="GridContainer"]
+margin_top = 3.0
+margin_right = 37.0
+margin_bottom = 17.0
+text = "JUMP:"
+align = 1
+valign = 1
+
+[node name="BtnParent" parent="GridContainer" groups=["button_keys"] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 49.0
+margin_right = 108.0
+margin_bottom = 20.0
+focus_mode = 0
+enabled_focus_mode = 0
+icon_align = 1
+action_name = "jump2"
+
+[node name="Label2" type="Label" parent="GridContainer"]
+margin_top = 35.0
+margin_right = 37.0
+margin_bottom = 49.0
+text = "JUMP:"
+align = 1
+valign = 1
+
+[node name="BtnParent2" parent="GridContainer" groups=["button_keys"] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 49.0
+margin_top = 32.0
+margin_right = 108.0
+margin_bottom = 52.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Up_Key"
+icon_align = 1
+
+[node name="Label3" type="Label" parent="GridContainer"]
+margin_top = 67.0
+margin_right = 37.0
+margin_bottom = 81.0
+text = "JUMP:"
+align = 1
+valign = 1
+
+[node name="BtnParent3" parent="GridContainer" groups=["button_keys"] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 49.0
+margin_top = 64.0
+margin_right = 108.0
+margin_bottom = 84.0
+focus_mode = 0
+enabled_focus_mode = 0
+text = "Up_Key"
+icon_align = 1

@@ -23,4 +23,11 @@ func _on_ShowCharTimer_timeout():
 		buttons_container.show()
 
 func _on_Restart_pressed():
-	pass
+	var new_scene = load("res://Main.tscn")
+	get_tree().change_scene_to(new_scene)
+	queue_free()
+
+func _on_Exit_pressed():
+	var new_scene = load("res://screens/MainMenu.tscn")
+	get_tree().change_scene_to(new_scene)
+	queue_free()

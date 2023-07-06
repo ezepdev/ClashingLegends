@@ -42,6 +42,10 @@ config/name="Clashing Legends"
 run/main_scene="res://screens/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GuiKeyBinding="*res://GuiKeyBinding.tscn"
+
 [gui]
 
 common/drop_mouse_on_gui_input_disabled=true

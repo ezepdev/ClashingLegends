@@ -49,6 +49,7 @@ extents = Vector2( 32, 32 )
 collision_layer = 258
 collision_mask = 258
 script = ExtResource( 1 )
+ACCELERATION = 200.0
 projectile_scene = ExtResource( 5 )
 
 [node name="DashPolice" type="RayCast2D" parent="."]

@@ -80,12 +80,11 @@ func _on_Player_die(id):
 		player_winner = 2
 	else:
 		player_winner = 1
-		
-		
 	var hud_scene = preload("res://HUD.tscn")
 	var hud_instance = hud_scene.instance()
 	get_parent().add_child(hud_instance)
 	hud_instance.initialize("Player " + str(player_winner) + " wins")
+	get_tree().get_root().get_child(1).set_process_input(false)
 	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

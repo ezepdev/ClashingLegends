@@ -16,16 +16,22 @@ alignment = 1
 script = ExtResource( 1 )
 
 [node name="ContinueBtn" type="Button" parent="."]
-margin_left = 458.0
-margin_right = 527.0
+margin_left = 450.0
+margin_right = 519.0
 margin_bottom = 20.0
 text = "Continue"
 
 [node name="ExitBtn" type="Button" parent="."]
-margin_left = 531.0
-margin_right = 566.0
+margin_left = 523.0
+margin_right = 558.0
 margin_bottom = 20.0
 text = "Exit"
 
+[node name="Controls" type="Button" parent="."]
+margin_left = 562.0
+margin_right = 574.0
+margin_bottom = 20.0
+
 [connection signal="pressed" from="ContinueBtn" to="." method="_on_ContinueBtn_pressed"]
 [connection signal="pressed" from="ExitBtn" to="." method="_on_ExitBtn_pressed"]
+[connection signal="pressed" from="Controls" to="." method="_on_Controls_pressed"]

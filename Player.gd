@@ -204,6 +204,8 @@ func handle_charge_jump(delta):
 	
 	if Input.is_action_pressed("jump" + str(id)):
 		_play_animation("chargejump", false)
+		jump_pressed_time += delta
+		
 		if jump_pressed_time >= JUMP_CHARGE_TIME && on_floor:
 			jump_force_charged = JUMP_CHARGE_FORCE
 			jump_count=2
@@ -216,8 +218,6 @@ func handle_jump():
 	var on_floor: bool = is_on_floor()
 
 	if Input.is_action_just_released("jump" + str(id)) && jump_count > 0:
-#				color_transition_timer = 0
-#				body.modulate = loading_color
 				if !on_floor && jump_count == 1 && velocity.y > 0:
 					velocity.y = 0
 					jump_force_charged = JUMP_CHARGE_FORCE / 2
