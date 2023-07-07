@@ -158,13 +158,13 @@ anchor_bottom = 1.0
 [node name="Player1" parent="." instance=ExtResource( 4 )]
 position = Vector2( 14068, -4749 )
 collision_layer = 4
-max_health = 10.0
 ACCELERATION = 100.0
 
 [node name="Player2" parent="." instance=ExtResource( 2 )]
 position = Vector2( 6956, -5397 )
 collision_layer = 2
 collision_mask = 1
+max_health = 10.0
 ACCELERATION = 100.0
 
 [node name="ws5" type="StaticBody2D" parent="."]

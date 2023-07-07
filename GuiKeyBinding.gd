@@ -2,9 +2,7 @@ extends CanvasLayer
 
 var file_name = "res://keybinding.json"
 
-var key_dict = {"jump2":119,
-				"Move_Right":68,
-				"Move_Left":65}
+var key_dict = {"jump2":38}
 				
 var setting_key = false
 
@@ -43,7 +41,7 @@ func setup_keys():
 	for i in key_dict:
 		for j in get_tree().get_nodes_in_group("button_keys"):
 			if(j.action_name == i):
-				j.text = OS.get_scancode_string(key_dict[i])
+				j.text = OS.get_scancode_string(key_dict[i]) 
 		var newkey = InputEventKey.new()
 		newkey.scancode = int(key_dict[i])
 		InputMap.action_add_event(i,newkey)
