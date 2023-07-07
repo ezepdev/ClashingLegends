@@ -57,7 +57,7 @@ position = Vector2( 0, 10 )
 rotation = -1.5708
 scale = Vector2( 4, 1 )
 enabled = true
-cast_to = Vector2( 0, 600 )
+cast_to = Vector2( 0, 620 )
 
 [node name="PlayerStateMachine" type="Node" parent="."]
 script = ExtResource( 6 )

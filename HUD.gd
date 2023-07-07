@@ -21,6 +21,7 @@ func _on_ShowCharTimer_timeout():
 	else:
 		show_char_timer.stop()
 		buttons_container.show()
+		get_node("ButtonsContainer/Restart").re_focus()
 
 func _on_Restart_pressed():
 	var new_scene = load("res://Main.tscn")

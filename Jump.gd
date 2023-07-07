@@ -26,9 +26,14 @@ func handle_input(event: InputEvent) -> void:
 		elif doble_jump == 1:
 			doble_jump = 0 
 			character._play_animation("jump" , false)
-	if event.is_action_pressed("move_left" + str(character.id)) || event.is_action_pressed("move_right" + str(character.id)):
-		if character.handle_dash():
-			emit_signal("finished", "dash")
+	elif event is InputEventKey: 
+		if event.is_action_pressed("move_left" + str(character.id)) || event.is_action_pressed("move_right" + str(character.id)):
+			if character.handle_dash():
+				emit_signal("finished", "dash")
+	elif event is InputEventJoypadButton:
+		if character.handle_dash_joystick():
+			if event.is_action_pressed("joystick_dash" + str(character.id)):
+				emit_signal("finished" , "dash")
 
 
 func update(delta:float) -> void:

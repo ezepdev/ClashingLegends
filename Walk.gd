@@ -11,6 +11,14 @@ func exit() -> void:
 func handle_input(event: InputEvent) -> void:
 	if event.is_action_released("jump" + str(character.id)):
 		emit_signal("finished","jump")
+	elif event is InputEventKey: 
+		if event.is_action_pressed("move_left" + str(character.id)) || event.is_action_pressed("move_right" + str(character.id)):
+			if character.handle_dash():
+				emit_signal("finished", "dash")
+	elif event is InputEventJoypadButton:
+		if character.handle_dash_joystick():
+			if event.is_action_pressed("joystick_dash" + str(character.id)):
+				emit_signal("finished" , "dash")
 
 
 

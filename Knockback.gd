@@ -9,6 +9,7 @@ var destruction_polygon
 var gravity = 10
 var audio_explosion
 var power_copy
+var destruction_area
 
 func enter(knockback = null , power = null )  -> void:
 	if power < 1000:
@@ -23,22 +24,22 @@ func enter(knockback = null , power = null )  -> void:
 	audio_explosion = character.get_parent().get_node("Explosion")
 	character._play_animation("knockback")
 	destructibles = get_tree().get_nodes_in_group("Destructible")
+	destruction_area = character.get_node("DestructionArea")
 	destruction_polygon = character.get_node("DestructionArea/Polygon2D")
-	character.get_node("DestructionArea").monitoring = true
+	destruction_area.monitoring = true
 	knockbackTimer = 0
 	knockback_copy = knockback
 	character.velocity = knockback * power
 
 
 func exit()  -> void:
-	return
+	destruction_area.monitoring = false
 
 func update(delta:float) -> void:
 		knockbackTimer += delta
 		character.velocity -= knockback_copy * 30
-		character.velocity.y += gravity
 		character.move_and_slide(character.velocity)
-		for body in character.get_node("DestructionArea").get_overlapping_bodies():
+		for body in destruction_area.get_overlapping_bodies():
 			if body in destructibles:
 				call_deferred("calculate_destruction" , body , destruction_polygon)
 		if knockbackTimer >= KNOCKBACK_DURATION:

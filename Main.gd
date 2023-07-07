@@ -17,6 +17,7 @@ func _process(delta):
 	if (Input.is_action_just_pressed("pause")):
 		get_tree().set_pause(true);
 		menu_pause.visible = true;
+		menu_pause.get_node("ContinueBtn").re_focus()
 		
 func playRandomBackgroundMusic():
 	var randomIndex = rand_range(0, backgroundMusic.size())

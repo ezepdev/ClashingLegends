@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://screens/MainMenu.gd" type="Script" id=1]
 [ext_resource path="res://assets/font/Default-Big.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fondo.jpg" type="Texture" id=3]
 [ext_resource path="res://assets/font/Heroes Legend.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://audio/Background songs/Falling In Reverse - 'Voices In My Head' ｜ Instrumental ｜ 🎸💯🔥 [v4xoWeZiEeE] (mp3cut.net).mp3" type="AudioStream" id=5]
+[ext_resource path="res://ContinueBtn.gd" type="Script" id=6]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50
@@ -65,6 +66,7 @@ __meta__ = {
 margin_top = 221.0
 margin_right = 334.0
 margin_bottom = 280.0
+focus_neighbour_bottom = NodePath("../ExitBtn")
 custom_colors/font_color = Color( 0.968627, 0.890196, 0.0509804, 1 )
 custom_colors/font_color_hover = Color( 0.956863, 0.0352941, 0.898039, 1 )
 custom_fonts/font = SubResource( 1 )
@@ -72,11 +74,13 @@ text = "START"
 flat = true
 clip_text = true
 expand_icon = true
+script = ExtResource( 6 )
 
 [node name="ExitBtn" type="Button" parent="Container/Buttons"]
 margin_top = 320.0
 margin_right = 334.0
 margin_bottom = 379.0
+focus_neighbour_top = NodePath("../StartBtn")
 custom_colors/font_color = Color( 0.996078, 0.909804, 0, 1 )
 custom_colors/font_color_hover = Color( 0.952941, 0.0509804, 0.0509804, 1 )
 custom_fonts/font = SubResource( 1 )

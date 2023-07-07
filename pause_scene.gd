@@ -7,6 +7,7 @@ func _process(delta):
 	if (GuiKeyBinding.visible && Input.is_action_just_pressed("pause")):
 		GuiKeyBinding.visible = false
 		visible = true
+		get_node("ContinueBtn").re_focus()
 
 func _on_ContinueBtn_pressed():
 	visible = false;

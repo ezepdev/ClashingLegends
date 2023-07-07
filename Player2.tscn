@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=2]
+[gd_scene load_steps=36 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/dbz/Vegito-Normal_27.png" type="Texture" id=2]
@@ -20,6 +20,7 @@
 [ext_resource path="res://assets/dbz/Vegito_jump_charge.png" type="Texture" id=18]
 [ext_resource path="res://audio/Vegito/vegito knock.wav" type="AudioStream" id=19]
 [ext_resource path="res://audio/Vegito/vegito knock 2.wav" type="AudioStream" id=20]
+[ext_resource path="res://assets/dbz/Vegito-Normal_53.png" type="Texture" id=21]
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 18.0532, 46.9775 )
@@ -50,10 +51,22 @@ tracks/1/keys = {
 "update": 0,
 "values": [ ExtResource( 19 ) ]
 }
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 25 ) ]
+}
 
 [sub_resource type="Animation" id=16]
 resource_name = "chargejump"
-length = 0.2
+length = 0.22
 loop = true
 tracks/0/type = "value"
 tracks/0/path = NodePath("Body:texture")
@@ -521,6 +534,58 @@ tracks/3/keys = {
 "values": [ Vector2( 0, 0 ) ]
 }
 
+[sub_resource type="Animation" id=17]
+resource_name = "jumpcharge"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 21 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 3.9931e-05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 3.9931e-05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 25 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 3.9931e-05 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+
 [sub_resource type="Animation" id=15]
 resource_name = "knockback"
 tracks/0/type = "value"
@@ -753,10 +818,9 @@ collision_layer = 4
 collision_mask = 0
 
 [node name="Body" parent="." index="2"]
+position = Vector2( 0, 25 )
 scale = Vector2( 5, 5 )
-texture = ExtResource( 8 )
-hframes = 2
-frame = 1
+texture = ExtResource( 21 )
 
 [node name="Eye" parent="Body" index="0"]
 visible = false
@@ -805,6 +869,7 @@ anims/fly = SubResource( 7 )
 anims/hit = SubResource( 13 )
 anims/idle = SubResource( 4 )
 anims/jump = SubResource( 8 )
+anims/jumpcharge = SubResource( 17 )
 anims/knockback = SubResource( 15 )
 anims/move = SubResource( 9 )
 anims/shoot = SubResource( 12 )
@@ -830,11 +895,11 @@ num_sides = 32
 shape = SubResource( 10 )
 
 [node name="PlayerAudio" parent="." index="10"]
-stream = ExtResource( 14 )
+stream = ExtResource( 12 )
 volume_db = -5.0
 
 [node name="PlayerVoice" parent="." index="11"]
-stream = ExtResource( 16 )
+stream = ExtResource( 19 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine/Dash" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Enemy_Detection_Area" to="." method="_on_Enemy_Detection_Area_body_entered"]

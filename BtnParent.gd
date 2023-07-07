@@ -29,3 +29,7 @@ func _input(event):
 
 
 	
+
+
+func _on_BtnParent_pressed():
+	pass # Replace with function body.

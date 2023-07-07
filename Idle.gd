@@ -2,17 +2,22 @@ extends "res://AbstractState.gd"
 
 
 func enter(value = null , value2 = null) -> void:
-	print("idle")
 	character._play_animation("idle")
 
 func handle_input(event: InputEvent) -> void:
+	
 	if event.is_action_released("jump" + str(character.id)):
 		emit_signal("finished","jump")
 	elif character.is_on_floor() && event.is_action_pressed("charge_mana" + str(character.id)):
 		emit_signal("finished" , "charge")
-	elif event.is_action_pressed("move_left" + str(character.id)) || event.is_action_pressed("move_right" + str(character.id)):
-		if character.handle_dash():
-			emit_signal("finished", "dash")
+	elif event is InputEventKey: 
+		if event.is_action_pressed("move_left" + str(character.id)) || event.is_action_pressed("move_right" + str(character.id)):
+			if character.handle_dash():
+				emit_signal("finished", "dash")
+	elif event is InputEventJoypadButton:
+		if character.handle_dash_joystick():
+			if event.is_action_pressed("joystick_dash" + str(character.id)):
+				emit_signal("finished" , "dash")
 
 
 func update(delta:float) -> void:
@@ -26,7 +31,7 @@ func update(delta:float) -> void:
 		character._handle_deacceleration()
 		character.apply_speed_limit()
 		character._apply_movement()
-		if character.is_on_floor() && character.anim_player.get_current_animation() != "hit" && character.anim_player.get_current_animation() != "shoot"  && character.anim_player.get_current_animation() != "energy"  && character.anim_player.get_current_animation() != "chargejump":
+		if character.is_on_floor() && character.anim_player.get_current_animation() != "hit" && character.anim_player.get_current_animation() != "shoot"  && character.anim_player.get_current_animation() != "energy"  && character.anim_player.get_current_animation() != "chargejump" && character.anim_player.get_current_animation() != "jumpcharge":
 			character._play_animation("idle")
 		elif !character.is_on_floor():
 			character._play_animation("jump")

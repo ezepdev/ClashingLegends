@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=2]
+[gd_scene load_steps=37 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/player.png" type="Texture" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://audio/BCGOKSND_00007.wav" type="AudioStream" id=19]
 [ext_resource path="res://assets/dbz/Goku-2_131.png" type="Texture" id=20]
 [ext_resource path="res://AbstractState.gd" type="Script" id=21]
+[ext_resource path="res://assets/dbz/Goku-2_202.png" type="Texture" id=22]
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 18.0532, 46.9775 )
@@ -50,6 +51,18 @@ tracks/1/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ ExtResource( 19 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 16 ) ]
 }
 
 [sub_resource type="Animation" id=12]
@@ -558,6 +571,57 @@ tracks/4/keys = {
 "values": [ Vector2( -16, 16 ) ]
 }
 
+[sub_resource type="Animation" id=15]
+resource_name = "jumpcharge"
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 22 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 16 ) ]
+}
+
 [sub_resource type="Animation" id=14]
 resource_name = "knockback"
 tracks/0/type = "value"
@@ -817,11 +881,9 @@ collision_mask = 1
 script = ExtResource( 21 )
 
 [node name="Body" parent="." index="2"]
-position = Vector2( 9, 34 )
+position = Vector2( 0, 16 )
 scale = Vector2( 5, 5 )
-texture = ExtResource( 8 )
-hframes = 2
-frame = 1
+texture = ExtResource( 22 )
 
 [node name="Eye" parent="Body" index="0"]
 visible = false
@@ -869,6 +931,7 @@ anims/fly = SubResource( 7 )
 anims/hit = SubResource( 9 )
 anims/idle = SubResource( 2 )
 anims/jump = SubResource( 5 )
+anims/jumpcharge = SubResource( 15 )
 anims/knockback = SubResource( 14 )
 anims/move = SubResource( 6 )
 anims/shoot = SubResource( 10 )
@@ -899,7 +962,7 @@ stream = ExtResource( 13 )
 volume_db = -5.0
 
 [node name="PlayerVoice" parent="." index="11"]
-stream = ExtResource( 14 )
+stream = ExtResource( 19 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine/Dash" method="_on_AnimationPlayer_animation_finished"]
 [connection signal="body_entered" from="Enemy_Detection_Area" to="." method="_on_Enemy_Detection_Area_body_entered"]

@@ -11,6 +11,10 @@ onready var countdown_timer = $CountdownTimer
 onready var dash_police = $DashPolice
 onready var audio_player = $PlayerAudio
 onready var audio_voice = $PlayerVoice
+onready var audio_explosion = get_parent().get_node("Explosion")
+onready var destructibles = get_tree().get_nodes_in_group("Destructible")
+onready var destruction_polygon = get_node("DestructionArea/Polygon2D")
+onready var destruction_area = get_node("DestructionArea")
 
 # signals
 signal health_changed(current_health,id)
@@ -21,7 +25,7 @@ signal player_die(id)
 export (float) var max_health = 500.0
 var health_player:float = max_health
 export (float) var max_mana = 500.0
-export (float) var energy_power_penalty = 50.0
+export (float) var energy_power_penalty = 100.0
 var mana_player:float = max_mana
 
 # knockback
@@ -110,7 +114,7 @@ func initialize(projectile_container , id):
 func handle_energy_charge():
 		# Energy charge 
 	if Input.is_action_pressed("charge_mana" + str(id)) && is_on_floor():
-		if (mana_player + 10 < max_mana):
+		if (mana_player < max_mana):
 			mana_player += 2
 			emit_signal("mana_changed",get_mana(),id)
 	
@@ -154,6 +158,13 @@ func handle_dash():
 		if is_action_repeat && can_dash && count_is_action_repeated == 1 && !dash_police.is_colliding() && mana_player - 100 > 0:
 			return true
 
+func handle_dash_joystick():
+	if !dash_police.is_colliding() && mana_player - 100 > 0:
+		return true
+	else:
+		return false
+	
+
 func apply_speed_limit():
 	if is_on_floor():
 		velocity.x = clamp(velocity.x, -2000, 2000)
@@ -163,9 +174,23 @@ func apply_speed_limit():
 func _handle_deacceleration():
 		velocity.x = lerp(velocity.x, 0, FRICTION_WEIGHT) if abs(velocity.x) > 1 else 0
 
+func calculate_destruction(body , destruction_polygon):
+	var final_position = Transform2D(0, get_node("DestructionArea/Polygon2D").global_position).xform(get_node("DestructionArea/Polygon2D").polygon)
+	body.carve(final_position)
+	audio_explosion.play()
+
 func _apply_movement():
 	velocity.y += GRAVITY
 	velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, SLOPE_THRESHOLD)
+	if abs(velocity.x) >=2000 || abs(velocity.y)  >=2000:
+		destruction_area.monitoring = true
+		print("x: " + str(velocity.x))
+		print("y: " + str(velocity.y))
+		for body in destruction_area.get_overlapping_bodies():
+			if body in destructibles:
+				call_deferred("calculate_destruction" , body , destruction_polygon)
+			else:
+				destruction_area.monitoring = false
 	
 func get_health():
 	return (health_player / max_health) * 100
@@ -190,6 +215,8 @@ func handle_fire():
 	if Input.is_action_pressed("fire_cannon" + str(id)):
 		if (mana_player > 0):
 			fire()
+			if mana_player < 0:
+				mana_player = 0
 
 func handle_hit():
 	if Input.is_action_just_pressed("hit_enemy" + str(id)):
@@ -203,15 +230,17 @@ func handle_charge_jump(delta):
 	var on_floor: bool = is_on_floor()
 	
 	if Input.is_action_pressed("jump" + str(id)):
-		_play_animation("chargejump", false)
 		jump_pressed_time += delta
 		
 		if jump_pressed_time >= JUMP_CHARGE_TIME && on_floor:
 			jump_force_charged = JUMP_CHARGE_FORCE
 			jump_count=2
+			_play_animation("chargejump", false)
 			
 		elif jump_pressed_time < JUMP_CHARGE_TIME && jump_pressed_time > 0.1:
+			_play_animation("jumpcharge", false)
 			jump_force_charged = JUMP_CHARGE_FORCE / 2
+			
 
 func handle_jump():
 	
@@ -236,7 +265,10 @@ func handle_jump():
 func dash(valor):
 		mana_player -= 100
 		global_position.x += valor
+		if mana_player < 0:
+			mana_player = 0
 		emit_signal("mana_changed",get_mana(),id)
+		
 
 	
 func get_current_action_name():
@@ -276,7 +308,7 @@ func _on_Enemy_Detection_Area_body_entered(body : Player):
 	if velocity.y <=  0:
 		y_hit = -velocity.y
 	if body != null:
-		body.notify_hit(60 , global_position.direction_to(body.global_position) , hit_force + y_hit + 500)
+		body.notify_hit(25 , global_position.direction_to(body.global_position) , hit_force + y_hit + 500)
 
 func _on_CountdownTimer_timeout():
 	fire_available = true

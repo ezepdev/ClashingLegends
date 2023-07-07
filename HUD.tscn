@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/font/Heroes Legend.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://HUD.gd" type="Script" id=2]
+[ext_resource path="res://ContinueBtn.gd" type="Script" id=3]
 
 [sub_resource type="DynamicFont" id=1]
 size = 47
@@ -54,16 +55,25 @@ margin_bottom = 20.0
 [node name="Restart" type="Button" parent="ButtonsContainer"]
 margin_right = 199.0
 margin_bottom = 40.0
+focus_neighbour_left = NodePath("../Exit")
+focus_neighbour_right = NodePath("../Exit")
+focus_next = NodePath("../Exit")
+focus_previous = NodePath("../Exit")
 custom_colors/font_color = Color( 0.996078, 0.0156863, 0.0156863, 0.388235 )
 custom_colors/font_color_hover = Color( 0.878431, 0.0156863, 0.0156863, 1 )
 custom_fonts/font = SubResource( 2 )
 text = "Restart"
 flat = true
+script = ExtResource( 3 )
 
 [node name="Exit" type="Button" parent="ButtonsContainer"]
 margin_left = 203.0
 margin_right = 316.0
 margin_bottom = 40.0
+focus_neighbour_left = NodePath("../Restart")
+focus_neighbour_right = NodePath("../Restart")
+focus_next = NodePath("../Restart")
+focus_previous = NodePath("../Restart")
 custom_colors/font_color = Color( 0.94902, 0.0392157, 0.294118, 0.388235 )
 custom_colors/font_color_hover = Color( 0.94902, 0.0392157, 0.294118, 1 )
 custom_fonts/font = SubResource( 3 )
