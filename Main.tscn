@@ -1,8 +1,8 @@
-[gd_scene load_steps=21 format=2]
+[gd_scene load_steps=39 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player2.tscn" type="PackedScene" id=2]
-[ext_resource path="res://assets/player.png" type="Texture" id=3]
+[ext_resource path="res://assets/basics/player.png" type="Texture" id=3]
 [ext_resource path="res://Player1.tscn" type="PackedScene" id=4]
 [ext_resource path="res://assets/GUI/energy_bar_bg.png" type="Texture" id=5]
 [ext_resource path="res://Camera2D.gd" type="Script" id=6]
@@ -10,16 +10,90 @@
 [ext_resource path="res://assets/GUI/lifebar_fill.png" type="Texture" id=8]
 [ext_resource path="res://GUI.gd" type="Script" id=9]
 [ext_resource path="res://pause_scene.tscn" type="PackedScene" id=10]
-[ext_resource path="res://assets/City-Background-in-the-Afternoon-Graphics-3175113-1.jpg" type="Texture" id=11]
+[ext_resource path="res://assets/buildings/City-Background-in-the-Afternoon-Graphics-3175113-1.jpg" type="Texture" id=11]
 [ext_resource path="res://Destructible.tscn" type="PackedScene" id=12]
 [ext_resource path="res://assets/font/Urban Heroes.ttf" type="DynamicFontData" id=13]
 [ext_resource path="res://assets/GUI/energy_bar_fill.png" type="Texture" id=14]
 [ext_resource path="res://audio/Explosion.wav" type="AudioStream" id=15]
 [ext_resource path="res://DestructibleGenerator.gd" type="Script" id=16]
-[ext_resource path="res://Destructible.gd" type="Script" id=17]
+[ext_resource path="res://assets/buildings/WindowsAndBalconies_S.jpg" type="Texture" id=17]
+[ext_resource path="res://assets/buildings/bldg3.png" type="Texture" id=18]
+[ext_resource path="res://assets/buildings/Cozy World Builder_Destroyed, Fire_image-3_1688835229.png" type="Texture" id=20]
+[ext_resource path="res://assets/buildings/FD31oqmjQGu0XCh9nABtOw.png" type="Texture" id=21]
+[ext_resource path="res://assets/buildings/20483.jpg" type="Texture" id=22]
 
 [sub_resource type="RectangleShape2D" id=2]
 extents = Vector2( 9.85431, 32.9867 )
+
+[sub_resource type="AtlasTexture" id=5]
+flags = 4
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 650, 2000 )
+
+[sub_resource type="AtlasTexture" id=6]
+flags = 4
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 650, 3000 )
+
+[sub_resource type="AtlasTexture" id=7]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 975, 6300 )
+
+[sub_resource type="AtlasTexture" id=8]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 975, 6300 )
+
+[sub_resource type="AtlasTexture" id=9]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 650, 2000 )
+
+[sub_resource type="AtlasTexture" id=10]
+flags = 4
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 750, 2600 )
+
+[sub_resource type="AtlasTexture" id=11]
+flags = 4
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 120, 150 )
+
+[sub_resource type="AtlasTexture" id=12]
+flags = 4
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 280, 200 )
+
+[sub_resource type="AtlasTexture" id=13]
+flags = 4
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 500, 200 )
+
+[sub_resource type="AtlasTexture" id=14]
+flags = 4
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 1060, 850 )
+
+[sub_resource type="AtlasTexture" id=15]
+flags = 4
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 1850, 220 )
+
+[sub_resource type="AtlasTexture" id=16]
+flags = 4
+atlas = ExtResource( 17 )
+region = Rect2( 0, 0, 2250, 220 )
+
+[sub_resource type="AtlasTexture" id=17]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 2000, 6000 )
+
+[sub_resource type="AtlasTexture" id=18]
+flags = 4
+atlas = ExtResource( 18 )
+region = Rect2( 0, 0, 2000, 6000 )
 
 [sub_resource type="DynamicFont" id=3]
 size = 69
@@ -164,17 +238,6 @@ anchor_bottom = 1.0
 
 [node name="pause_scene" parent="UI/Menu" instance=ExtResource( 10 )]
 
-[node name="Player1" parent="." instance=ExtResource( 4 )]
-position = Vector2( 14848, -7189 )
-collision_layer = 4
-ACCELERATION = 100.0
-
-[node name="Player2" parent="." instance=ExtResource( 2 )]
-position = Vector2( -13638, -7194 )
-collision_layer = 2
-collision_mask = 1
-ACCELERATION = 100.0
-
 [node name="ws5" type="StaticBody2D" parent="."]
 position = Vector2( -23642, -1891 )
 rotation = -1.57079
@@ -284,11 +347,76 @@ shape = SubResource( 2 )
 
 [node name="Destructibles" type="Node" parent="."]
 
+[node name="Sprite2" type="Sprite" parent="Destructibles"]
+position = Vector2( -4818, -2379 )
+scale = Vector2( 3.89648, 6.53728 )
+texture = ExtResource( 21 )
+
+[node name="Sprite" type="Sprite" parent="Destructibles"]
+position = Vector2( 5363, -2388 )
+scale = Vector2( 3.89453, 6.5636 )
+texture = ExtResource( 20 )
+
+[node name="Sprite4" type="Sprite" parent="Destructibles"]
+position = Vector2( 14959, -392 )
+scale = Vector2( 1.27734, 2.17105 )
+texture = ExtResource( 20 )
+
+[node name="Sprite5" type="Sprite" parent="Destructibles"]
+position = Vector2( 16455, -2547 )
+scale = Vector2( 1.62891, 6.89693 )
+texture = ExtResource( 21 )
+
+[node name="Sprite13" type="Sprite" parent="Destructibles"]
+position = Vector2( -14129.5, -2547.5 )
+scale = Vector2( 1.88476, 6.9068 )
+texture = ExtResource( 21 )
+
+[node name="Sprite3" type="Sprite" parent="Destructibles"]
+position = Vector2( -5703, 3116 )
+scale = Vector2( 1.59501, 1.30991 )
+texture = ExtResource( 22 )
+
+[node name="Sprite6" type="Sprite" parent="Destructibles"]
+position = Vector2( -14553, 3119 )
+scale = Vector2( 1.59501, 1.30991 )
+texture = ExtResource( 22 )
+
+[node name="Sprite7" type="Sprite" parent="Destructibles"]
+position = Vector2( -14542, 8107 )
+scale = Vector2( 1.59501, 1.30991 )
+texture = ExtResource( 22 )
+
+[node name="Sprite8" type="Sprite" parent="Destructibles"]
+position = Vector2( -5628, 8104 )
+scale = Vector2( 1.59501, 1.30991 )
+texture = ExtResource( 22 )
+
+[node name="Sprite9" type="Sprite" parent="Destructibles"]
+position = Vector2( 3372, 8104 )
+scale = Vector2( 1.59501, 1.30991 )
+texture = ExtResource( 22 )
+
+[node name="Sprite10" type="Sprite" parent="Destructibles"]
+position = Vector2( 3372, 3123 )
+scale = Vector2( 1.59501, 1.30991 )
+texture = ExtResource( 22 )
+
+[node name="Sprite11" type="Sprite" parent="Destructibles"]
+position = Vector2( 12379, 3133 )
+scale = Vector2( 1.59501, 1.30991 )
+texture = ExtResource( 22 )
+
+[node name="Sprite12" type="Sprite" parent="Destructibles"]
+position = Vector2( 12331, 8104 )
+scale = Vector2( 1.59501, 1.30991 )
+texture = ExtResource( 22 )
+
 [node name="Control" type="Control" parent="Destructibles"]
-margin_left = 10245.0
-margin_top = -963.0
-margin_right = 11288.0
-margin_bottom = -745.0
+margin_left = 11523.0
+margin_top = -7636.0
+margin_right = 12155.0
+margin_bottom = -2275.0
 script = ExtResource( 16 )
 destructible_scene = ExtResource( 12 )
 
@@ -300,6 +428,7 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 650, 2 ), Vector2( 650, 2000 ), V
 polygon = PoolVector2Array( 0, 0, 650, 2, 650, 2000, 0, 2000 )
 
 [node name="Polygonete" parent="Destructibles/Destructible/CollisionPolygon2D" index="1"]
+texture = SubResource( 5 )
 polygon = PoolVector2Array( 0, 0, 650, 2, 650, 2000, 0, 2000 )
 
 [node name="Destructible2" parent="Destructibles" instance=ExtResource( 12 )]
@@ -310,6 +439,7 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 650, 0 ), Vector2( 650, 3000 ), V
 polygon = PoolVector2Array( 0, 0, 650, 0, 650, 3000, 0, 3000 )
 
 [node name="Polygonete" parent="Destructibles/Destructible2/CollisionPolygon2D" index="1"]
+texture = SubResource( 6 )
 polygon = PoolVector2Array( 0, 0, 650, 0, 650, 3000, 0, 3000 )
 
 [node name="Destructible3" parent="Destructibles" instance=ExtResource( 12 )]
@@ -320,6 +450,8 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 975, 0 ), Vector2( 975, 6300 ), V
 polygon = PoolVector2Array( 0, 0, 975, 0, 975, 6300, 0, 6300 )
 
 [node name="Polygonete" parent="Destructibles/Destructible3/CollisionPolygon2D" index="1"]
+rotation = -0.00171057
+texture = SubResource( 7 )
 polygon = PoolVector2Array( 0, 0, 975, 0, 975, 6300, 0, 6300 )
 
 [node name="Destructible4" parent="Destructibles" instance=ExtResource( 12 )]
@@ -330,6 +462,7 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 975, 0 ), Vector2( 975, 6300 ), V
 polygon = PoolVector2Array( 0, 0, 975, 0, 975, 6300, 0, 6300 )
 
 [node name="Polygonete" parent="Destructibles/Destructible4/CollisionPolygon2D" index="1"]
+texture = SubResource( 8 )
 polygon = PoolVector2Array( 0, 0, 975, 0, 975, 6300, 0, 6300 )
 
 [node name="Destructible5" parent="Destructibles" instance=ExtResource( 12 )]
@@ -340,6 +473,7 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 650, 2 ), Vector2( 650, 2000 ), V
 polygon = PoolVector2Array( 0, 0, 650, 2, 650, 2000, 0, 2000 )
 
 [node name="Polygonete" parent="Destructibles/Destructible5/CollisionPolygon2D" index="1"]
+texture = SubResource( 9 )
 polygon = PoolVector2Array( 0, 0, 650, 2, 650, 2000, 0, 2000 )
 
 [node name="Destructible6" parent="Destructibles" instance=ExtResource( 12 )]
@@ -350,6 +484,7 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 750, 0 ), Vector2( 750, 2600 ), V
 polygon = PoolVector2Array( 0, 0, 750, 0, 750, 2600, 0, 2600 )
 
 [node name="Polygonete" parent="Destructibles/Destructible6/CollisionPolygon2D" index="1"]
+texture = SubResource( 10 )
 polygon = PoolVector2Array( 0, 0, 750, 0, 750, 2600, 0, 2600 )
 
 [node name="Edificio" type="Node" parent="Destructibles"]
@@ -362,6 +497,7 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 120, 0 ), Vector2( 120, 150 ), Ve
 polygon = PoolVector2Array( 0, 0, 120, 0, 120, 150, 0, 150 )
 
 [node name="Polygonete" parent="Destructibles/Edificio/Destructible7/CollisionPolygon2D" index="1"]
+texture = SubResource( 11 )
 polygon = PoolVector2Array( 0, 0, 120, 0, 120, 150, 0, 150 )
 
 [node name="Destructible8" parent="Destructibles/Edificio" instance=ExtResource( 12 )]
@@ -372,6 +508,7 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 280, 0 ), Vector2( 280, 200 ), Ve
 polygon = PoolVector2Array( 0, 0, 280, 0, 280, 200, 0, 200 )
 
 [node name="Polygonete" parent="Destructibles/Edificio/Destructible8/CollisionPolygon2D" index="1"]
+texture = SubResource( 12 )
 polygon = PoolVector2Array( 0, 0, 280, 0, 280, 200, 0, 200 )
 
 [node name="Destructible9" parent="Destructibles/Edificio" instance=ExtResource( 12 )]
@@ -382,6 +519,7 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 500, 0 ), Vector2( 500, 200 ), Ve
 polygon = PoolVector2Array( 0, 0, 500, 0, 500, 200, 0, 200 )
 
 [node name="Polygonete" parent="Destructibles/Edificio/Destructible9/CollisionPolygon2D" index="1"]
+texture = SubResource( 13 )
 polygon = PoolVector2Array( 0, 0, 500, 0, 500, 200, 0, 200 )
 
 [node name="Destructible10" parent="Destructibles/Edificio" instance=ExtResource( 12 )]
@@ -392,6 +530,7 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 1060, -1 ), Vector2( 1060, 850 ),
 polygon = PoolVector2Array( 0, 0, 1060, -1, 1060, 850, 0, 850 )
 
 [node name="Polygonete" parent="Destructibles/Edificio/Destructible10/CollisionPolygon2D" index="1"]
+texture = SubResource( 14 )
 polygon = PoolVector2Array( 0, 0, 1060, -1, 1060, 850, 0, 850 )
 
 [node name="Destructible11" parent="Destructibles/Edificio" instance=ExtResource( 12 )]
@@ -402,6 +541,7 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 1850, 0 ), Vector2( 1850, 220 ), 
 polygon = PoolVector2Array( 0, 0, 1850, 0, 1850, 220, 0, 220 )
 
 [node name="Polygonete" parent="Destructibles/Edificio/Destructible11/CollisionPolygon2D" index="1"]
+texture = SubResource( 15 )
 polygon = PoolVector2Array( 0, 0, 1850, 0, 1850, 220, 0, 220 )
 
 [node name="Destructible12" parent="Destructibles/Edificio" instance=ExtResource( 12 )]
@@ -412,6 +552,7 @@ starting_polygon = [ Vector2( 0, 50 ), Vector2( 2250, 50 ), Vector2( 2250, 220 )
 polygon = PoolVector2Array( 0, 50, 2250, 50, 2250, 220, 0, 220 )
 
 [node name="Polygonete" parent="Destructibles/Edificio/Destructible12/CollisionPolygon2D" index="1"]
+texture = SubResource( 16 )
 polygon = PoolVector2Array( 0, 50, 2250, 50, 2250, 220, 0, 220 )
 
 [node name="Destructible11" parent="Destructibles" instance=ExtResource( 12 )]
@@ -423,6 +564,7 @@ position = Vector2( -0.000488281, 0.000488281 )
 polygon = PoolVector2Array( 0, 0, 2000, 0, 2000, 6000, 0, 6000 )
 
 [node name="Polygonete" parent="Destructibles/Destructible11/CollisionPolygon2D" index="1"]
+texture = SubResource( 17 )
 polygon = PoolVector2Array( 0, 0, 2000, 0, 2000, 6000, 0, 6000 )
 
 [node name="Destructible13" parent="Destructibles" instance=ExtResource( 12 )]
@@ -433,6 +575,7 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 2000, 0 ), Vector2( 2000, 6000 ),
 polygon = PoolVector2Array( 0, 0, 2000, 0, 2000, 6000, 0, 6000 )
 
 [node name="Polygonete" parent="Destructibles/Destructible13/CollisionPolygon2D" index="1"]
+texture = SubResource( 18 )
 polygon = PoolVector2Array( 0, 0, 2000, 0, 2000, 6000, 0, 6000 )
 
 [node name="Destructible14" parent="Destructibles" instance=ExtResource( 12 )]
@@ -579,46 +722,28 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ),
 position = Vector2( -10128, 3104 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
 
-[node name="Destructible50" type="StaticBody2D" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+[node name="Destructible50" parent="Destructibles" instance=ExtResource( 12 )]
 position = Vector2( -19128, -1891 )
-collision_layer = 9
-collision_mask = 0
-script = ExtResource( 17 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
 
-[node name="Destructible51" type="StaticBody2D" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+[node name="Destructible51" parent="Destructibles" instance=ExtResource( 12 )]
 position = Vector2( -19128, -4388 )
-collision_layer = 9
-collision_mask = 0
-script = ExtResource( 17 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
 
-[node name="Destructible52" type="StaticBody2D" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+[node name="Destructible52" parent="Destructibles" instance=ExtResource( 12 )]
 position = Vector2( -19128, -6886 )
-collision_layer = 9
-collision_mask = 0
-script = ExtResource( 17 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
 
-[node name="Destructible53" type="StaticBody2D" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+[node name="Destructible53" parent="Destructibles" instance=ExtResource( 12 )]
 position = Vector2( -19128, -9385 )
-collision_layer = 9
-collision_mask = 0
-script = ExtResource( 17 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
 
-[node name="Destructible54" type="StaticBody2D" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+[node name="Destructible54" parent="Destructibles" instance=ExtResource( 12 )]
 position = Vector2( -19131, -11877 )
-collision_layer = 9
-collision_mask = 0
-script = ExtResource( 17 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
 
-[node name="Destructible55" type="StaticBody2D" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+[node name="Destructible55" parent="Destructibles" instance=ExtResource( 12 )]
 position = Vector2( -19135, -14369 )
-collision_layer = 9
-collision_mask = 0
-script = ExtResource( 17 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
 
 [node name="Destructible62" parent="Destructibles" instance=ExtResource( 12 )]
@@ -693,40 +818,28 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ),
 position = Vector2( 16872, -14318 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 4500, 0 ), Vector2( 4500, 2500 ), Vector2( 0, 2500 ) ]
 
-[node name="Destructible8" type="StaticBody2D" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+[node name="Destructible8" parent="Destructibles" instance=ExtResource( 12 )]
 position = Vector2( -8311, -2775 )
-collision_layer = 9
-collision_mask = 0
-script = ExtResource( 17 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 1043, 0 ), Vector2( 1043, 218 ), Vector2( 0, 218 ) ]
 
-[node name="Destructible7" type="StaticBody2D" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+[node name="Destructible7" parent="Destructibles" instance=ExtResource( 12 )]
 position = Vector2( -10128, -1543 )
-collision_layer = 9
-collision_mask = 0
-script = ExtResource( 17 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 1043, 0 ), Vector2( 1043, 218 ), Vector2( 0, 218 ) ]
 
-[node name="Destructible74" type="StaticBody2D" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+[node name="Destructible74" parent="Destructibles" instance=ExtResource( 12 )]
 position = Vector2( 8819, -2775 )
-collision_layer = 9
-collision_mask = 0
-script = ExtResource( 17 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 1043, 0 ), Vector2( 1043, 218 ), Vector2( 0, 218 ) ]
 
-[node name="Destructible9" type="StaticBody2D" parent="Destructibles" groups=["Destructible"] instance=ExtResource( 12 )]
+[node name="Destructible9" parent="Destructibles" instance=ExtResource( 12 )]
 position = Vector2( 11288, -1560 )
-collision_layer = 9
-collision_mask = 0
-script = ExtResource( 17 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 1043, 0 ), Vector2( 1043, 218 ), Vector2( 0, 218 ) ]
 
 [node name="Label" type="Label" parent="."]
 visible = false
-margin_left = 2386.0
-margin_top = -808.0
-margin_right = 3027.0
-margin_bottom = -583.0
+margin_left = 15406.0
+margin_top = -1543.0
+margin_right = 16047.0
+margin_bottom = -1318.0
 rect_scale = Vector2( 0.996331, 1.78794 )
 rect_pivot_offset = Vector2( -4157, 511 )
 custom_colors/font_color = Color( 0.831373, 0.0470588, 0.25098, 1 )
@@ -738,10 +851,10 @@ text = "GOLPEA
 
 [node name="Label3" type="Label" parent="."]
 visible = false
-margin_left = 2965.0
-margin_top = -1876.0
-margin_right = 3606.0
-margin_bottom = -1575.0
+margin_left = 16089.0
+margin_top = -3296.0
+margin_right = 16730.0
+margin_bottom = -2995.0
 rect_scale = Vector2( 1.05128, 1.73489 )
 custom_colors/font_color = Color( 0.807843, 0.109804, 0.192157, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
@@ -797,6 +910,18 @@ autoplay = true
 
 [node name="Explosion" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 15 )
+volume_db = -5.0
+
+[node name="Player1" parent="." instance=ExtResource( 4 )]
+position = Vector2( 14848, -7189 )
+collision_layer = 4
+ACCELERATION = 100.0
+
+[node name="Player2" parent="." instance=ExtResource( 2 )]
+position = Vector2( -13638, -7194 )
+collision_layer = 2
+collision_mask = 1
+ACCELERATION = 100.0
 
 [editable path="Destructibles/Destructible"]
 [editable path="Destructibles/Destructible2"]

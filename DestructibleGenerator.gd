@@ -17,4 +17,3 @@ func _set_apply(valor : bool):
 		new_destructible.position = rect_position
 		new_destructible.starting_polygon = new_polygon
 		new_destructible.generate(new_polygon)
-		

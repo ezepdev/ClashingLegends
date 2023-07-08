@@ -184,8 +184,8 @@ func _apply_movement():
 	velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, SLOPE_THRESHOLD)
 	if abs(velocity.x) >=2000 || abs(velocity.y)  >=2000:
 		destruction_area.monitoring = true
-		print("x: " + str(velocity.x))
-		print("y: " + str(velocity.y))
+#		print("x: " + str(velocity.x))
+#		print("y: " + str(velocity.y))
 		for body in destruction_area.get_overlapping_bodies():
 			if body in destructibles:
 				call_deferred("calculate_destruction" , body , destruction_polygon)

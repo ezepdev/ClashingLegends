@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=2]
+
+[ext_resource path="res://SkipProgress.gd" type="Script" id=1]
+[ext_resource path="res://assets/GUI/lifebar_bg.png" type="Texture" id=2]
+[ext_resource path="res://assets/GUI/lifebar_fill.png" type="Texture" id=3]
+[ext_resource path="res://pngegg.png" type="Texture" id=4]
+[ext_resource path="res://assets/font/Heroes Legend.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://spacebar.png" type="Texture" id=6]
+
+[sub_resource type="DynamicFont" id=1]
+size = 9
+use_filter = true
+font_data = ExtResource( 5 )
+
+[node name="SkipProgress" type="Control"]
+size_flags_horizontal = 0
+script = ExtResource( 1 )
+
+[node name="TextureProgress" type="TextureProgress" parent="."]
+margin_top = 35.0
+margin_right = 417.0
+margin_bottom = 43.0
+max_value = 1000.0
+texture_under = ExtResource( 2 )
+texture_progress = ExtResource( 3 )
+tint_under = Color( 0.0392157, 0.0392157, 0.0392157, 1 )
+tint_progress = Color( 1, 0.866667, 0, 1 )
+nine_patch_stretch = true
+
+[node name="Sprite" type="Sprite" parent="."]
+position = Vector2( 237, 21 )
+scale = Vector2( 0.116629, 0.123264 )
+texture = ExtResource( 4 )
+region_enabled = true
+region_rect = Rect2( 680.875, 953.695, 201.261, 189.65 )
+
+[node name="Tween" type="Tween" parent="."]
+
+[node name="Label" type="Label" parent="."]
+margin_left = -1.0
+margin_top = -10.0
+margin_right = 422.0
+margin_bottom = 34.0
+custom_constants/line_spacing = 17
+custom_fonts/font = SubResource( 1 )
+text = "Continua manteniendo
+/"
+align = 1
+
+[node name="Sprite2" type="Sprite" parent="."]
+position = Vector2( 159, 21 )
+scale = Vector2( 0.0638517, 0.0638528 )
+texture = ExtResource( 6 )
