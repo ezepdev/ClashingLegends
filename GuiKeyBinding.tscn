@@ -1,305 +1,667 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://BtnParent.tscn" type="PackedScene" id=1]
 [ext_resource path="res://GuiKeyBinding.gd" type="Script" id=2]
 [ext_resource path="res://assets/HUD/89speedaffairgrad.ttf" type="DynamicFontData" id=3]
+[ext_resource path="res://pngegg (3).png" type="Texture" id=4]
+[ext_resource path="res://pngegg (2).png" type="Texture" id=5]
+[ext_resource path="res://pngegg (4).png" type="Texture" id=6]
+[ext_resource path="res://pngegg (1).png" type="Texture" id=7]
+[ext_resource path="res://control.png" type="Texture" id=8]
+[ext_resource path="res://pngwing.com.png" type="Texture" id=9]
+[ext_resource path="res://assets/font/Comfortaa-Bold.ttf" type="DynamicFontData" id=10]
 
-[sub_resource type="DynamicFont" id=1]
-size = 30
+[sub_resource type="DynamicFont" id=3]
+size = 45
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
 [sub_resource type="Theme" id=2]
 
-[sub_resource type="DynamicFont" id=3]
-size = 30
+[sub_resource type="DynamicFont" id=4]
+size = 20
+use_filter = true
+extra_spacing_char = 1
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=5]
+use_filter = true
+font_data = ExtResource( 10 )
+
+[sub_resource type="DynamicFont" id=1]
+size = 45
 outline_size = 3
 outline_color = Color( 0, 0, 0, 1 )
 font_data = ExtResource( 3 )
 
+[sub_resource type="DynamicFont" id=6]
+use_filter = true
+font_data = ExtResource( 10 )
+
 [node name="GuiKeyBinding" type="CanvasLayer"]
 pause_mode = 2
-layer = 3
+layer = 100
+visible = false
 script = ExtResource( 2 )
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchor_right = 1.0
 anchor_bottom = 1.0
-color = Color( 0, 0, 0, 0.392157 )
-
-[node name="TitlePlayer2" type="Label" parent="."]
-anchor_left = 0.634
-anchor_top = 0.352
-anchor_right = 0.634
-anchor_bottom = 0.38
-custom_colors/font_color = Color( 0.992157, 1, 0, 1 )
-custom_fonts/font = SubResource( 1 )
-text = "Player2"
-
-[node name="Player2KeysContainer" type="GridContainer" parent="."]
-anchor_left = 0.634
-anchor_top = 0.437
-anchor_right = 0.634
-anchor_bottom = 0.451
-theme = SubResource( 2 )
-custom_constants/vseparation = 12
-custom_constants/hseparation = 12
-columns = 2
-
-[node name="Label" type="Label" parent="Player2KeysContainer"]
-margin_top = 3.0
-margin_right = 102.0
-margin_bottom = 17.0
-text = "JUMP:"
-align = 1
-valign = 1
-
-[node name="JumpBtn2" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 114.0
-margin_right = 126.0
-margin_bottom = 20.0
-focus_mode = 0
-enabled_focus_mode = 0
-icon_align = 1
-action_name = "jump2"
-
-[node name="Label4" type="Label" parent="Player2KeysContainer"]
-margin_top = 35.0
-margin_right = 102.0
-margin_bottom = 49.0
-text = "CHARGE_MANA:"
-align = 1
-valign = 1
-
-[node name="ChargeManaBtn2" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 114.0
-margin_top = 32.0
-margin_right = 126.0
-margin_bottom = 52.0
-focus_mode = 0
-enabled_focus_mode = 0
-icon_align = 1
-action_name = "charge_mana2"
-
-[node name="Label3" type="Label" parent="Player2KeysContainer"]
-margin_top = 67.0
-margin_right = 102.0
-margin_bottom = 81.0
-text = "MOVE_LEFT:"
-align = 1
-valign = 1
-
-[node name="MvLeftBtn2" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 114.0
-margin_top = 64.0
-margin_right = 126.0
-margin_bottom = 84.0
-focus_mode = 0
-enabled_focus_mode = 0
-icon_align = 1
-action_name = "move_left2"
-
-[node name="Label2" type="Label" parent="Player2KeysContainer"]
-margin_top = 99.0
-margin_right = 102.0
-margin_bottom = 113.0
-text = "MOVE_RIGHT:"
-align = 1
-valign = 1
-
-[node name="MvRightBtn2" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 114.0
-margin_top = 96.0
-margin_right = 126.0
-margin_bottom = 116.0
-focus_mode = 0
-enabled_focus_mode = 0
-icon_align = 1
-action_name = "move_right2"
-
-[node name="Label5" type="Label" parent="Player2KeysContainer"]
-margin_top = 131.0
-margin_right = 102.0
-margin_bottom = 145.0
-text = "HIT:"
-align = 1
-valign = 1
-
-[node name="HitBtn2" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 114.0
-margin_top = 128.0
-margin_right = 126.0
-margin_bottom = 148.0
-focus_mode = 0
-enabled_focus_mode = 0
-icon_align = 1
-action_name = "hit_enemy2"
-
-[node name="Label6" type="Label" parent="Player2KeysContainer"]
-margin_top = 163.0
-margin_right = 102.0
-margin_bottom = 177.0
-text = "FIRE:"
-align = 1
-valign = 1
-
-[node name="FireBtn2" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
-anchor_right = 0.0
-anchor_bottom = 0.0
-margin_left = 114.0
-margin_top = 160.0
-margin_right = 126.0
-margin_bottom = 180.0
-focus_mode = 0
-enabled_focus_mode = 0
-icon_align = 1
-action_name = "fire_cannon2"
+rect_pivot_offset = Vector2( -209, 314 )
+color = Color( 0, 0, 0, 0.905882 )
 
 [node name="TitlePlayer1" type="Label" parent="."]
-anchor_left = 0.268
-anchor_top = 0.351
-anchor_right = 0.395
-anchor_bottom = 0.366
+anchor_left = 0.109375
+anchor_top = 0.108333
+anchor_right = 0.28418
+anchor_bottom = 0.183333
+margin_top = 5.0
+margin_bottom = 5.0
+size_flags_horizontal = 3
+size_flags_vertical = 6
 custom_colors/font_color = Color( 1, 0.0509804, 0, 1 )
 custom_fonts/font = SubResource( 3 )
 text = "Player1"
+__meta__ = {
+"_edit_use_anchors_": true
+}
 
 [node name="Player1KeysContainer" type="GridContainer" parent="."]
-anchor_left = 0.268
-anchor_top = 0.436
-anchor_right = 0.395
-anchor_bottom = 0.436
+anchor_left = 0.097
+anchor_top = 0.229167
+anchor_right = 0.491008
+anchor_bottom = 0.770833
+margin_left = 15.672
+margin_top = -2.5
+margin_right = -46.792
+margin_bottom = -2.5
+size_flags_horizontal = 7
+size_flags_vertical = 7
 theme = SubResource( 2 )
 custom_constants/vseparation = 12
 custom_constants/hseparation = 12
-columns = 2
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label8" type="Label" parent="Player1KeysContainer"]
+margin_right = 116.0
+margin_bottom = 30.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_colors/font_color = Color( 1, 0.447059, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "ACTION"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="Player1KeysContainer"]
+margin_left = 128.0
+margin_right = 229.0
+margin_bottom = 30.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="Player1KeysContainer"]
+margin_left = 241.0
+margin_right = 341.0
+margin_bottom = 30.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="Player1KeysContainer"]
-margin_top = 3.0
-margin_right = 102.0
-margin_bottom = 17.0
-text = "JUMP:"
+margin_top = 42.0
+margin_right = 116.0
+margin_bottom = 72.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 5 )
+text = "Jump"
 align = 1
 valign = 1
 
 [node name="JumpBtn1" parent="Player1KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 114.0
-margin_right = 126.0
-margin_bottom = 20.0
+margin_left = 128.0
+margin_top = 42.0
+margin_right = 229.0
+margin_bottom = 72.0
 focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
 enabled_focus_mode = 0
 icon_align = 1
 action_name = "jump1"
 
+[node name="TextureRect3" type="TextureRect" parent="Player1KeysContainer"]
+margin_left = 241.0
+margin_top = 42.0
+margin_right = 341.0
+margin_bottom = 72.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
 [node name="Label4" type="Label" parent="Player1KeysContainer"]
-margin_top = 35.0
-margin_right = 102.0
-margin_bottom = 49.0
-text = "CHARGE_MANA:"
+margin_top = 84.0
+margin_right = 116.0
+margin_bottom = 114.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 5 )
+text = "Charge mana"
 align = 1
 valign = 1
 
 [node name="ChargeManaBtn1" parent="Player1KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 114.0
-margin_top = 32.0
-margin_right = 126.0
-margin_bottom = 52.0
+margin_left = 128.0
+margin_top = 84.0
+margin_right = 229.0
+margin_bottom = 114.0
 focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
 enabled_focus_mode = 0
 icon_align = 1
 action_name = "charge_mana1"
 
+[node name="TextureButton" type="TextureRect" parent="Player1KeysContainer"]
+margin_left = 241.0
+margin_top = 84.0
+margin_right = 341.0
+margin_bottom = 114.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
 [node name="Label3" type="Label" parent="Player1KeysContainer"]
-margin_top = 67.0
-margin_right = 102.0
-margin_bottom = 81.0
-text = "MOVE_LEFT:"
+margin_top = 126.0
+margin_right = 116.0
+margin_bottom = 156.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 5 )
+text = "Move left"
 align = 1
 valign = 1
 
 [node name="MvLeftBtn1" parent="Player1KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 114.0
-margin_top = 64.0
-margin_right = 126.0
-margin_bottom = 84.0
+margin_left = 128.0
+margin_top = 126.0
+margin_right = 229.0
+margin_bottom = 156.0
 focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
 enabled_focus_mode = 0
 icon_align = 1
 action_name = "move_left1"
 
+[node name="TextureRect4" type="TextureRect" parent="Player1KeysContainer"]
+margin_left = 241.0
+margin_top = 126.0
+margin_right = 341.0
+margin_bottom = 156.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
 [node name="Label2" type="Label" parent="Player1KeysContainer"]
-margin_top = 99.0
-margin_right = 102.0
-margin_bottom = 113.0
-text = "MOVE_RIGHT:"
+margin_top = 168.0
+margin_right = 116.0
+margin_bottom = 198.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 5 )
+text = "Move right"
 align = 1
 valign = 1
 
 [node name="MvRightBtn1" parent="Player1KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 114.0
-margin_top = 96.0
-margin_right = 126.0
-margin_bottom = 116.0
+margin_left = 128.0
+margin_top = 168.0
+margin_right = 229.0
+margin_bottom = 198.0
 focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
 enabled_focus_mode = 0
 icon_align = 1
 action_name = "move_right1"
 
+[node name="TextureRect5" type="TextureRect" parent="Player1KeysContainer"]
+margin_left = 241.0
+margin_top = 168.0
+margin_right = 341.0
+margin_bottom = 198.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
 [node name="Label5" type="Label" parent="Player1KeysContainer"]
-margin_top = 131.0
-margin_right = 102.0
-margin_bottom = 145.0
-text = "HIT:"
+margin_top = 210.0
+margin_right = 116.0
+margin_bottom = 240.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 5 )
+text = "Hit"
 align = 1
 valign = 1
 
 [node name="HitBtn1" parent="Player1KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 114.0
-margin_top = 128.0
-margin_right = 126.0
-margin_bottom = 148.0
+margin_left = 128.0
+margin_top = 210.0
+margin_right = 229.0
+margin_bottom = 240.0
 focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
 enabled_focus_mode = 0
 icon_align = 1
 action_name = "hit_enemy1"
 
+[node name="TextureRect7" type="TextureRect" parent="Player1KeysContainer"]
+margin_left = 241.0
+margin_top = 210.0
+margin_right = 341.0
+margin_bottom = 240.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
 [node name="Label6" type="Label" parent="Player1KeysContainer"]
-margin_top = 163.0
-margin_right = 102.0
-margin_bottom = 177.0
-text = "FIRE:"
+margin_top = 252.0
+margin_right = 116.0
+margin_bottom = 282.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 5 )
+text = "Fire"
 align = 1
 valign = 1
 
 [node name="FireBtn1" parent="Player1KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
 anchor_right = 0.0
 anchor_bottom = 0.0
-margin_left = 114.0
-margin_top = 160.0
-margin_right = 126.0
-margin_bottom = 180.0
+margin_left = 128.0
+margin_top = 252.0
+margin_right = 229.0
+margin_bottom = 282.0
 focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
 enabled_focus_mode = 0
 icon_align = 1
 action_name = "fire_cannon1"
+
+[node name="TextureRect8" type="TextureRect" parent="Player1KeysContainer"]
+margin_left = 241.0
+margin_top = 252.0
+margin_right = 341.0
+margin_bottom = 282.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="Label7" type="Label" parent="Player1KeysContainer"]
+margin_top = 294.0
+margin_right = 116.0
+margin_bottom = 324.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 5 )
+text = "Block"
+align = 1
+valign = 1
+
+[node name="BlockBtn1" parent="Player1KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 294.0
+margin_right = 229.0
+margin_bottom = 324.0
+focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+enabled_focus_mode = 0
+icon_align = 1
+action_name = "block1"
+
+[node name="TextureRect6" type="TextureRect" parent="Player1KeysContainer"]
+margin_left = 241.0
+margin_top = 294.0
+margin_right = 341.0
+margin_bottom = 324.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="TitlePlayer2" type="Label" parent="."]
+anchor_left = 0.56543
+anchor_top = 0.108333
+anchor_right = 0.750977
+anchor_bottom = 0.183333
+margin_left = -6.0
+margin_top = 5.0
+margin_right = -6.0
+margin_bottom = 5.0
+custom_colors/font_color = Color( 0.992157, 1, 0, 1 )
+custom_fonts/font = SubResource( 1 )
+text = "Player2"
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Player2KeysContainer" type="GridContainer" parent="."]
+anchor_left = 0.557992
+anchor_top = 0.222667
+anchor_right = 0.903
+anchor_bottom = 0.777333
+margin_top = 1.39999
+margin_right = -12.288
+margin_bottom = 1.39999
+size_flags_horizontal = 7
+size_flags_vertical = 7
+theme = SubResource( 2 )
+custom_constants/vseparation = 12
+custom_constants/hseparation = 12
+columns = 3
+__meta__ = {
+"_edit_use_anchors_": true
+}
+
+[node name="Label8" type="Label" parent="Player2KeysContainer"]
+margin_right = 116.0
+margin_bottom = 31.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+custom_colors/font_color = Color( 1, 0.447059, 0, 1 )
+custom_fonts/font = SubResource( 4 )
+text = "ACTION"
+align = 1
+valign = 1
+
+[node name="TextureRect" type="TextureRect" parent="Player2KeysContainer"]
+margin_left = 128.0
+margin_right = 229.0
+margin_bottom = 31.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+texture = ExtResource( 9 )
+expand = true
+stretch_mode = 6
+
+[node name="TextureRect2" type="TextureRect" parent="Player2KeysContainer"]
+margin_left = 241.0
+margin_right = 341.0
+margin_bottom = 31.0
+size_flags_horizontal = 7
+size_flags_vertical = 7
+texture = ExtResource( 8 )
+expand = true
+stretch_mode = 6
+
+[node name="Label" type="Label" parent="Player2KeysContainer"]
+margin_top = 43.0
+margin_right = 116.0
+margin_bottom = 74.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 6 )
+text = "Jump"
+align = 1
+valign = 1
+
+[node name="JumpBtn1" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 43.0
+margin_right = 229.0
+margin_bottom = 74.0
+focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+enabled_focus_mode = 0
+icon_align = 1
+action_name = "jump2"
+
+[node name="TextureRect3" type="TextureRect" parent="Player2KeysContainer"]
+margin_left = 241.0
+margin_top = 43.0
+margin_right = 341.0
+margin_bottom = 74.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="Label4" type="Label" parent="Player2KeysContainer"]
+margin_top = 86.0
+margin_right = 116.0
+margin_bottom = 117.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 6 )
+text = "Charge mana"
+align = 1
+valign = 1
+
+[node name="ChargeManaBtn1" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 86.0
+margin_right = 229.0
+margin_bottom = 117.0
+focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+enabled_focus_mode = 0
+icon_align = 1
+action_name = "charge_mana2"
+
+[node name="TextureButton" type="TextureRect" parent="Player2KeysContainer"]
+margin_left = 241.0
+margin_top = 86.0
+margin_right = 341.0
+margin_bottom = 117.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+texture = ExtResource( 4 )
+expand = true
+stretch_mode = 6
+
+[node name="Label3" type="Label" parent="Player2KeysContainer"]
+margin_top = 129.0
+margin_right = 116.0
+margin_bottom = 160.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 6 )
+text = "Move left"
+align = 1
+valign = 1
+
+[node name="MvLeftBtn1" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 129.0
+margin_right = 229.0
+margin_bottom = 160.0
+focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+enabled_focus_mode = 0
+icon_align = 1
+action_name = "move_left2"
+
+[node name="TextureRect4" type="TextureRect" parent="Player2KeysContainer"]
+margin_left = 241.0
+margin_top = 129.0
+margin_right = 341.0
+margin_bottom = 160.0
+texture = ExtResource( 7 )
+expand = true
+stretch_mode = 6
+
+[node name="Label2" type="Label" parent="Player2KeysContainer"]
+margin_top = 172.0
+margin_right = 116.0
+margin_bottom = 203.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 6 )
+text = "Move right"
+align = 1
+valign = 1
+
+[node name="MvRightBtn1" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 172.0
+margin_right = 229.0
+margin_bottom = 203.0
+focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+enabled_focus_mode = 0
+icon_align = 1
+action_name = "move_right2"
+
+[node name="TextureRect5" type="TextureRect" parent="Player2KeysContainer"]
+margin_left = 241.0
+margin_top = 172.0
+margin_right = 341.0
+margin_bottom = 203.0
+texture = ExtResource( 5 )
+expand = true
+stretch_mode = 6
+
+[node name="Label5" type="Label" parent="Player2KeysContainer"]
+margin_top = 215.0
+margin_right = 116.0
+margin_bottom = 246.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 6 )
+text = "Hit"
+align = 1
+valign = 1
+
+[node name="HitBtn1" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 215.0
+margin_right = 229.0
+margin_bottom = 246.0
+focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+enabled_focus_mode = 0
+icon_align = 1
+action_name = "hit_enemy2"
+
+[node name="TextureRect7" type="TextureRect" parent="Player2KeysContainer"]
+margin_left = 241.0
+margin_top = 215.0
+margin_right = 341.0
+margin_bottom = 246.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="Label6" type="Label" parent="Player2KeysContainer"]
+margin_top = 258.0
+margin_right = 116.0
+margin_bottom = 289.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 6 )
+text = "Fire"
+align = 1
+valign = 1
+
+[node name="FireBtn1" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 258.0
+margin_right = 229.0
+margin_bottom = 289.0
+focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+enabled_focus_mode = 0
+icon_align = 1
+action_name = "fire_cannon2"
+
+[node name="TextureRect8" type="TextureRect" parent="Player2KeysContainer"]
+margin_left = 241.0
+margin_top = 258.0
+margin_right = 341.0
+margin_bottom = 289.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6
+
+[node name="Label7" type="Label" parent="Player2KeysContainer"]
+margin_top = 301.0
+margin_right = 116.0
+margin_bottom = 332.0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+custom_fonts/font = SubResource( 6 )
+text = "Block"
+align = 1
+valign = 1
+
+[node name="Block2" parent="Player2KeysContainer" groups=["button_keys"] instance=ExtResource( 1 )]
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_left = 128.0
+margin_top = 301.0
+margin_right = 229.0
+margin_bottom = 332.0
+focus_mode = 0
+size_flags_horizontal = 15
+size_flags_vertical = 15
+enabled_focus_mode = 0
+icon_align = 1
+action_name = "block2"
+
+[node name="TextureRect6" type="TextureRect" parent="Player2KeysContainer"]
+margin_left = 241.0
+margin_top = 301.0
+margin_right = 341.0
+margin_bottom = 332.0
+texture = ExtResource( 6 )
+expand = true
+stretch_mode = 6

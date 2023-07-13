@@ -8,7 +8,8 @@ func _ready() -> void:
 		"dash": $Dash,
 		"knockback": $Knockback,
 		"charge" : $Charge,
-		"dead": $Dead
+		"dead": $Dead,
+		"block": $Block
 	}
 
 func _on_Player_hit(dmg, knockback , power):

@@ -46,9 +46,15 @@ func update(delta:float) -> void:
 			if character.health_player <= 0:
 				emit_signal("finished" , "dead")
 			elif character.move_direction != 0:
-				emit_signal("finished" , "walk")
+				if Input.is_action_pressed("block" + str(character.id)):
+					emit_signal("finished" , "block")
+				else:
+					emit_signal("finished" , "walk")
 			else:
-				emit_signal("finished" , "idle")
+				if Input.is_action_pressed("block" + str(character.id)):
+					emit_signal("finished" , "block")
+				else:
+					emit_signal("finished" , "idle")
 
 func calculate_destruction(body , destruction_polygon):
 	var final_position = Transform2D(0, character.get_node("DestructionArea/Polygon2D").global_position).xform(character.get_node("DestructionArea/Polygon2D").polygon)

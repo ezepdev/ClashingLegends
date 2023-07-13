@@ -8,6 +8,8 @@ func handle_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("jump" + str(character.id)):
 		emit_signal("finished","jump")
+	elif event.is_action_pressed("block" + str(character.id)):
+		emit_signal("finished" , "block")
 	elif character.is_on_floor() && event.is_action_pressed("charge_mana" + str(character.id)):
 		emit_signal("finished" , "charge")
 	elif event is InputEventKey: 

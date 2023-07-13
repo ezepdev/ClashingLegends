@@ -1,7 +1,7 @@
-[gd_scene load_steps=37 format=2]
+[gd_scene load_steps=40 format=2]
 
 [ext_resource path="res://Player.tscn" type="PackedScene" id=1]
-[ext_resource path="res://assets/player.png" type="Texture" id=2]
+[ext_resource path="res://assets/basics/player.png" type="Texture" id=2]
 [ext_resource path="res://assets/dbz/Goku-2_24.png" type="Texture" id=3]
 [ext_resource path="res://assets/dbz/Goku-2_30-1.png.png" type="Texture" id=4]
 [ext_resource path="res://assets/dbz/Goku-2_34 (1).png" type="Texture" id=5]
@@ -22,6 +22,7 @@
 [ext_resource path="res://assets/dbz/Goku-2_131.png" type="Texture" id=20]
 [ext_resource path="res://AbstractState.gd" type="Script" id=21]
 [ext_resource path="res://assets/dbz/Goku-2_202.png" type="Texture" id=22]
+[ext_resource path="res://assets/dbz/Goku block.png" type="Texture" id=23]
 
 [sub_resource type="RectangleShape2D" id=11]
 extents = Vector2( 18.0532, 46.9775 )
@@ -59,6 +60,58 @@ tracks/2/loop_wrap = true
 tracks/2/imported = false
 tracks/2/enabled = true
 tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 0, 16 ) ]
+}
+
+[sub_resource type="Animation" id=16]
+resource_name = "block"
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath("Body:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ ExtResource( 23 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Body:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 1 ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath("Body:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 1,
+"values": [ 0 ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath("Body:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
 "update": 0,
@@ -873,6 +926,9 @@ tracks/7/keys = {
 [sub_resource type="CircleShape2D" id=8]
 radius = 191.755
 
+[sub_resource type="ConvexPolygonShape2D" id=17]
+points = PoolVector2Array( -1, -4, -1, -190, 70, -179, 113, -155, 151, -120, 176, -74, 188, -35, 192, 10, 190, 45, 173, 80, 128, 93, 67, 94, 20, 92, 0, 80 )
+
 [node name="Player1" instance=ExtResource( 1 )]
 collision_layer = 2
 collision_mask = 1
@@ -881,9 +937,10 @@ collision_mask = 1
 script = ExtResource( 21 )
 
 [node name="Body" parent="." index="2"]
-position = Vector2( 0, 16 )
+position = Vector2( 0, -50 )
 scale = Vector2( 5, 5 )
-texture = ExtResource( 22 )
+texture = ExtResource( 20 )
+hframes = 2
 
 [node name="Eye" parent="Body" index="0"]
 visible = false
@@ -924,6 +981,7 @@ scale = Vector2( 0.5, 0.210938 )
 [node name="AnimationPlayer" parent="." index="5"]
 reset_on_save = false
 anims/RESET = SubResource( 3 )
+anims/block = SubResource( 16 )
 anims/chargejump = SubResource( 12 )
 anims/dash = SubResource( 4 )
 anims/energy = SubResource( 13 )
@@ -943,7 +1001,7 @@ collision_mask = 2
 position = Vector2( 0, -1 )
 polygon = PoolVector2Array( -54, -240, -1, -236, 96, -212, 146, -155, 174, -85, 191, -21, 190, 44, 167, 105, 118, 164, 48, 193, -18, 202, -69, 192, -60, -9, -62, -92, -58, -146, -55, -198 )
 
-[node name="DestructionArea" parent="." index="8"]
+[node name="DestructionArea" parent="." index="9"]
 collision_layer = 0
 collision_mask = 9
 monitoring = false
@@ -957,11 +1015,25 @@ num_sides = 32
 [node name="CollisionShape2D" parent="DestructionArea" index="1"]
 shape = SubResource( 8 )
 
-[node name="PlayerAudio" parent="." index="10"]
-stream = ExtResource( 13 )
+[node name="DestructionArea2" parent="." index="10"]
+collision_layer = 0
+collision_mask = 9
+monitoring = false
+monitorable = true
+
+[node name="Polygon2D" parent="DestructionArea2" index="0"]
+color = Color( 1, 1, 1, 0 )
+polygon = PoolVector2Array( -1, -4, -1, -190, 70, -179, 113, -155, 151, -120, 176, -74, 188, -35, 192, 10, 190, 45, 173, 80, 128, 93, 67, 94, 20, 92, 0, 80 )
+script = null
+
+[node name="CollisionShape2D" parent="DestructionArea2" index="1"]
+shape = SubResource( 17 )
+
+[node name="PlayerAudio" parent="." index="12"]
+stream = ExtResource( 11 )
 volume_db = -5.0
 
-[node name="PlayerVoice" parent="." index="11"]
+[node name="PlayerVoice" parent="." index="13"]
 stream = ExtResource( 19 )
 
 [connection signal="animation_finished" from="AnimationPlayer" to="PlayerStateMachine/Dash" method="_on_AnimationPlayer_animation_finished"]

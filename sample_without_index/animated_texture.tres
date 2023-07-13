@@ -1,0 +1,27 @@
+[gd_resource type="AnimatedTexture" load_steps=8 format=2]
+
+[ext_resource path="res://animated_texture_but_better.gd" type="Script" id=5]
+[ext_resource path="res://assets/Gif/cat/cat_5.png" type="Texture" id=10]
+[ext_resource path="res://assets/Gif/cat/cat_2.png" type="Texture" id=12]
+[ext_resource path="res://assets/Gif/cat/cat_0.png" type="Texture" id=19]
+[ext_resource path="res://assets/Gif/cat/cat_3.png" type="Texture" id=21]
+[ext_resource path="res://assets/Gif/cat/cat_1.png" type="Texture" id=22]
+[ext_resource path="res://assets/Gif/cat/cat_4.png" type="Texture" id=27]
+
+[resource]
+flags = 4
+frames = 6
+fps = 30.0
+frame_0/texture = ExtResource( 19 )
+frame_1/texture = ExtResource( 22 )
+frame_1/delay_sec = 0.0
+frame_2/texture = ExtResource( 12 )
+frame_2/delay_sec = 0.0
+frame_3/texture = ExtResource( 21 )
+frame_3/delay_sec = 0.0
+frame_4/texture = ExtResource( 27 )
+frame_4/delay_sec = 0.0
+frame_5/texture = ExtResource( 10 )
+frame_5/delay_sec = 0.0
+script = ExtResource( 5 )
+sprites_dir = "res://assets/Gif/cat"
