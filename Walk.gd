@@ -30,7 +30,7 @@ func update(delta:float) -> void:
 	character.handle_hit()
 	character.handle_fire()
 	character._handle_constant_energy()
-	if character.is_on_floor():
+	if character.is_on_floor() && character.anim_player.get_current_animation() != "chargejump":
 		character.energy.visible = false
 	if character.move_direction == 0:
 		emit_signal("finished", "idle")

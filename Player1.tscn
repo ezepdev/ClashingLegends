@@ -1454,9 +1454,9 @@ playing = true
 script = ExtResource( 21 )
 
 [node name="Body" parent="." index="3"]
-position = Vector2( 0, 16 )
+position = Vector2( -16, 16 )
 scale = Vector2( 5, 5 )
-texture = ExtResource( 23 )
+texture = ExtResource( 4 )
 
 [node name="Eye" parent="Body" index="0"]
 visible = false
@@ -1567,7 +1567,7 @@ position = Vector2( 21, -29 )
 rotation = -3.14159
 scale = Vector2( 2.11333, 1.7754 )
 frames = SubResource( 36 )
-frame = 1
+frame = 5
 speed_scale = 3.0
 playing = true
 

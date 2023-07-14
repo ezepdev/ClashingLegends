@@ -218,7 +218,7 @@ func get_mana():
 	return (mana_player / max_mana) * 100
 	
 func fire():
-	if projectile_scene != null && fire_available && mana_player > 30:
+	if projectile_scene != null && fire_available && mana_player > 50:
 		var proj_instance = projectile_scene.instance()
 		_play_animation("shoot")
 		proj_instance.initialize(projectile_container, arm.get_node("ArmTip").global_position, target)

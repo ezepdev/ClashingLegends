@@ -472,7 +472,7 @@ tracks/4/path = NodePath("PlayerAudio")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/imported = false
-tracks/4/enabled = true
+tracks/4/enabled = false
 tracks/4/keys = {
 "times": PoolRealArray( 0 ),
 "transitions": PoolRealArray( 1 ),
@@ -540,6 +540,20 @@ tracks/9/keys = {
 "transitions": PoolRealArray( 1 ),
 "update": 0,
 "values": [ Color( 0.247059, 0.839216, 0.956863, 1 ) ]
+}
+tracks/10/type = "audio"
+tracks/10/path = NodePath("PlayerAudio")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/keys = {
+"clips": [ {
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource( 12 )
+} ],
+"times": PoolRealArray( 0 )
 }
 
 [sub_resource type="Animation" id=7]
@@ -1417,7 +1431,6 @@ collision_mask = 0
 energy_jump_color = Color( 0.329412, 0.156863, 0.34902, 1 )
 
 [node name="Energy" type="AnimatedSprite" parent="." index="0"]
-visible = false
 modulate = Color( 0.247059, 0.839216, 0.956863, 1 )
 position = Vector2( -5.96046e-08, -54 )
 scale = Vector2( 5, 5 )
@@ -1428,8 +1441,8 @@ playing = true
 
 [node name="Body" parent="." index="3"]
 scale = Vector2( 5, 5 )
-texture = ExtResource( 8 )
-hframes = 2
+texture = ExtResource( 10 )
+hframes = 3
 
 [node name="Eye" parent="Body" index="0"]
 visible = false
@@ -1519,7 +1532,7 @@ script = null
 shape = SubResource( 19 )
 
 [node name="PlayerAudio" parent="." index="13"]
-stream = ExtResource( 14 )
+stream = ExtResource( 12 )
 volume_db = -5.0
 
 [node name="PlayerVoice" parent="." index="14"]
@@ -1527,7 +1540,6 @@ stream = ExtResource( 16 )
 
 [node name="w" type="Particles2D" parent="." index="15"]
 position = Vector2( -69, -22 )
-emitting = false
 amount = 30
 lifetime = 2.0
 speed_scale = 3.0
@@ -1535,12 +1547,11 @@ process_material = SubResource( 36 )
 texture = ExtResource( 23 )
 
 [node name="AnimatedSprite" type="AnimatedSprite" parent="." index="16"]
-visible = false
 position = Vector2( 8, -48 )
 rotation = -3.14159
 scale = Vector2( 2.11333, 1.7754 )
 frames = SubResource( 41 )
-frame = 4
+frame = 13
 speed_scale = 3.0
 playing = true
 
