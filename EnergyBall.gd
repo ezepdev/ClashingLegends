@@ -13,10 +13,6 @@ func initialize(container, spawn_position:Vector2, target):
 	global_position = spawn_position
 	container.add_child(self)
 	audio_player = get_parent().get_node("Explosion")
-	if global_position.x < target.global_position.x:
-			$Sprite.flip_h = false
-	else:
-			$Sprite.flip_h = true
 	if(target.id == 1):
 		texture = ResourceLoader.load(sprite1)
 		$Sprite.texture = texture
@@ -29,6 +25,7 @@ func initialize(container, spawn_position:Vector2, target):
 		collision_mask |= 8
 	self.target = target
 	self.direction = global_position.direction_to(target.global_position)
+	rotation = direction.angle()
 	
 func _physics_process(delta):
 	position += direction * VELOCITY * delta

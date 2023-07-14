@@ -3,15 +3,20 @@ extends StaticBody2D
 class_name Destructible
 
 onready var default_quadrant_polygon: Array = $CollisionPolygon2D.polygon
-onready var texture : StreamTexture = $CollisionPolygon2D/Polygonete.texture
-onready var audio = $CollisionPolygon2D/AudioStreamPlayer
+export (Texture) var texture : Texture
 var explosionAudio = load("res://audio/Explosion.wav")
 export (Array , Vector2) var starting_polygon : Array
+export (bool) var apply :bool = false setget set_apply
 
 
 func _ready():
 	generate(starting_polygon)
 
+func set_apply(valor : bool):
+	apply = false
+	if valor && not starting_polygon.empty():
+		generate(starting_polygon)
+	
 func carve(clipping_polygon):
 	"""
 	Carves the clipping_polygon away from the quadrant
@@ -25,9 +30,11 @@ func carve(clipping_polygon):
 
 			match n_clipped_polygons:
 				0:
+					print("0nomas")
 					# clipping_|polygon completely overlaps colpol
 					colpol.free()
 				1:
+					print("1solo")
 					# Clipping produces only one polygon
 					call_deferred("update_col" , colpol , clipped_polygons[0])
 					#update_col(colpol , clipped_polygons[0])
@@ -39,8 +46,10 @@ func carve(clipping_polygon):
 					# is clockwise). If so, split the polygon in two that
 					# together make a "hollow" collision shape
 					if _is_hole(clipped_polygons):
+						
 						# split and add
 						for p in _split_polygon(clipping_polygon):
+							print("2primero")
 							var new_colpol = _new_colpol(
 								Transform2D(0, -global_position).xform(p)
 								)
@@ -48,6 +57,7 @@ func carve(clipping_polygon):
 						colpol.free()
 						# if its not a hole, behave as in match _
 					else:
+						print("2 segundo")
 						#colpol.update_pol(clipped_polygons[0])
 						call_deferred("update_col" , colpol , clipped_polygons[0])
 						for i in range(n_clipped_polygons-1):
@@ -61,6 +71,8 @@ func carve(clipping_polygon):
 					for i in range(n_clipped_polygons-1):
 						var new_col = _new_colpol(Transform2D(0, -global_position).xform(clipped_polygons[i+1]))
 						call_deferred("add_child" , new_col)
+						print("3")
+		#actualice_uv(colpol.get_node("Polygonete"))	
 #	if self != null:
 #		audio.play()
 						
@@ -110,12 +122,16 @@ func _new_colpol(polygon):
 	"""
 	var colpol = CollisionPolygon2D.new()
 	var polygonete = Polygon2D.new()
+	colpol.use_parent_material = true
 #	var audioStream = AudioStreamPlayer.new()
 #	audioStream.stream = explosionAudio
 #	colpol.name = "CollisionPolygon2D"
-	polygonete.texture = texture
+	polygonete.texture = texture.duplicate()
+	polygonete.use_parent_material = true
+	polygonete.texture.set_region(Rect2(0,0, starting_polygon[2].x, starting_polygon[2].y))
 	polygonete.polygon = polygon
 	polygonete.name = "Polygonete"
+	#actualice_uv(polygonete)
 	colpol.polygon = polygon
 	colpol.add_child(polygonete)
 #	colpol.add_child(audioStream)
@@ -123,9 +139,16 @@ func _new_colpol(polygon):
 	return colpol
 
 func update_col(colpol , cutpol):
+	
 	colpol.set_polygon(Transform2D(0, -global_position).xform(cutpol))
 	colpol.get_node("Polygonete").polygon = colpol.polygon
-
+	
+	
 func generate(polygon :Array):
+	var polygonete = $"%Polygonete"
 	$CollisionPolygon2D.polygon = polygon
-	$CollisionPolygon2D/Polygonete.polygon = polygon
+	polygonete.polygon = polygon
+	polygonete.texture = texture.duplicate()
+	polygonete.texture.set_region(Rect2(0,0, polygon[2].x, polygon[2].y))
+	
+	#actualice_uv($CollisionPolygon2D/Polygonete)

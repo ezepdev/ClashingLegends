@@ -9,12 +9,16 @@ func enter(value = null , value2 = null) -> void:
 	character.snap_vector = Vector2.ZERO
 	character._play_animation("jump")
 	doble_jump = 1
+	if character.jump_count == 2:
+		character.energy.visible = true
+	
 
 func exit() -> void:
 	character.snap_vector = character.SNAP_DIRECTION * character.SNAP_LENGHT
 	character.jump_count = 1
 	character.jump_pressed_time = 0
 	character.jump_force_charged = 0
+	character.energy.visible = false
 
 
 func handle_input(event: InputEvent) -> void:
@@ -37,12 +41,15 @@ func handle_input(event: InputEvent) -> void:
 
 
 func update(delta:float) -> void:
+	if character.jump_count == 0:
+		character.energy.visible = false
 	character.handle_movement()
 	character.apply_speed_limit()
 	character.handle_jump()
 	character._apply_movement()
 	character.handle_hit()
 	character.handle_fire()
+	character._handle_constant_energy()
 	if character.move_direction == 0:
 		character._handle_deacceleration()
 	if character.is_on_floor():

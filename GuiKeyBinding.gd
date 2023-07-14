@@ -8,11 +8,13 @@ var setting_key = false
 
 func _ready():
 	load_keys()
-	visible = false
 	pause_mode = Node.PAUSE_MODE_PROCESS
-	
-	pass # Replace with function body.
-#We'll use this when the game loads
+
+func _input(event):
+	if (event.is_action_released("ui_cancel") && visible):
+		get_tree().paused = false
+		visible = false
+
 func load_keys():
 	var file = File.new()
 	if(file.file_exists(file_name)):

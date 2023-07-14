@@ -8,6 +8,8 @@ func handle_input(event: InputEvent) -> void:
 	
 	if event.is_action_released("jump" + str(character.id)):
 		emit_signal("finished","jump")
+	elif event.is_action_pressed("block" + str(character.id)):
+		emit_signal("finished" , "block")
 	elif character.is_on_floor() && event.is_action_pressed("charge_mana" + str(character.id)):
 		emit_signal("finished" , "charge")
 	elif event is InputEventKey: 
@@ -25,6 +27,9 @@ func update(delta:float) -> void:
 	character.handle_charge_jump(delta)
 	character.handle_hit()
 	character.handle_fire()
+	character._handle_constant_energy()
+	if character.is_on_floor() && character.anim_player.get_current_animation() != "chargejump":
+		character.energy.visible = false
 	if character.move_direction != 0:
 		emit_signal("finished" , "walk")
 	else:

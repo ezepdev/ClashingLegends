@@ -29,6 +29,9 @@ func update(delta:float) -> void:
 	character.handle_charge_jump(delta)
 	character.handle_hit()
 	character.handle_fire()
+	character._handle_constant_energy()
+	if character.is_on_floor():
+		character.energy.visible = false
 	if character.move_direction == 0:
 		emit_signal("finished", "idle")
 	else:

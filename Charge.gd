@@ -5,7 +5,8 @@ func enter(value = null , value2 = null) -> void:
 
 # Clean up the state. Reinitialize values like a timer
 func exit() -> void:
-	return
+	character.energy.visible = false
+	character.energy.modulate = character.energy_jump_color
 
 
 func handle_input(event: InputEvent) -> void:
@@ -20,15 +21,9 @@ func update(delta:float) -> void:
 	character.handle_energy_charge()
 	if character.move_direction != 0:
 		emit_signal("finished" , "walk")
-	else:
-		character._handle_deacceleration()
-		character.apply_speed_limit()
-		character._apply_movement()
-
-
-func _on_animation_finished(anim_name: String) -> void:
-	return
-
 
 func handle_event(event: String, value = null) -> void:
-	return
+	match event:
+		"hit":
+			character._handle_hit(value[0])
+			emit_signal("finished", "knockback" , value[1] , value[2])

@@ -14,7 +14,10 @@ func _on_ContinueBtn_pressed():
 	get_tree().set_pause(false)	
 
 func _on_ExitBtn_pressed():
-	pass # Replace with function body.
+	get_tree().set_pause(false)
+	var new_scene = load("res://screens/MainMenu.tscn")
+	get_tree().change_scene_to(new_scene)
+	queue_free()
 
 
 func _on_Controls_pressed():

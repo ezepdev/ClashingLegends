@@ -1,6 +1,7 @@
 extends KinematicBody2D
 
 class_name Player
+onready var energy = $Energy
 onready var arm = $Arm
 onready var target
 onready var body : Sprite = $Body
@@ -14,7 +15,10 @@ onready var audio_voice = $PlayerVoice
 onready var audio_explosion = get_parent().get_node("Explosion")
 onready var destructibles = get_tree().get_nodes_in_group("Destructible")
 onready var destruction_polygon = get_node("DestructionArea/Polygon2D")
+onready var destruction_polygon2 = get_node("DestructionArea2/Polygon2D")
 onready var destruction_area = get_node("DestructionArea")
+onready var destruction_area2 = get_node("DestructionArea2")
+onready var hit_timer = $HitTimer
 
 # signals
 signal health_changed(current_health,id)
@@ -26,6 +30,7 @@ export (float) var max_health = 500.0
 var health_player:float = max_health
 export (float) var max_mana = 500.0
 export (float) var energy_power_penalty = 100.0
+export (Color) var energy_jump_color
 var mana_player:float = max_mana
 
 # knockback
@@ -77,12 +82,10 @@ var color_transition_timer = 0.0
 
 # dash
 var is_action_repeat = false
-var count_is_action_repeated = 0
-var can_dash;
 const MAX_DASH_COUNT = 2
 const DASH_TIME_THRESHOLD = 0.2
 
-var last_action_name
+var last_actions :Array = ["",""]
 var projectile_container
 var id
 
@@ -120,8 +123,19 @@ func handle_energy_charge():
 	
 	if Input.is_action_just_released("charge_mana" + str(id)):
 		_play_animation("idle")
-
 		
+func _handle_blocked_hit(dmg):
+	if mana_player > 0:
+		mana_player -= 50
+		emit_signal("mana_changed",get_mana(),id)
+		
+func _handle_constant_energy():
+	if mana_player < max_mana:
+		mana_player += 0.5
+		if mana_player > max_mana:
+			mana_player = max_mana
+	emit_signal("mana_changed",get_mana(),id)
+			
 func handle_movement():
 	move_direction = int(Input.is_action_pressed("move_right" + str(id) )) - int(Input.is_action_pressed("move_left" + str(id)))	
 	if move_direction != 0:
@@ -131,39 +145,33 @@ func handle_movement():
 		dash_police.scale.y = -1
 		$Arm/ArmTip.position.x = -100
 		$Enemy_Detection_Area.scale.x = -1
+		destruction_area2.scale.x = -1
 		hit_force = -velocity.x
 	elif move_direction > 0:
 		dash_police.scale.y = 1
 		body.flip_h = false
 		$Arm/ArmTip.position.x = 100
 		$Enemy_Detection_Area.scale.x = 1
+		destruction_area2.scale.x = 1
 		hit_force = velocity.x
 	if Input.is_action_just_pressed("move_right" + str(id)):
-		last_action_name = "move_right" + str(id)
-		can_dash = true
+		add_action("move_right" + str(id))
 		dash_timer.start()
 	if Input.is_action_just_pressed("move_left" + str(id)):
-		last_action_name = "move_left" + str(id)
-		can_dash = true
+		add_action("move_left" + str(id)) 
 		dash_timer.start()
-
+		
+func add_action(action : String):
+	last_actions[0] = last_actions[1]
+	last_actions[1] = action
+	
 func handle_dash():
-		is_action_repeat = last_action_name == get_current_action_name()
-		count_is_action_repeated;
-		if is_action_repeat: 
-			count_is_action_repeated += 1
-		if !is_action_repeat || count_is_action_repeated > 1:
-			count_is_action_repeated = 0
-			return false
-		if is_action_repeat && can_dash && count_is_action_repeated == 1 && !dash_police.is_colliding() && mana_player - 100 > 0:
-			return true
+		is_action_repeat = last_actions[0] == last_actions[1]
+		return is_action_repeat && !dash_timer.is_stopped() && !dash_police.is_colliding() && mana_player - 100 > 0
 
 func handle_dash_joystick():
-	if !dash_police.is_colliding() && mana_player - 100 > 0:
-		return true
-	else:
-		return false
-	
+	return !dash_police.is_colliding() && mana_player - 100 > 0
+
 
 func apply_speed_limit():
 	if is_on_floor():
@@ -184,13 +192,23 @@ func _apply_movement():
 	velocity = move_and_slide_with_snap(velocity, snap_vector, FLOOR_NORMAL, true, 4, SLOPE_THRESHOLD)
 	if abs(velocity.x) >=2000 || abs(velocity.y)  >=2000:
 		destruction_area.monitoring = true
-		print("x: " + str(velocity.x))
-		print("y: " + str(velocity.y))
+#		print("x: " + str(velocity.x))
+#		print("y: " + str(velocity.y))
 		for body in destruction_area.get_overlapping_bodies():
 			if body in destructibles:
 				call_deferred("calculate_destruction" , body , destruction_polygon)
-			else:
-				destruction_area.monitoring = false
+	else:
+		destruction_area.monitoring = false
+#	elif is_on_floor() && abs(velocity.x) >=2000 || abs(velocity.y)  >=2000:
+#		destruction_area2.monitoring = true
+##		print("x: " + str(velocity.x))
+##		print("y: " + str(velocity.y))
+#		for body in destruction_area2.get_overlapping_bodies():
+#			if body in destructibles:
+#				call_deferred("calculate_destruction" , body , destruction_polygon2)
+#				velocity.x-=200
+#			else:
+#				destruction_area2.monitoring = false
 	
 func get_health():
 	return (health_player / max_health) * 100
@@ -200,7 +218,7 @@ func get_mana():
 	return (mana_player / max_mana) * 100
 	
 func fire():
-	if projectile_scene != null && fire_available && mana_player > 0:
+	if projectile_scene != null && fire_available && mana_player > 30:
 		var proj_instance = projectile_scene.instance()
 		_play_animation("shoot")
 		proj_instance.initialize(projectile_container, arm.get_node("ArmTip").global_position, target)
@@ -220,10 +238,9 @@ func handle_fire():
 
 func handle_hit():
 	if Input.is_action_just_pressed("hit_enemy" + str(id)):
+		hit_timer.start()
 		_play_animation("hit")
 		hit()
-	if Input.is_action_just_released("hit_enemy" + str(id)):
-		$Enemy_Detection_Area.monitoring = false
 
 func handle_charge_jump(delta):
 	var jump: bool = Input.is_action_just_pressed('jump' + str(id))
@@ -299,9 +316,6 @@ func _play_animation(animation_name:String, should_restart:bool = true, playback
 		anim_player.advance(0)
 		anim_player.play(animation_name)
 
-
-func _on_DashTimer_timeout():
-	can_dash = false
 	
 func _on_Enemy_Detection_Area_body_entered(body : Player):
 	var y_hit = velocity.y
@@ -316,3 +330,7 @@ func _on_CountdownTimer_timeout():
 func play_audio(audio):
 	audio_player.stream = audio
 	audio_player.play()
+
+
+func _on_HitTimer_timeout():
+	$Enemy_Detection_Area.monitoring = false

@@ -1,8 +1,8 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=17 format=2]
 
 [ext_resource path="res://Player.gd" type="Script" id=1]
-[ext_resource path="res://assets/player.png" type="Texture" id=2]
-[ext_resource path="res://assets/background.png" type="Texture" id=3]
+[ext_resource path="res://assets/basics/player.png" type="Texture" id=2]
+[ext_resource path="res://assets/basics/background.png" type="Texture" id=3]
 [ext_resource path="res://Arm.gd" type="Script" id=4]
 [ext_resource path="res://EnergyBall.tscn" type="PackedScene" id=5]
 [ext_resource path="res://PlayerStateMachine.gd" type="Script" id=6]
@@ -13,6 +13,7 @@
 [ext_resource path="res://Dash.gd" type="Script" id=11]
 [ext_resource path="res://Charge.gd" type="Script" id=12]
 [ext_resource path="res://Knockback.gd" type="Script" id=13]
+[ext_resource path="res://Block.gd" type="Script" id=15]
 
 [sub_resource type="GDScript" id=2]
 script/source = "extends \"res://AbstractState.gd\"
@@ -85,6 +86,9 @@ script = ExtResource( 12 )
 [node name="Dead" type="Node" parent="PlayerStateMachine"]
 script = SubResource( 2 )
 
+[node name="Block" type="Node" parent="PlayerStateMachine"]
+script = ExtResource( 15 )
+
 [node name="Body" type="Sprite" parent="."]
 texture = ExtResource( 2 )
 
@@ -126,6 +130,10 @@ monitorable = false
 wait_time = 0.2
 one_shot = true
 
+[node name="HitTimer" type="Timer" parent="."]
+wait_time = 0.1
+one_shot = true
+
 [node name="DestructionArea" type="Area2D" parent="."]
 monitorable = false
 
@@ -133,6 +141,14 @@ monitorable = false
 script = ExtResource( 10 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DestructionArea"]
+
+[node name="DestructionArea2" type="Area2D" parent="."]
+monitorable = false
+
+[node name="Polygon2D" type="Polygon2D" parent="DestructionArea2"]
+script = ExtResource( 10 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestructionArea2"]
 
 [node name="CountdownTimer" type="Timer" parent="."]
 wait_time = 0.25
@@ -142,5 +158,5 @@ wait_time = 0.25
 [node name="PlayerVoice" type="AudioStreamPlayer" parent="."]
 
 [connection signal="hit" from="." to="PlayerStateMachine" method="_on_Player_hit"]
-[connection signal="timeout" from="DashTimer" to="." method="_on_DashTimer_timeout"]
+[connection signal="timeout" from="HitTimer" to="." method="_on_HitTimer_timeout"]
 [connection signal="timeout" from="CountdownTimer" to="." method="_on_CountdownTimer_timeout"]

@@ -93,3 +93,4 @@ func _change_state(state_name: String , value = null, value2 = null) -> void:
 	
 	if state_name != "previous":
 		current_state.enter(value , value2)
+	print(state_name)
