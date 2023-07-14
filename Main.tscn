@@ -1,4 +1,4 @@
-[gd_scene load_steps=341 format=2]
+[gd_scene load_steps=336 format=2]
 
 [ext_resource path="res://Main.gd" type="Script" id=1]
 [ext_resource path="res://Player2.tscn" type="PackedScene" id=2]
@@ -21,6 +21,7 @@
 [ext_resource path="res://assets/buildings/Parte Baja edifcio 1.png" type="Texture" id=19]
 [ext_resource path="res://assets/buildings/Cozy World Builder_Destroyed, Fire_image-3_1688835229.png" type="Texture" id=20]
 [ext_resource path="res://assets/buildings/FD31oqmjQGu0XCh9nABtOw.png" type="Texture" id=21]
+[ext_resource path="res://assets/GUI/button_xbox_analog_trigger_dark_2.png" type="Texture" id=22]
 [ext_resource path="res://assets/buildings/Street.png" type="Texture" id=23]
 [ext_resource path="res://assets/Labels/Label.png" type="Texture" id=24]
 [ext_resource path="res://assets/buildings/Backstreet.png" type="Texture" id=25]
@@ -37,7 +38,6 @@
 [ext_resource path="res://assets/buildings/Neon sign/Neon sign4.png" type="Texture" id=38]
 [ext_resource path="res://assets/buildings/Neon sign/Neon sign5.png" type="Texture" id=39]
 [ext_resource path="res://assets/buildings/Neon sign/Neon sign6.png" type="Texture" id=40]
-[ext_resource path="res://animated_texture_but_better.gd" type="Script" id=41]
 [ext_resource path="res://assets/buildings/bldg4.png" type="Texture" id=42]
 [ext_resource path="res://assets/buildings/Neon sign/Neon sign3.png" type="Texture" id=43]
 [ext_resource path="res://assets/buildings/Yello sign/Neon sign yellow with black background6.png" type="Texture" id=44]
@@ -362,522 +362,8 @@ atlas = ExtResource( 32 )
 flags = 4
 atlas = ExtResource( 3 )
 
-[sub_resource type="AnimatedTexture" id=80]
-frames = 255
-fps = 60.0
-frame_1/texture = ExtResource( 56 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 159 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 288 )
-frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 281 )
-frame_4/delay_sec = 0.0
-frame_5/texture = ExtResource( 161 )
-frame_5/delay_sec = 0.0
-frame_6/texture = ExtResource( 188 )
-frame_6/delay_sec = 0.0
-frame_7/texture = ExtResource( 186 )
-frame_7/delay_sec = 0.0
-frame_8/texture = ExtResource( 168 )
-frame_8/delay_sec = 0.0
-frame_9/texture = ExtResource( 294 )
-frame_9/delay_sec = 0.0
-frame_10/texture = ExtResource( 49 )
-frame_10/delay_sec = 0.0
-frame_11/texture = ExtResource( 64 )
-frame_11/delay_sec = 0.0
-frame_12/texture = ExtResource( 158 )
-frame_12/delay_sec = 0.0
-frame_13/texture = ExtResource( 132 )
-frame_13/delay_sec = 0.0
-frame_14/texture = ExtResource( 147 )
-frame_14/delay_sec = 0.0
-frame_15/texture = ExtResource( 87 )
-frame_15/delay_sec = 0.0
-frame_16/texture = ExtResource( 88 )
-frame_16/delay_sec = 0.0
-frame_17/texture = ExtResource( 86 )
-frame_17/delay_sec = 0.0
-frame_18/texture = ExtResource( 115 )
-frame_18/delay_sec = 0.0
-frame_19/texture = ExtResource( 122 )
-frame_19/delay_sec = 0.0
-frame_20/texture = ExtResource( 118 )
-frame_20/delay_sec = 0.0
-frame_21/texture = ExtResource( 268 )
-frame_21/delay_sec = 0.0
-frame_22/texture = ExtResource( 228 )
-frame_22/delay_sec = 0.0
-frame_23/texture = ExtResource( 224 )
-frame_23/delay_sec = 0.0
-frame_24/texture = ExtResource( 261 )
-frame_24/delay_sec = 0.0
-frame_25/texture = ExtResource( 242 )
-frame_25/delay_sec = 0.0
-frame_26/texture = ExtResource( 246 )
-frame_26/delay_sec = 0.0
-frame_27/texture = ExtResource( 247 )
-frame_27/delay_sec = 0.0
-frame_28/texture = ExtResource( 251 )
-frame_28/delay_sec = 0.0
-frame_29/texture = ExtResource( 253 )
-frame_29/delay_sec = 0.0
-frame_30/texture = ExtResource( 284 )
-frame_30/delay_sec = 0.0
-frame_31/texture = ExtResource( 289 )
-frame_31/delay_sec = 0.0
-frame_32/texture = ExtResource( 290 )
-frame_32/delay_sec = 0.0
-frame_33/texture = ExtResource( 278 )
-frame_33/delay_sec = 0.0
-frame_34/texture = ExtResource( 285 )
-frame_34/delay_sec = 0.0
-frame_35/texture = ExtResource( 279 )
-frame_35/delay_sec = 0.0
-frame_36/texture = ExtResource( 286 )
-frame_36/delay_sec = 0.0
-frame_37/texture = ExtResource( 280 )
-frame_37/delay_sec = 0.0
-frame_38/texture = ExtResource( 282 )
-frame_38/delay_sec = 0.0
-frame_39/texture = ExtResource( 287 )
-frame_39/delay_sec = 0.0
-frame_40/texture = ExtResource( 283 )
-frame_40/delay_sec = 0.0
-frame_41/texture = ExtResource( 176 )
-frame_41/delay_sec = 0.0
-frame_42/texture = ExtResource( 203 )
-frame_42/delay_sec = 0.0
-frame_43/texture = ExtResource( 204 )
-frame_43/delay_sec = 0.0
-frame_44/texture = ExtResource( 187 )
-frame_44/delay_sec = 0.0
-frame_45/texture = ExtResource( 196 )
-frame_45/delay_sec = 0.0
-frame_46/texture = ExtResource( 174 )
-frame_46/delay_sec = 0.0
-frame_47/texture = ExtResource( 183 )
-frame_47/delay_sec = 0.0
-frame_48/texture = ExtResource( 211 )
-frame_48/delay_sec = 0.0
-frame_49/texture = ExtResource( 197 )
-frame_49/delay_sec = 0.0
-frame_50/texture = ExtResource( 184 )
-frame_50/delay_sec = 0.0
-frame_51/texture = ExtResource( 191 )
-frame_51/delay_sec = 0.0
-frame_52/texture = ExtResource( 195 )
-frame_52/delay_sec = 0.0
-frame_53/texture = ExtResource( 185 )
-frame_53/delay_sec = 0.0
-frame_54/texture = ExtResource( 212 )
-frame_54/delay_sec = 0.0
-frame_55/texture = ExtResource( 180 )
-frame_55/delay_sec = 0.0
-frame_56/texture = ExtResource( 177 )
-frame_56/delay_sec = 0.0
-frame_57/texture = ExtResource( 182 )
-frame_57/delay_sec = 0.0
-frame_58/texture = ExtResource( 198 )
-frame_58/delay_sec = 0.0
-frame_59/texture = ExtResource( 164 )
-frame_59/delay_sec = 0.0
-frame_60/texture = ExtResource( 213 )
-frame_60/delay_sec = 0.0
-frame_61/texture = ExtResource( 209 )
-frame_61/delay_sec = 0.0
-frame_62/texture = ExtResource( 178 )
-frame_62/delay_sec = 0.0
-frame_63/texture = ExtResource( 175 )
-frame_63/delay_sec = 0.0
-frame_64/texture = ExtResource( 202 )
-frame_64/delay_sec = 0.0
-frame_65/texture = ExtResource( 163 )
-frame_65/delay_sec = 0.0
-frame_66/texture = ExtResource( 173 )
-frame_66/delay_sec = 0.0
-frame_67/texture = ExtResource( 165 )
-frame_67/delay_sec = 0.0
-frame_68/texture = ExtResource( 181 )
-frame_68/delay_sec = 0.0
-frame_69/texture = ExtResource( 199 )
-frame_69/delay_sec = 0.0
-frame_70/texture = ExtResource( 162 )
-frame_70/delay_sec = 0.0
-frame_71/texture = ExtResource( 205 )
-frame_71/delay_sec = 0.0
-frame_72/texture = ExtResource( 194 )
-frame_72/delay_sec = 0.0
-frame_73/texture = ExtResource( 189 )
-frame_73/delay_sec = 0.0
-frame_74/texture = ExtResource( 166 )
-frame_74/delay_sec = 0.0
-frame_75/texture = ExtResource( 201 )
-frame_75/delay_sec = 0.0
-frame_76/texture = ExtResource( 167 )
-frame_76/delay_sec = 0.0
-frame_77/texture = ExtResource( 179 )
-frame_77/delay_sec = 0.0
-frame_78/texture = ExtResource( 200 )
-frame_78/delay_sec = 0.0
-frame_79/texture = ExtResource( 190 )
-frame_79/delay_sec = 0.0
-frame_80/texture = ExtResource( 206 )
-frame_80/delay_sec = 0.0
-frame_81/texture = ExtResource( 210 )
-frame_81/delay_sec = 0.0
-frame_82/texture = ExtResource( 207 )
-frame_82/delay_sec = 0.0
-frame_83/texture = ExtResource( 208 )
-frame_83/delay_sec = 0.0
-frame_84/texture = ExtResource( 169 )
-frame_84/delay_sec = 0.0
-frame_85/texture = ExtResource( 192 )
-frame_85/delay_sec = 0.0
-frame_86/texture = ExtResource( 170 )
-frame_86/delay_sec = 0.0
-frame_87/texture = ExtResource( 193 )
-frame_87/delay_sec = 0.0
-frame_88/texture = ExtResource( 171 )
-frame_88/delay_sec = 0.0
-frame_89/texture = ExtResource( 172 )
-frame_89/delay_sec = 0.0
-frame_90/texture = ExtResource( 295 )
-frame_90/delay_sec = 0.0
-frame_91/texture = ExtResource( 291 )
-frame_91/delay_sec = 0.0
-frame_92/texture = ExtResource( 296 )
-frame_92/delay_sec = 0.0
-frame_93/texture = ExtResource( 292 )
-frame_93/delay_sec = 0.0
-frame_94/texture = ExtResource( 298 )
-frame_94/delay_sec = 0.0
-frame_95/texture = ExtResource( 297 )
-frame_95/delay_sec = 0.0
-frame_96/texture = ExtResource( 299 )
-frame_96/delay_sec = 0.0
-frame_97/texture = ExtResource( 301 )
-frame_97/delay_sec = 0.0
-frame_98/texture = ExtResource( 300 )
-frame_98/delay_sec = 0.0
-frame_99/texture = ExtResource( 293 )
-frame_99/delay_sec = 0.0
-frame_100/texture = ExtResource( 53 )
-frame_100/delay_sec = 0.0
-frame_101/texture = ExtResource( 50 )
-frame_101/delay_sec = 0.0
-frame_102/texture = ExtResource( 51 )
-frame_102/delay_sec = 0.0
-frame_103/texture = ExtResource( 52 )
-frame_103/delay_sec = 0.0
-frame_104/texture = ExtResource( 58 )
-frame_104/delay_sec = 0.0
-frame_105/texture = ExtResource( 54 )
-frame_105/delay_sec = 0.0
-frame_106/texture = ExtResource( 55 )
-frame_106/delay_sec = 0.0
-frame_107/texture = ExtResource( 57 )
-frame_107/delay_sec = 0.0
-frame_108/texture = ExtResource( 59 )
-frame_108/delay_sec = 0.0
-frame_109/texture = ExtResource( 63 )
-frame_109/delay_sec = 0.0
-frame_110/texture = ExtResource( 60 )
-frame_110/delay_sec = 0.0
-frame_111/texture = ExtResource( 61 )
-frame_111/delay_sec = 0.0
-frame_112/texture = ExtResource( 62 )
-frame_112/delay_sec = 0.0
-frame_113/texture = ExtResource( 65 )
-frame_113/delay_sec = 0.0
-frame_114/texture = ExtResource( 66 )
-frame_114/delay_sec = 0.0
-frame_115/texture = ExtResource( 31 )
-frame_115/delay_sec = 0.0
-frame_116/texture = ExtResource( 156 )
-frame_116/delay_sec = 0.0
-frame_117/texture = ExtResource( 124 )
-frame_117/delay_sec = 0.0
-frame_118/texture = ExtResource( 129 )
-frame_118/delay_sec = 0.0
-frame_119/texture = ExtResource( 153 )
-frame_119/delay_sec = 0.0
-frame_120/texture = ExtResource( 131 )
-frame_120/delay_sec = 0.0
-frame_121/texture = ExtResource( 157 )
-frame_121/delay_sec = 0.0
-frame_122/texture = ExtResource( 154 )
-frame_122/delay_sec = 0.0
-frame_123/texture = ExtResource( 126 )
-frame_123/delay_sec = 0.0
-frame_124/texture = ExtResource( 127 )
-frame_124/delay_sec = 0.0
-frame_125/texture = ExtResource( 125 )
-frame_125/delay_sec = 0.0
-frame_126/texture = ExtResource( 155 )
-frame_126/delay_sec = 0.0
-frame_127/texture = ExtResource( 128 )
-frame_127/delay_sec = 0.0
-frame_128/texture = ExtResource( 139 )
-frame_128/delay_sec = 0.0
-frame_129/texture = ExtResource( 130 )
-frame_129/delay_sec = 0.0
-frame_130/texture = ExtResource( 133 )
-frame_130/delay_sec = 0.0
-frame_131/texture = ExtResource( 134 )
-frame_131/delay_sec = 0.0
-frame_132/texture = ExtResource( 148 )
-frame_132/delay_sec = 0.0
-frame_133/texture = ExtResource( 136 )
-frame_133/delay_sec = 0.0
-frame_134/texture = ExtResource( 135 )
-frame_134/delay_sec = 0.0
-frame_135/texture = ExtResource( 144 )
-frame_135/delay_sec = 0.0
-frame_136/texture = ExtResource( 151 )
-frame_136/delay_sec = 0.0
-frame_137/texture = ExtResource( 137 )
-frame_137/delay_sec = 0.0
-frame_138/texture = ExtResource( 152 )
-frame_138/delay_sec = 0.0
-frame_139/texture = ExtResource( 138 )
-frame_139/delay_sec = 0.0
-frame_140/texture = ExtResource( 149 )
-frame_140/delay_sec = 0.0
-frame_141/texture = ExtResource( 140 )
-frame_141/delay_sec = 0.0
-frame_142/texture = ExtResource( 141 )
-frame_142/delay_sec = 0.0
-frame_143/texture = ExtResource( 142 )
-frame_143/delay_sec = 0.0
-frame_144/texture = ExtResource( 150 )
-frame_144/delay_sec = 0.0
-frame_145/texture = ExtResource( 143 )
-frame_145/delay_sec = 0.0
-frame_146/texture = ExtResource( 145 )
-frame_146/delay_sec = 0.0
-frame_147/texture = ExtResource( 146 )
-frame_147/delay_sec = 0.0
-frame_148/texture = ExtResource( 101 )
-frame_148/delay_sec = 0.0
-frame_149/texture = ExtResource( 92 )
-frame_149/delay_sec = 0.0
-frame_150/texture = ExtResource( 89 )
-frame_150/delay_sec = 0.0
-frame_151/texture = ExtResource( 95 )
-frame_151/delay_sec = 0.0
-frame_152/texture = ExtResource( 98 )
-frame_152/delay_sec = 0.0
-frame_153/texture = ExtResource( 83 )
-frame_153/delay_sec = 0.0
-frame_154/texture = ExtResource( 99 )
-frame_154/delay_sec = 0.0
-frame_155/texture = ExtResource( 96 )
-frame_155/delay_sec = 0.0
-frame_156/texture = ExtResource( 90 )
-frame_156/delay_sec = 0.0
-frame_157/texture = ExtResource( 100 )
-frame_157/delay_sec = 0.0
-frame_158/texture = ExtResource( 91 )
-frame_158/delay_sec = 0.0
-frame_159/texture = ExtResource( 97 )
-frame_159/delay_sec = 0.0
-frame_160/texture = ExtResource( 93 )
-frame_160/delay_sec = 0.0
-frame_161/texture = ExtResource( 85 )
-frame_161/delay_sec = 0.0
-frame_162/texture = ExtResource( 102 )
-frame_162/delay_sec = 0.0
-frame_163/texture = ExtResource( 103 )
-frame_163/delay_sec = 0.0
-frame_164/texture = ExtResource( 104 )
-frame_164/delay_sec = 0.0
-frame_165/texture = ExtResource( 82 )
-frame_165/delay_sec = 0.0
-frame_166/texture = ExtResource( 105 )
-frame_166/delay_sec = 0.0
-frame_167/texture = ExtResource( 106 )
-frame_167/delay_sec = 0.0
-frame_168/texture = ExtResource( 94 )
-frame_168/delay_sec = 0.0
-frame_169/texture = ExtResource( 84 )
-frame_169/delay_sec = 0.0
-frame_170/texture = ExtResource( 74 )
-frame_170/delay_sec = 0.0
-frame_171/texture = ExtResource( 73 )
-frame_171/delay_sec = 0.0
-frame_172/texture = ExtResource( 70 )
-frame_172/delay_sec = 0.0
-frame_173/texture = ExtResource( 71 )
-frame_173/delay_sec = 0.0
-frame_174/texture = ExtResource( 72 )
-frame_174/delay_sec = 0.0
-frame_175/texture = ExtResource( 75 )
-frame_175/delay_sec = 0.0
-frame_176/texture = ExtResource( 76 )
-frame_176/delay_sec = 0.0
-frame_177/texture = ExtResource( 67 )
-frame_177/delay_sec = 0.0
-frame_178/texture = ExtResource( 68 )
-frame_178/delay_sec = 0.0
-frame_179/texture = ExtResource( 69 )
-frame_179/delay_sec = 0.0
-frame_180/texture = ExtResource( 111 )
-frame_180/delay_sec = 0.0
-frame_181/texture = ExtResource( 112 )
-frame_181/delay_sec = 0.0
-frame_182/texture = ExtResource( 116 )
-frame_182/delay_sec = 0.0
-frame_183/texture = ExtResource( 113 )
-frame_183/delay_sec = 0.0
-frame_184/texture = ExtResource( 117 )
-frame_184/delay_sec = 0.0
-frame_185/texture = ExtResource( 114 )
-frame_185/delay_sec = 0.0
-frame_186/texture = ExtResource( 119 )
-frame_186/delay_sec = 0.0
-frame_187/texture = ExtResource( 120 )
-frame_187/delay_sec = 0.0
-frame_188/texture = ExtResource( 121 )
-frame_188/delay_sec = 0.0
-frame_189/texture = ExtResource( 123 )
-frame_189/delay_sec = 0.0
-frame_190/texture = ExtResource( 77 )
-frame_190/delay_sec = 0.0
-frame_191/texture = ExtResource( 78 )
-frame_191/delay_sec = 0.0
-frame_192/texture = ExtResource( 80 )
-frame_192/delay_sec = 0.0
-frame_193/texture = ExtResource( 79 )
-frame_193/delay_sec = 0.0
-frame_194/texture = ExtResource( 81 )
-frame_194/delay_sec = 0.0
-frame_195/texture = ExtResource( 109 )
-frame_195/delay_sec = 0.0
-frame_196/texture = ExtResource( 110 )
-frame_196/delay_sec = 0.0
-frame_197/texture = ExtResource( 107 )
-frame_197/delay_sec = 0.0
-frame_198/texture = ExtResource( 108 )
-frame_198/delay_sec = 0.0
-frame_199/texture = ExtResource( 160 )
-frame_199/delay_sec = 0.0
-frame_200/texture = ExtResource( 273 )
-frame_200/delay_sec = 0.0
-frame_201/texture = ExtResource( 275 )
-frame_201/delay_sec = 0.0
-frame_202/texture = ExtResource( 277 )
-frame_202/delay_sec = 0.0
-frame_203/texture = ExtResource( 258 )
-frame_203/delay_sec = 0.0
-frame_204/texture = ExtResource( 250 )
-frame_204/delay_sec = 0.0
-frame_205/texture = ExtResource( 270 )
-frame_205/delay_sec = 0.0
-frame_206/texture = ExtResource( 218 )
-frame_206/delay_sec = 0.0
-frame_207/texture = ExtResource( 239 )
-frame_207/delay_sec = 0.0
-frame_208/texture = ExtResource( 259 )
-frame_208/delay_sec = 0.0
-frame_209/texture = ExtResource( 214 )
-frame_209/delay_sec = 0.0
-frame_210/texture = ExtResource( 231 )
-frame_210/delay_sec = 0.0
-frame_211/texture = ExtResource( 248 )
-frame_211/delay_sec = 0.0
-frame_212/texture = ExtResource( 255 )
-frame_212/delay_sec = 0.0
-frame_213/texture = ExtResource( 260 )
-frame_213/delay_sec = 0.0
-frame_214/texture = ExtResource( 276 )
-frame_214/delay_sec = 0.0
-frame_215/texture = ExtResource( 271 )
-frame_215/delay_sec = 0.0
-frame_216/texture = ExtResource( 222 )
-frame_216/delay_sec = 0.0
-frame_217/texture = ExtResource( 215 )
-frame_217/delay_sec = 0.0
-frame_218/texture = ExtResource( 263 )
-frame_218/delay_sec = 0.0
-frame_219/texture = ExtResource( 256 )
-frame_219/delay_sec = 0.0
-frame_220/texture = ExtResource( 269 )
-frame_220/delay_sec = 0.0
-frame_221/texture = ExtResource( 264 )
-frame_221/delay_sec = 0.0
-frame_222/texture = ExtResource( 223 )
-frame_222/delay_sec = 0.0
-frame_223/texture = ExtResource( 216 )
-frame_223/delay_sec = 0.0
-frame_224/texture = ExtResource( 272 )
-frame_224/delay_sec = 0.0
-frame_225/texture = ExtResource( 274 )
-frame_225/delay_sec = 0.0
-frame_226/texture = ExtResource( 217 )
-frame_226/delay_sec = 0.0
-frame_227/texture = ExtResource( 219 )
-frame_227/delay_sec = 0.0
-frame_228/texture = ExtResource( 227 )
-frame_228/delay_sec = 0.0
-frame_229/texture = ExtResource( 234 )
-frame_229/delay_sec = 0.0
-frame_230/texture = ExtResource( 232 )
-frame_230/delay_sec = 0.0
-frame_231/texture = ExtResource( 225 )
-frame_231/delay_sec = 0.0
-frame_232/texture = ExtResource( 266 )
-frame_232/delay_sec = 0.0
-frame_233/texture = ExtResource( 265 )
-frame_233/delay_sec = 0.0
-frame_234/texture = ExtResource( 235 )
-frame_234/delay_sec = 0.0
-frame_235/texture = ExtResource( 249 )
-frame_235/delay_sec = 0.0
-frame_236/texture = ExtResource( 220 )
-frame_236/delay_sec = 0.0
-frame_237/texture = ExtResource( 254 )
-frame_237/delay_sec = 0.0
-frame_238/texture = ExtResource( 240 )
-frame_238/delay_sec = 0.0
-frame_239/texture = ExtResource( 236 )
-frame_239/delay_sec = 0.0
-frame_240/texture = ExtResource( 221 )
-frame_240/delay_sec = 0.0
-frame_241/texture = ExtResource( 226 )
-frame_241/delay_sec = 0.0
-frame_242/texture = ExtResource( 257 )
-frame_242/delay_sec = 0.0
-frame_243/texture = ExtResource( 229 )
-frame_243/delay_sec = 0.0
-frame_244/texture = ExtResource( 230 )
-frame_244/delay_sec = 0.0
-frame_245/texture = ExtResource( 252 )
-frame_245/delay_sec = 0.0
-frame_246/texture = ExtResource( 233 )
-frame_246/delay_sec = 0.0
-frame_247/texture = ExtResource( 237 )
-frame_247/delay_sec = 0.0
-frame_248/texture = ExtResource( 238 )
-frame_248/delay_sec = 0.0
-frame_249/texture = ExtResource( 241 )
-frame_249/delay_sec = 0.0
-frame_250/texture = ExtResource( 262 )
-frame_250/delay_sec = 0.0
-frame_251/texture = ExtResource( 243 )
-frame_251/delay_sec = 0.0
-frame_252/texture = ExtResource( 267 )
-frame_252/delay_sec = 0.0
-frame_253/texture = ExtResource( 244 )
-frame_253/delay_sec = 0.0
-frame_254/texture = ExtResource( 245 )
-frame_254/delay_sec = 0.0
-script = ExtResource( 41 )
-sprites_dir = "res://assets/Gif/video dash"
-
 [sub_resource type="AtlasTexture" id=56]
-atlas = SubResource( 80 )
+atlas = ExtResource( 159 )
 
 [sub_resource type="Shader" id=62]
 code = "shader_type canvas_item;
@@ -894,7 +380,7 @@ void fragment() {
 
 [sub_resource type="ShaderMaterial" id=63]
 shader = SubResource( 62 )
-shader_param/amount = 100000.0
+shader_param/amount = 100.0
 
 [sub_resource type="AtlasTexture" id=64]
 flags = 4
@@ -909,71 +395,13 @@ region = Rect2( 0, 0, 3760, 2220 )
 flags = 4
 atlas = ExtResource( 33 )
 
-[sub_resource type="AnimatedTexture" id=66]
-flags = 4
-frames = 6
-fps = 5.0
-frame_0/texture = ExtResource( 46 )
-frame_1/texture = ExtResource( 45 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 43 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 38 )
-frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 39 )
-frame_4/delay_sec = 0.0
-frame_5/texture = ExtResource( 40 )
-frame_5/delay_sec = 0.0
-script = ExtResource( 41 )
-sprites_dir = "res://assets/buildings/Neon sign"
-
-[sub_resource type="AtlasTexture" id=67]
-flags = 4
-atlas = SubResource( 66 )
-
-[sub_resource type="AnimatedTexture" id=76]
-flags = 4
-frames = 6
-fps = 5.0
-frame_0/texture = ExtResource( 46 )
-frame_1/texture = ExtResource( 45 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 43 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 38 )
-frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 39 )
-frame_4/delay_sec = 0.0
-frame_5/texture = ExtResource( 40 )
-frame_5/delay_sec = 0.0
-script = ExtResource( 41 )
-sprites_dir = "res://assets/buildings/Neon sign"
-
 [sub_resource type="AtlasTexture" id=77]
 flags = 4
-atlas = SubResource( 76 )
-
-[sub_resource type="AnimatedTexture" id=78]
-flags = 4
-frames = 6
-fps = 5.0
-frame_0/texture = ExtResource( 47 )
-frame_1/texture = ExtResource( 48 )
-frame_1/delay_sec = 0.0
-frame_2/texture = ExtResource( 35 )
-frame_2/delay_sec = 0.0
-frame_3/texture = ExtResource( 36 )
-frame_3/delay_sec = 0.0
-frame_4/texture = ExtResource( 37 )
-frame_4/delay_sec = 0.0
-frame_5/texture = ExtResource( 44 )
-frame_5/delay_sec = 0.0
-script = ExtResource( 41 )
-sprites_dir = "res://assets/buildings/Yello sign"
+atlas = ExtResource( 45 )
 
 [sub_resource type="AtlasTexture" id=79]
 flags = 4
-atlas = SubResource( 78 )
+atlas = ExtResource( 35 )
 
 [sub_resource type="AtlasTexture" id=82]
 atlas = ExtResource( 23 )
@@ -994,7 +422,12 @@ atlas = ExtResource( 305 )
 atlas = ExtResource( 304 )
 
 [sub_resource type="DynamicFont" id=3]
-size = 69
+size = 200
+outline_size = 6
+outline_color = Color( 0, 0, 0, 1 )
+use_filter = true
+extra_spacing_top = 30
+extra_spacing_char = 20
 font_data = ExtResource( 13 )
 
 [sub_resource type="RectangleShape2D" id=50]
@@ -1400,8 +833,11 @@ starting_polygon = [ Vector2( 0, 0 ), Vector2( 470, 0 ), Vector2( 470, 2763 ), V
 position = Vector2( 6928, -4337 )
 texture = SubResource( 56 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 3760, 0 ), Vector2( 3760, 2213 ), Vector2( 0, 2213 ) ]
+texture_frames = [ ExtResource( 56 ), ExtResource( 159 ), ExtResource( 288 ), ExtResource( 281 ), ExtResource( 161 ), ExtResource( 188 ), ExtResource( 186 ), ExtResource( 168 ), ExtResource( 294 ), ExtResource( 49 ), ExtResource( 64 ), ExtResource( 158 ), ExtResource( 132 ), ExtResource( 147 ), ExtResource( 87 ), ExtResource( 88 ), ExtResource( 86 ), ExtResource( 115 ), ExtResource( 122 ), ExtResource( 118 ), ExtResource( 268 ), ExtResource( 228 ), ExtResource( 224 ), ExtResource( 261 ), ExtResource( 242 ), ExtResource( 246 ), ExtResource( 247 ), ExtResource( 251 ), ExtResource( 253 ), ExtResource( 284 ), ExtResource( 289 ), ExtResource( 290 ), ExtResource( 278 ), ExtResource( 285 ), ExtResource( 279 ), ExtResource( 286 ), ExtResource( 280 ), ExtResource( 282 ), ExtResource( 287 ), ExtResource( 283 ), ExtResource( 176 ), ExtResource( 203 ), ExtResource( 204 ), ExtResource( 187 ), ExtResource( 196 ), ExtResource( 174 ), ExtResource( 183 ), ExtResource( 211 ), ExtResource( 197 ), ExtResource( 184 ), ExtResource( 191 ), ExtResource( 195 ), ExtResource( 185 ), ExtResource( 212 ), ExtResource( 180 ), ExtResource( 177 ), ExtResource( 182 ), ExtResource( 198 ), ExtResource( 164 ), ExtResource( 213 ), ExtResource( 209 ), ExtResource( 178 ), ExtResource( 175 ), ExtResource( 202 ), ExtResource( 163 ), ExtResource( 173 ), ExtResource( 165 ), ExtResource( 181 ), ExtResource( 199 ), ExtResource( 162 ), ExtResource( 205 ), ExtResource( 194 ), ExtResource( 189 ), ExtResource( 166 ), ExtResource( 201 ), ExtResource( 167 ), ExtResource( 179 ), ExtResource( 200 ), ExtResource( 190 ), ExtResource( 206 ), ExtResource( 210 ), ExtResource( 207 ), ExtResource( 208 ), ExtResource( 169 ), ExtResource( 192 ), ExtResource( 170 ), ExtResource( 193 ), ExtResource( 171 ), ExtResource( 172 ), ExtResource( 295 ), ExtResource( 291 ), ExtResource( 296 ), ExtResource( 292 ), ExtResource( 298 ), ExtResource( 297 ), ExtResource( 299 ), ExtResource( 301 ), ExtResource( 300 ), ExtResource( 293 ), ExtResource( 53 ), ExtResource( 50 ), ExtResource( 51 ), ExtResource( 52 ), ExtResource( 58 ), ExtResource( 54 ), ExtResource( 55 ), ExtResource( 57 ), ExtResource( 59 ), ExtResource( 63 ), ExtResource( 60 ), ExtResource( 61 ), ExtResource( 62 ), ExtResource( 65 ), ExtResource( 66 ), ExtResource( 31 ), ExtResource( 156 ), ExtResource( 124 ), ExtResource( 129 ), ExtResource( 153 ), ExtResource( 131 ), ExtResource( 157 ), ExtResource( 154 ), ExtResource( 126 ), ExtResource( 127 ), ExtResource( 125 ), ExtResource( 155 ), ExtResource( 128 ), ExtResource( 139 ), ExtResource( 130 ), ExtResource( 133 ), ExtResource( 134 ), ExtResource( 148 ), ExtResource( 136 ), ExtResource( 135 ), ExtResource( 144 ), ExtResource( 151 ), ExtResource( 137 ), ExtResource( 152 ), ExtResource( 138 ), ExtResource( 149 ), ExtResource( 140 ), ExtResource( 141 ), ExtResource( 142 ), ExtResource( 150 ), ExtResource( 143 ), ExtResource( 145 ), ExtResource( 146 ), ExtResource( 101 ), ExtResource( 92 ), ExtResource( 89 ), ExtResource( 95 ), ExtResource( 98 ), ExtResource( 83 ), ExtResource( 99 ), ExtResource( 96 ), ExtResource( 90 ), ExtResource( 100 ), ExtResource( 91 ), ExtResource( 97 ), ExtResource( 93 ), ExtResource( 85 ), ExtResource( 102 ), ExtResource( 103 ), ExtResource( 104 ), ExtResource( 82 ), ExtResource( 105 ), ExtResource( 106 ), ExtResource( 94 ), ExtResource( 84 ), ExtResource( 74 ), ExtResource( 73 ), ExtResource( 70 ), ExtResource( 71 ), ExtResource( 72 ), ExtResource( 75 ), ExtResource( 76 ), ExtResource( 67 ), ExtResource( 68 ), ExtResource( 69 ), ExtResource( 111 ), ExtResource( 112 ), ExtResource( 116 ), ExtResource( 113 ), ExtResource( 117 ), ExtResource( 114 ), ExtResource( 119 ), ExtResource( 120 ), ExtResource( 121 ), ExtResource( 123 ), ExtResource( 77 ), ExtResource( 78 ), ExtResource( 80 ), ExtResource( 79 ), ExtResource( 81 ), ExtResource( 109 ), ExtResource( 110 ), ExtResource( 107 ), ExtResource( 108 ), ExtResource( 160 ), ExtResource( 273 ), ExtResource( 275 ), ExtResource( 277 ), ExtResource( 258 ), ExtResource( 250 ), ExtResource( 270 ), ExtResource( 218 ), ExtResource( 239 ), ExtResource( 259 ), ExtResource( 214 ), ExtResource( 231 ), ExtResource( 248 ), ExtResource( 255 ), ExtResource( 260 ), ExtResource( 276 ), ExtResource( 271 ), ExtResource( 222 ), ExtResource( 215 ), ExtResource( 263 ), ExtResource( 256 ), ExtResource( 269 ), ExtResource( 264 ), ExtResource( 223 ), ExtResource( 216 ), ExtResource( 272 ), ExtResource( 274 ), ExtResource( 217 ), ExtResource( 219 ), ExtResource( 227 ), ExtResource( 234 ), ExtResource( 232 ), ExtResource( 225 ), ExtResource( 266 ), ExtResource( 265 ), ExtResource( 235 ), ExtResource( 249 ), ExtResource( 220 ), ExtResource( 254 ), ExtResource( 240 ), ExtResource( 236 ), ExtResource( 221 ), ExtResource( 226 ), ExtResource( 257 ), ExtResource( 229 ), ExtResource( 230 ), ExtResource( 252 ), ExtResource( 233 ), ExtResource( 237 ), ExtResource( 238 ), ExtResource( 241 ), ExtResource( 262 ), ExtResource( 243 ), ExtResource( 267 ), ExtResource( 244 ), ExtResource( 245 ) ]
+fps = 60.0
 
 [node name="Destructible81" parent="Destructibles" instance=ExtResource( 12 )]
+visible = false
 material = SubResource( 63 )
 position = Vector2( 6928, -4337 )
 texture = SubResource( 64 )
@@ -1421,20 +857,17 @@ position = Vector2( 6928, -2116 )
 texture = SubResource( 61 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 3760, 0 ), Vector2( 3760, 369 ), Vector2( 0, 369 ) ]
 
-[node name="Destructible82" parent="Destructibles" instance=ExtResource( 12 )]
-position = Vector2( 3756, -4499 )
-texture = SubResource( 67 )
-starting_polygon = [ Vector2( 0, 0 ), Vector2( 566, 0 ), Vector2( 566, 3717 ), Vector2( 0, 3717 ) ]
-
 [node name="Destructible83" parent="Destructibles" instance=ExtResource( 12 )]
 position = Vector2( 3756, -4499 )
 texture = SubResource( 77 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 566, 0 ), Vector2( 566, 3717 ), Vector2( 0, 3717 ) ]
+texture_frames = [ ExtResource( 46 ), ExtResource( 45 ), ExtResource( 43 ), ExtResource( 38 ), ExtResource( 39 ), ExtResource( 40 ) ]
 
 [node name="Destructible84" parent="Destructibles" instance=ExtResource( 12 )]
 position = Vector2( -6417, -4499 )
 texture = SubResource( 79 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 566, 0 ), Vector2( 566, 3717 ), Vector2( 0, 3717 ) ]
+texture_frames = [ ExtResource( 47 ), ExtResource( 48 ), ExtResource( 35 ), ExtResource( 36 ), ExtResource( 37 ), ExtResource( 44 ) ]
 
 [node name="vereda" type="Node2D" parent="Destructibles"]
 
@@ -1911,32 +1344,44 @@ texture = SubResource( 89 )
 starting_polygon = [ Vector2( 0, 0 ), Vector2( 2268, 0 ), Vector2( 2268, 6300 ), Vector2( 0, 6300 ) ]
 
 [node name="Label3" type="Label" parent="."]
-visible = false
-margin_left = 16031.0
-margin_top = -3296.0
-margin_right = 16672.0
-margin_bottom = -2995.0
+margin_left = -12156.0
+margin_top = -351.0
+margin_right = -5679.0
+margin_bottom = 224.0
 rect_scale = Vector2( 1.05128, 1.73489 )
-custom_colors/font_color = Color( 0.807843, 0.109804, 0.192157, 1 )
+custom_colors/font_color = Color( 0.94902, 0.305882, 0.447059, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "     LANZA 
-       UN PODER
-         CON LA 
-	       TECLA COMA"
+text = "DASHEA PRESIONANDO RAPIDAMENTE 
+qEL MISMO BOTON DE DIRECCION  /"
+
+[node name="Sprite" type="Sprite" parent="Label3"]
+modulate = Color( 0.94902, 0.305882, 0.447059, 1 )
+position = Vector2( 4103.57, 369.476 )
+scale = Vector2( 1.33964, 0.512385 )
+texture = ExtResource( 22 )
+
+[node name="Label4" type="Label" parent="."]
+margin_left = 9276.0
+margin_top = -351.0
+margin_right = 15753.0
+margin_bottom = 224.0
+rect_scale = Vector2( 1.05128, 1.73489 )
+custom_colors/font_color = Color( 0.94902, 0.54902, 0.305882, 1 )
+custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
+custom_fonts/font = SubResource( 3 )
+text = "MANTEN PRESIONADO
+PARA CARGAR TU DOBLE SALTO  "
 
 [node name="Label2" type="Label" parent="."]
-visible = false
-margin_left = 33172.0
-margin_top = 8035.0
-margin_right = 33743.0
-margin_bottom = 8336.0
+margin_left = -12061.0
+margin_top = -351.0
+margin_right = -10883.0
+margin_bottom = -34.0
 rect_scale = Vector2( 1.16, 1.8 )
 custom_colors/font_color = Color( 0.941176, 0.886275, 0.0862745, 1 )
 custom_colors/font_color_shadow = Color( 0, 0, 0, 1 )
 custom_fonts/font = SubResource( 3 )
-text = "LANZA PODERES
-CON"
 
 [node name="Background" type="AudioStreamPlayer" parent="."]
 autoplay = true

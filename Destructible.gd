@@ -8,15 +8,27 @@ var explosionAudio = load("res://audio/Explosion.wav")
 export (Array , Vector2) var starting_polygon : Array
 export (bool) var apply :bool = false setget set_apply
 
+export (Array, Texture) var texture_frames: Array setget _set_texture_frames
+export (float) var fps: float = 2.0
+
+var current_frame: int = 0
+var count: float = 0.0
+
 
 func _ready():
 	generate(starting_polygon)
+	set_process(!texture_frames.empty())
+	if !texture_frames.empty():
+		_animate_step()
 
 func set_apply(valor : bool):
 	apply = false
 	if valor && not starting_polygon.empty():
 		generate(starting_polygon)
-	
+
+func _set_texture_frames(frames: Array) -> void:
+	texture_frames = frames
+
 func carve(clipping_polygon):
 	"""
 	Carves the clipping_polygon away from the quadrant
@@ -149,6 +161,26 @@ func generate(polygon :Array):
 	$CollisionPolygon2D.polygon = polygon
 	polygonete.polygon = polygon
 	polygonete.texture = texture.duplicate()
-	polygonete.texture.set_region(Rect2(0,0, polygon[2].x, polygon[2].y))
-	
+	if polygonete.texture is AtlasTexture:
+		polygonete.texture.set_region(Rect2(0,0, polygon[2].x, polygon[2].y))
+	if !texture_frames.empty():
+		_animate_step()
 	#actualice_uv($CollisionPolygon2D/Polygonete)
+
+
+func _process(delta: float) -> void:
+	if Engine.editor_hint:
+		return
+	count += delta
+	if texture is AtlasTexture:
+		if count >= 1.0 / fps:
+			count -= 1.0 / fps
+			_animate_step()
+
+
+func _animate_step() -> void:
+	current_frame = (current_frame + 1) % texture_frames.size()
+	texture.atlas = texture_frames[current_frame]
+	for colpol in get_children():
+		var polygonete: Polygon2D = colpol.get_node("Polygonete")
+		polygonete.texture.atlas = texture_frames[current_frame]
